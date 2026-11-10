@@ -6,7 +6,7 @@ Carpeta de bocetos interactivos de alta fidelidad para el nuevo sitio web de **I
 
 Puedes acceder a la versión desplegada y probarla directamente en tu móvil o navegador de escritorio en:
 
-👉 **[https://raulrescobar.github.io/mazzei-boceto/](https://raulrescobar.github.io/mazzei-boceto/)**
+👉 **[https://mastrominds-agency.github.io/mazzei-boceto/](https://mastrominds-agency.github.io/mazzei-boceto/)**
 
 ---
 
@@ -43,4 +43,4 @@ Puedes abrir cualquiera de estos archivos localmente haciendo doble clic sobre e
 
 ## 🚀 Despliegue en GitHub Pages
 
-Este boceto está sincronizado con el repositorio público [`RaulREscobar/mazzei-boceto`](https://github.com/RaulREscobar/mazzei-boceto) y publicado automáticamente en GitHub Pages.
+Este boceto está sincronizado con el repositorio público [`Mastrominds-Agency/mazzei-boceto`](https://github.com/Mastrominds-Agency/mazzei-boceto) y publicado automáticamente en GitHub Pages.
