@@ -163,21 +163,20 @@
       animation: pulse-ring 2.2s cubic-bezier(0.455, 0.03, 0.515, 0.955) infinite;
     }
 
-    /* Laser Scanner Beam for Metrology Lab */
-    @keyframes laserSweep {
-      0% { top: 0%; opacity: 0.8; }
-      50% { top: 96%; opacity: 1; }
-      100% { top: 0%; opacity: 0.8; }
+    /* Hero gradual entrance animations ("aparecer de a poco") */
+    @keyframes heroFadeUp {
+      0% { opacity: 0; transform: translateY(22px); }
+      100% { opacity: 1; transform: translateY(0); }
     }
-    .laser-beam {
-      position: absolute;
-      left: 0;
-      right: 0;
-      height: 2px;
-      background: linear-gradient(90deg, transparent, #0270C7, #38BDF8, #0270C7, transparent);
-      box-shadow: 0 0 16px #0270C7, 0 0 28px #38BDF8;
-      animation: laserSweep 3s ease-in-out infinite;
+    .hero-reveal {
+      opacity: 0;
+      animation: heroFadeUp 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
     }
+    .reveal-d1 { animation-delay: 0.15s; }
+    .reveal-d2 { animation-delay: 0.45s; }
+    .reveal-d3 { animation-delay: 0.75s; }
+    .reveal-d4 { animation-delay: 1.05s; }
+    .reveal-d5 { animation-delay: 1.3s; }
 
     /* Continuous ambient spindle rotation + sparks for Lathe SVG */
     @keyframes spindleSpin {
@@ -278,9 +277,9 @@
       justify-content: center;
     }
 
-    /* Scrollytelling transitions */
+    /* Scrollytelling transitions - Slower & smoother */
     .scrolly-phase-card, .scrolly-phase-svg {
-      transition: opacity 0.18s linear, transform 0.18s ease-out;
+      transition: opacity 0.28s ease-out, transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
       will-change: opacity, transform;
     }
 
@@ -339,7 +338,7 @@
           <span class="w-1.5 h-1.5 rounded-full bg-mazzei-600"></span>
           <span>4 Fases Blueprint</span>
         </a>
-        <a href="#metrologia-lab" class="hover:text-mazzei-700 transition-colors">Metrología & Aceros</a>
+        <a href="#materiales" class="hover:text-mazzei-700 transition-colors">Aceros y Aleaciones</a>
         <a href="#comparador-lab" class="hover:text-mazzei-700 transition-colors">Antes / Después</a>
         <a href="#parada-lab" class="hover:text-mazzei-700 transition-colors">Simulador 24/7</a>
         <a href="#servicios" class="hover:text-mazzei-700 transition-colors">9 Servicios</a>
@@ -359,100 +358,92 @@
     </div>
   </header>
 
-  <!-- ================= HERO SECTION ================= -->
-  <section class="relative pt-10 pb-16 md:pt-14 md:pb-20 overflow-hidden bg-gradient-to-b from-white via-mazzei-50/40 to-white">
-    <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[400px] bg-mazzei-200/40 rounded-full blur-[150px] pointer-events-none"></div>
+  <!-- ================= HERO SECTION (Airy, Progressive Reveal + Animated Blueprint Dots) ================= -->
+  <section class="relative min-h-[84vh] flex items-center py-14 md:py-20 overflow-hidden bg-gradient-to-b from-white via-mazzei-50/30 to-white">
+    
+    <!-- Dynamic Blueprint Points & Vectors Background Canvas -->
+    <canvas id="hero-blueprint-canvas" class="absolute inset-0 w-full h-full pointer-events-none opacity-80"></canvas>
 
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-8 items-center">
+    <!-- Subtle Drafting Technical Frame Corner Marks -->
+    <svg class="absolute inset-0 w-full h-full pointer-events-none opacity-30" viewBox="0 0 1440 720" preserveAspectRatio="xMidYMid slice">
+      <line x1="60" y1="60" x2="120" y2="60" stroke="#074B85" stroke-width="1"/>
+      <line x1="60" y1="60" x2="60" y2="120" stroke="#074B85" stroke-width="1"/>
+      <line x1="1380" y1="660" x2="1320" y2="660" stroke="#074B85" stroke-width="1"/>
+      <line x1="1380" y1="660" x2="1380" y2="600" stroke="#074B85" stroke-width="1"/>
+      <circle cx="980" cy="360" r="240" fill="none" stroke="#94A3B8" stroke-width="0.7" stroke-dasharray="6 6"/>
+      <circle cx="980" cy="360" r="320" fill="none" stroke="#CBD5E1" stroke-width="0.7"/>
+    </svg>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
         
-        <!-- Left Hero Copy -->
+        <!-- Left Hero Copy (Minimalist, Airy, Progressive Entrance) -->
         <div class="lg:col-span-7 space-y-6">
-          <div class="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-mazzei-50 border border-mazzei-200 text-xs font-mono text-mazzei-900 shadow-sm">
+          <div class="hero-reveal reveal-d1 inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-white/90 border border-metal-200 text-xs font-mono text-mazzei-900 shadow-sm backdrop-blur-sm">
             <span class="w-2 h-2 rounded-full bg-mazzei-600 animate-ping"></span>
-            <span>INGENIERÍA METALMECÁNICA & FABRICACIÓN B2B</span>
-            <span class="text-mazzei-700 font-bold border-l border-mazzei-300 pl-2">+40 AÑOS</span>
+            <span>PRECISIÓN METALMECÁNICA B2B</span>
+            <span class="text-mazzei-700 font-bold border-l border-metal-300 pl-2">+40 AÑOS</span>
           </div>
 
-          <h1 class="text-4xl sm:text-5xl lg:text-[3.4rem] font-extrabold tracking-tight text-metal-900 leading-[1.1]">
+          <h1 class="hero-reveal reveal-d2 text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-metal-900 leading-[1.08]">
             Mecanizado CNC y <br class="hidden sm:block"/>
             <span class="text-transparent bg-clip-text bg-gradient-to-r from-mazzei-800 via-mazzei-600 to-sky-600">Fabricación Industrial</span>
-            Bajo Plano o Muestra
           </h1>
 
-          <p class="text-base sm:text-lg text-metal-600 leading-relaxed max-w-2xl">
-            Soluciones metalmecánicas para la gran industria: <strong>tornería pesada hasta 3 metros, fresado CNC con tolerancias de ±0.01 mm, soldadura calificada TIG/MIG y corte térmico de chapa</strong>. Deslice hacia abajo para recorrer nuestras 4 fases técnicas en plano vivo.
+          <p class="hero-reveal reveal-d3 text-base sm:text-xl text-metal-600 font-medium leading-relaxed max-w-xl">
+            Tornería pesada hasta 3 metros, tolerancias de <strong class="text-metal-900">±0.01 mm</strong> y fabricación bajo plano o muestra física.
           </p>
 
-          <!-- Verified Specs -->
-          <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-1 text-xs font-mono">
-            <div class="p-3 rounded-xl bg-white border border-metal-200 shadow-sm">
-              <span class="text-mazzei-700 block text-[10px] uppercase font-bold tracking-wider">Tolerancia</span>
-              <span class="text-metal-900 font-bold text-sm">±0.01 mm</span>
+          <!-- Clean Inline Key Metrics -->
+          <div class="hero-reveal reveal-d4 flex flex-wrap items-center gap-4 sm:gap-6 pt-1 text-xs font-mono text-metal-700">
+            <div class="flex items-center gap-2">
+              <span class="w-2 h-2 rounded-sm bg-mazzei-700"></span>
+              <span><strong>±0.01 mm</strong> CNC</span>
             </div>
-            <div class="p-3 rounded-xl bg-white border border-metal-200 shadow-sm">
-              <span class="text-mazzei-700 block text-[10px] uppercase font-bold tracking-wider">Volteo Torno</span>
-              <span class="text-metal-900 font-bold text-sm">Hasta 3 Metros</span>
+            <div class="flex items-center gap-2">
+              <span class="w-2 h-2 rounded-sm bg-mazzei-700"></span>
+              <span><strong>3 Metros</strong> Volteo</span>
             </div>
-            <div class="p-3 rounded-xl bg-white border border-metal-200 shadow-sm">
-              <span class="text-mazzei-700 block text-[10px] uppercase font-bold tracking-wider">Normas</span>
-              <span class="text-metal-900 font-bold text-sm">AWS / ASME / SAE</span>
-            </div>
-            <div class="p-3 rounded-xl bg-white border border-metal-200 shadow-sm">
-              <span class="text-emerald-700 block text-[10px] uppercase font-bold tracking-wider">Respuesta Parada</span>
-              <span class="text-emerald-600 font-bold text-sm">&lt; 24 Horas</span>
+            <div class="flex items-center gap-2">
+              <span class="w-2 h-2 rounded-sm bg-emerald-500"></span>
+              <span><strong>&lt; 24h</strong> Paradas 24/7</span>
             </div>
           </div>
 
           <!-- Action Buttons -->
-          <div class="flex flex-wrap items-center gap-3.5 pt-2">
+          <div class="hero-reveal reveal-d4 flex flex-wrap items-center gap-3.5 pt-2">
             <a href="#fases-blueprint" class="px-6 py-3.5 rounded-xl bg-gradient-to-r from-mazzei-800 to-mazzei-600 text-white font-bold text-sm sm:text-base shadow-glow-blue hover:from-mazzei-900 hover:to-mazzei-700 hover:-translate-y-0.5 transition-all flex items-center gap-2.5">
-              <span>Explorar 4 Fases en Plano Vivo</span>
+              <span>Recorrer 4 Fases en Plano</span>
               <svg class="w-4 h-4 animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 14l-7 7m0 0l-7-7m7 7V3"/></svg>
             </a>
 
-            <a href="#cotizador-rfq" class="px-6 py-3.5 rounded-xl bg-white hover:bg-metal-50 border border-metal-300 hover:border-mazzei-600 text-metal-800 font-semibold text-sm sm:text-base flex items-center gap-2 transition-all shadow-sm">
-              <span>Solicitar Cotización (RFQ)</span>
+            <a href="#cotizador-rfq" class="px-6 py-3.5 rounded-xl bg-white/90 hover:bg-metal-50 border border-metal-300 hover:border-mazzei-600 text-metal-800 font-semibold text-sm sm:text-base flex items-center gap-2 transition-all shadow-sm">
+              <span>Solicitar Cotización</span>
             </a>
           </div>
         </div>
 
-        <!-- Right Hero: 3D Interactive Real Workshop Card -->
-        <div class="lg:col-span-5 perspective-canvas">
-          <div id="heroCard3d" class="tilt-card glass-card-light rounded-2xl p-6 relative shadow-floating-light border-metal-200">
+        <!-- Right Hero: 3D Interactive Real Workshop Card (Delayed Reveal) -->
+        <div class="lg:col-span-5 perspective-canvas hero-reveal reveal-d5">
+          <div id="heroCard3d" class="tilt-card glass-card-light rounded-2xl p-5 sm:p-6 relative shadow-floating-light border-metal-200">
             <div class="flex items-center justify-between border-b border-metal-200 pb-3 mb-4">
               <div class="flex items-center gap-2">
                 <span class="w-2.5 h-2.5 rounded-full bg-mazzei-700 inline-block"></span>
-                <span class="font-mono text-xs font-bold text-metal-800">TALLER EN VIVO & METROLOGÍA</span>
+                <span class="font-mono text-xs font-bold text-metal-800">PLANTA MAZZEI</span>
               </div>
-              <span class="spec-badge-light text-mazzei-800 border-mazzei-300 bg-mazzei-50">PLANTA MAZZEI</span>
+              <span class="spec-badge-light text-mazzei-800 border-mazzei-300 bg-mazzei-50">EN OPERACIÓN</span>
             </div>
 
             <div class="relative rounded-xl overflow-hidden mb-4 border border-metal-200 shadow-inner group">
-              <img src="img/taller-torno-maquinaria.jpg" alt="Mecanizado en Torno Industrial Real en Planta Mazzei" class="w-full h-52 object-cover object-center group-hover:scale-105 transition-transform duration-500">
-              <div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-metal-900/90 via-metal-900/60 to-transparent p-4 text-white">
-                <div class="font-mono text-xs text-sky-300 font-bold">TORNO PESADO EN OPERACIÓN CONTINUA</div>
-                <div class="text-[11px] text-metal-200">Eje motriz para central azucarero · Tolerancia ±0.008 mm</div>
+              <img src="img/taller-torno-maquinaria.jpg" alt="Mecanizado en Torno Industrial Real en Planta Mazzei" class="w-full h-56 object-cover object-center group-hover:scale-105 transition-transform duration-500">
+              <div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-metal-900/90 via-metal-900/50 to-transparent p-4 text-white">
+                <div class="font-mono text-xs text-sky-300 font-bold">TORNO PESADO · EJE MOTRIZ SAE 4140</div>
               </div>
             </div>
 
-            <div class="grid grid-cols-2 gap-3 text-xs font-mono">
-              <div class="p-2.5 rounded-lg bg-white border border-metal-200">
-                <span class="text-metal-500 block text-[10px]">Material Mecanizado</span>
-                <span class="text-metal-900 font-bold">Acero SAE 4140 Bonificado</span>
-              </div>
-              <div class="p-2.5 rounded-lg bg-white border border-metal-200">
-                <span class="text-metal-500 block text-[10px]">Ajuste Dimensional</span>
-                <span class="text-metal-900 font-bold">Calibración H7 / p6</span>
-              </div>
-            </div>
-
-            <div class="absolute -bottom-3 -right-3 bg-white border border-mazzei-300 rounded-xl px-4 py-2 shadow-lg flex items-center gap-2.5">
-              <div class="w-7 h-7 rounded-lg bg-mazzei-50 text-mazzei-700 flex items-center justify-center font-bold text-xs border border-mazzei-200">✓</div>
-              <div>
-                <div class="text-xs font-bold text-metal-900">Inspección Final 100%</div>
-                <div class="text-[10px] font-mono text-metal-500">Entrega con Certificado</div>
-              </div>
+            <div class="flex items-center justify-between text-xs font-mono text-metal-600">
+              <span>Ajuste: <strong class="text-metal-900">H7 / p6</strong></span>
+              <span class="text-emerald-700 font-bold">✓ Certificado Dimensional</span>
             </div>
           </div>
         </div>
@@ -481,12 +472,12 @@
   </section>
 
   <!-- ========================================================================= -->
-  <!-- IMMERSIVE 4-PHASE STICKY SCROLLYTELLING: BLUEPRINT DINÁMICO MAZZEI        -->
+  <!-- IMMERSIVE 4-PHASE STICKY SCROLLYTELLING: FULLSCREEN BLUEPRINT DINÁMICO   -->
   <!-- ========================================================================= -->
-  <section id="fases-blueprint" class="relative bg-white border-b border-metal-200" style="height: 360vh;">
+  <section id="fases-blueprint" class="relative bg-white border-b border-metal-200" style="height: 720vh;">
     
-    <!-- Sticky Viewport Container -->
-    <div class="sticky top-20 h-[calc(100vh-5rem)] min-h-[580px] overflow-hidden blueprint-grid-fine flex flex-col justify-between">
+    <!-- Full-Screen Sticky Viewport Container -->
+    <div class="sticky top-0 h-screen w-full z-40 overflow-hidden blueprint-grid-fine flex flex-col justify-between bg-white/98 pt-3 sm:pt-4 pb-3">
       
       <!-- Dynamic CAD Blueprint Background Vector Layer -->
       <svg id="blueprint-bg-svg" class="absolute inset-0 w-full h-full pointer-events-none opacity-45" viewBox="0 0 1440 800" preserveAspectRatio="xMidYMid slice">
@@ -516,11 +507,11 @@
       </svg>
 
       <!-- Top Scrollytelling Controller & Vernier Phase Switcher -->
-      <div class="relative z-20 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 pt-4 sm:pt-6">
-        <div class="bg-white/95 backdrop-blur-md border border-metal-200 rounded-2xl px-4 py-3 shadow-sm flex flex-col md:flex-row md:items-center justify-between gap-3">
+      <div class="relative z-20 max-w-[1600px] w-full mx-auto px-4 sm:px-8 lg:px-12 pt-1">
+        <div class="bg-white/95 backdrop-blur-md border border-metal-200 rounded-2xl px-4 py-2.5 shadow-sm flex flex-col md:flex-row md:items-center justify-between gap-3">
           <div class="flex items-center gap-3">
             <span class="px-2.5 py-1 rounded-md bg-mazzei-800 text-white font-mono text-[11px] font-bold tracking-wider">PROCESO 4 FASES</span>
-            <span class="text-xs sm:text-sm font-bold text-metal-900">Deslice hacia abajo/arriba o seleccione una fase:</span>
+            <span class="text-xs sm:text-sm font-bold text-metal-900">Deslice lentamente hacia abajo/arriba o elija una fase:</span>
           </div>
 
           <!-- Clickable Phase Pills -->
@@ -541,11 +532,11 @@
         </div>
       </div>
 
-      <!-- Main Stage: Left Phase Text + Right Animated Vector Machine -->
-      <div class="relative z-10 flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-12 gap-6 items-center py-3">
+      <!-- Main Stage: Left Phase Text + Full-Height Animated Vector Machine -->
+      <div class="relative z-10 flex-1 max-w-[1600px] w-full mx-auto px-4 sm:px-8 lg:px-12 grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-center py-2">
         
-        <!-- Left Side: Vernier Ruler + Traveling Phase Descriptions (5 cols) -->
-        <div class="lg:col-span-5 flex items-center gap-4 relative h-64 sm:h-72 lg:h-96">
+        <!-- Left Side: Vernier Ruler + Traveling Phase Descriptions (4 cols on desktop so SVG takes 8 cols!) -->
+        <div class="lg:col-span-4 flex items-center gap-4 relative h-60 sm:h-68 lg:h-[70vh]">
           
           <!-- Vertical Micrometer Vernier Scale -->
           <div class="hidden sm:flex flex-col items-center h-64 w-8 shrink-0 relative py-2">
@@ -646,8 +637,8 @@
           </div>
         </div>
 
-        <!-- Right Side: Vector Schematic Machine Canvas (7 cols - NO PHOTOS, PURE SVG GRAPHICS) -->
-        <div class="lg:col-span-7 relative h-72 sm:h-80 lg:h-[430px] bg-metal-50/90 border border-metal-200 rounded-2xl shadow-inner overflow-hidden">
+        <!-- Right Side: Full-Height Vector Schematic Machine Canvas (8 cols - NO PHOTOS, PURE SVG GRAPHICS) -->
+        <div class="lg:col-span-8 relative h-[46vh] sm:h-[54vh] lg:h-[74vh] bg-metal-50/90 border border-metal-200 rounded-2xl shadow-inner overflow-hidden">
           
           <!-- Technical Viewport Header HUD -->
           <div class="absolute top-3 inset-x-4 z-20 flex items-center justify-between text-[10px] font-mono">
@@ -920,131 +911,64 @@
   </section>
 
   <!-- ========================================================================= -->
-  <!-- CONCEPTOS VISUALES INTEGRADOS: LAB DE METROLOGÍA, SLIDER Y SIMULADOR 24/7  -->
+  <!-- CONCEPTOS VISUALES INTEGRADOS: ACEROS, COMPARADOR ANTES/DESPUÉS & SLA 24/7-->
   <!-- ========================================================================= -->
 
-  <!-- ================= LAB 1: METROLOGÍA LÁSER & SELECTOR DE ALEACIONES ================= -->
-  <section id="metrologia-lab" class="py-20 bg-white border-b border-metal-200">
+  <!-- ================= LAB 1: SELECTOR INTERACTIVO DE ACEROS & MATERIALES ================= -->
+  <section id="materiales" class="py-20 bg-white border-b border-metal-200">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       
       <div class="text-center max-w-3xl mx-auto mb-12 space-y-3">
-        <span class="spec-badge-light text-mazzei-800 border-mazzei-300 bg-mazzei-50">CONCEPTO INTERACTIVO 01 · INSPECCIÓN & MATERIALES</span>
+        <span class="spec-badge-light text-mazzei-800 border-mazzei-300 bg-mazzei-50">MATRIZ SIDERÚRGICA & ALEACIONES</span>
         <h2 class="text-3xl sm:text-4xl font-extrabold text-metal-900 tracking-tight">
-          Metrología Láser CNC & Matriz Interactiva de Aceros
+          Selector Interactivo de Aceros Certificados
         </h2>
         <p class="text-metal-600 text-sm sm:text-base">
-          Pruebe nuestro banco de lectura dimensional en vivo y consulte las propiedades mecánicas de las aleaciones certificadas que mecanizamos en stock.
+          Seleccione la aleación requerida para consultar su dureza HRC, resistencia mecánica y aplicación en planta.
         </p>
       </div>
 
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start mb-12">
-        
-        <!-- Left: Interactive Optical CNC Scanner (7 cols) -->
-        <div class="lg:col-span-7 bg-white rounded-2xl border border-metal-200 shadow-floating-light p-5 sm:p-6">
-          <div class="flex items-center justify-between border-b border-metal-100 pb-3 mb-4">
-            <div class="flex items-center gap-2">
-              <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></span>
-              <span class="text-xs font-mono font-bold text-metal-900">BANCO DE MEDICIÓN ÓPTICA CNC (FOTO REAL DE TALLER)</span>
-            </div>
-            <span class="text-[11px] font-mono text-metal-500 bg-metal-100 px-2 py-0.5 rounded">1000 HZ</span>
-          </div>
-
-          <div class="relative w-full h-72 sm:h-80 rounded-xl overflow-hidden bg-metal-900 border border-metal-700 group">
-            <img src="img/servicio-torno-cnc.jpg" alt="Mecanizado Torno CNC Mazzei" class="w-full h-full object-cover opacity-85 group-hover:scale-105 transition-transform duration-700">
-            <div class="absolute inset-0 bg-mazzei-950/35 mix-blend-multiply"></div>
-            <div class="laser-beam"></div>
-
-            <!-- Reticle SVG Overlay -->
-            <svg class="absolute inset-0 w-full h-full pointer-events-none stroke-sky-400/45" xmlns="http://www.w3.org/2000/svg">
-              <line x1="50%" y1="0" x2="50%" y2="100%" stroke-width="1" stroke-dasharray="4 4"/>
-              <line x1="0" y1="50%" x2="100%" y2="50%" stroke-width="1" stroke-dasharray="4 4"/>
-              <circle cx="50%" cy="50%" r="55" fill="none" stroke-width="1"/>
-              <circle cx="50%" cy="50%" r="110" fill="none" stroke-width="1" stroke-dasharray="2 4"/>
-            </svg>
-
-            <!-- Live Coordinates HUD -->
-            <div class="absolute top-3 left-3 bg-metal-900/90 backdrop-blur-md border border-sky-500/40 rounded-lg p-3 text-white font-mono text-xs shadow-lg">
-              <div class="text-[10px] text-sky-400 font-semibold mb-1">COORDENADAS CNC EN VIVO</div>
-              <div class="grid grid-cols-2 gap-x-3 gap-y-1">
-                <div>EJE X: <span id="hud-x" class="text-white font-bold">+145.020</span> mm</div>
-                <div>EJE Z: <span id="hud-z" class="text-white font-bold">-320.150</span> mm</div>
-                <div>Ø EXT: <span id="hud-diam" class="text-emerald-400 font-bold">Ø 85.000</span> mm</div>
-                <div>RUNOUT: <span class="text-emerald-400 font-bold">&lt; 0.004</span> mm</div>
-              </div>
-            </div>
-
-            <div class="absolute bottom-3 right-3 bg-emerald-950/90 border border-emerald-500 text-emerald-300 px-3 py-1.5 rounded-lg font-mono text-[11px] flex items-center gap-1.5">
-              <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
-              <span>TOLERANCIA: ±0.008 mm (PASA)</span>
-            </div>
-
-            <div class="hidden sm:block absolute bottom-3 left-3 bg-metal-900/90 border border-metal-700 text-metal-300 px-3 py-1.5 rounded-lg font-mono text-[11px]">
-              RUGOSIDAD: <strong class="text-sky-300">Ra 0.8 µm</strong>
-            </div>
-          </div>
-
-          <div class="mt-4 flex flex-wrap items-center justify-between gap-3">
-            <div class="flex items-center gap-2">
-              <button onclick="triggerLaserCycle()" class="px-4 py-2 rounded-lg bg-mazzei-800 hover:bg-mazzei-700 text-white font-semibold text-xs transition-colors flex items-center gap-1.5 shadow-sm">
-                <span>▶ Ejecutar Medición CMM</span>
-              </button>
-              <button onclick="resetLaserCoords()" class="px-3 py-2 rounded-lg bg-metal-100 hover:bg-metal-200 text-metal-700 font-medium text-xs transition-colors">
-                Reiniciar Cero Pieza
-              </button>
-            </div>
-            <div class="text-[11px] text-metal-500 font-mono" id="laser-status">
-              ESTADO: LÁSER ACTIVO · CALIBRACIÓN ASTM
-            </div>
-          </div>
+      <!-- Interactive Material Selector Grid -->
+      <div class="max-w-4xl mx-auto bg-white rounded-2xl border border-metal-200 p-6 sm:p-8 shadow-floating-light mb-10">
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5 mb-6">
+          <button onclick="selectMaterial('aisi4140')" id="mat-btn-aisi4140" class="mat-chip text-left p-3 rounded-xl border border-mazzei-700 bg-mazzei-50 text-xs font-semibold text-mazzei-900 transition-all">
+            <div class="text-[10px] text-mazzei-600 font-mono">ACERO BONIFICADO</div>
+            AISI / SAE 4140
+          </button>
+          <button onclick="selectMaterial('aisi1045')" id="mat-btn-aisi1045" class="mat-chip text-left p-3 rounded-xl border border-metal-200 bg-metal-50 text-xs font-semibold text-metal-800 hover:border-metal-300 transition-all">
+            <div class="text-[10px] text-metal-500 font-mono">ACERO AL CARBONO</div>
+            AISI / SAE 1045
+          </button>
+          <button onclick="selectMaterial('aisi304')" id="mat-btn-aisi304" class="mat-chip text-left p-3 rounded-xl border border-metal-200 bg-metal-50 text-xs font-semibold text-metal-800 hover:border-metal-300 transition-all">
+            <div class="text-[10px] text-metal-500 font-mono">INOX SANITARIO</div>
+            AISI 304 / 316
+          </button>
+          <button onclick="selectMaterial('bronce')" id="mat-btn-bronce" class="mat-chip text-left p-3 rounded-xl border border-metal-200 bg-metal-50 text-xs font-semibold text-metal-800 hover:border-metal-300 transition-all">
+            <div class="text-[10px] text-metal-500 font-mono">ANTIFRICCIÓN</div>
+            Bronce SAE 660
+          </button>
         </div>
 
-        <!-- Right: Interactive Material Selector (5 cols) -->
-        <div class="lg:col-span-5 bg-white rounded-2xl border border-metal-200 p-6 shadow-floating-light">
-          <h3 class="text-lg font-bold text-metal-900 mb-1">Selector Técnico de Materiales</h3>
-          <p class="text-xs text-metal-600 mb-4">
-            Haga clic en una aleación para inspeccionar su dureza, tracción y aplicaciones en taller:
-          </p>
-
-          <div class="grid grid-cols-2 gap-2 mb-5">
-            <button onclick="selectMaterial('aisi4140')" id="mat-btn-aisi4140" class="mat-chip text-left p-2.5 rounded-xl border border-mazzei-700 bg-mazzei-50 text-xs font-semibold text-mazzei-900 transition-all">
-              <div class="text-[10px] text-mazzei-600 font-mono">ACERO BONIFICADO</div>
-              AISI / SAE 4140
-            </button>
-            <button onclick="selectMaterial('aisi1045')" id="mat-btn-aisi1045" class="mat-chip text-left p-2.5 rounded-xl border border-metal-200 bg-metal-50 text-xs font-semibold text-metal-800 hover:border-metal-300 transition-all">
-              <div class="text-[10px] text-metal-500 font-mono">ACERO AL CARBONO</div>
-              AISI / SAE 1045
-            </button>
-            <button onclick="selectMaterial('aisi304')" id="mat-btn-aisi304" class="mat-chip text-left p-2.5 rounded-xl border border-metal-200 bg-metal-50 text-xs font-semibold text-metal-800 hover:border-metal-300 transition-all">
-              <div class="text-[10px] text-metal-500 font-mono">INOX SANITARIO</div>
-              AISI 304 / 316
-            </button>
-            <button onclick="selectMaterial('bronce')" id="mat-btn-bronce" class="mat-chip text-left p-2.5 rounded-xl border border-metal-200 bg-metal-50 text-xs font-semibold text-metal-800 hover:border-metal-300 transition-all">
-              <div class="text-[10px] text-metal-500 font-mono">ANTIFRICCIÓN</div>
-              Bronce SAE 660
-            </button>
+        <div class="bg-metal-50 rounded-xl p-5 border border-metal-200 text-xs sm:text-sm space-y-3">
+          <div class="flex flex-wrap items-center justify-between border-b border-metal-200 pb-2.5 gap-2">
+            <span class="font-bold text-metal-900 text-base" id="spec-name">AISI / SAE 4140 Bonificado</span>
+            <span class="font-mono text-mazzei-700 font-semibold text-xs bg-white px-2.5 py-1 rounded border border-mazzei-200" id="spec-standard">ASTM A29 / 42CrMo4</span>
           </div>
-
-          <div class="bg-metal-50 rounded-xl p-4 border border-metal-200 text-xs space-y-3">
-            <div class="flex items-center justify-between border-b border-metal-200 pb-2">
-              <span class="font-bold text-metal-900" id="spec-name">AISI / SAE 4140 Bonificado</span>
-              <span class="font-mono text-mazzei-700 font-semibold" id="spec-standard">ASTM A29 / 42CrMo4</span>
-            </div>
-            <div class="grid grid-cols-2 gap-3 text-metal-700">
-              <div>
-                <span class="text-metal-500 block text-[11px]">Dureza Tratada:</span>
-                <strong class="text-metal-900 font-mono" id="spec-hardness">28-32 HRC / 55 Induc.</strong>
-              </div>
-              <div>
-                <span class="text-metal-500 block text-[11px]">Resistencia Tracción:</span>
-                <strong class="text-metal-900 font-mono" id="spec-tensile">950 - 1100 MPa</strong>
-              </div>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-metal-700">
+            <div>
+              <span class="text-metal-500 block text-[11px]">Dureza Tratada:</span>
+              <strong class="text-metal-900 font-mono" id="spec-hardness">28-32 HRC / 55 Induc.</strong>
             </div>
             <div>
-              <span class="text-metal-500 block text-[11px] mb-0.5">Aplicaciones Habituales:</span>
-              <p class="text-metal-700 leading-relaxed" id="spec-apps">
-                Ejes de transmisión pesada, piñones helicoidales, pernos de alta resistencia y vástagos hidráulicos para molinos y maquinaria pesada.
-              </p>
+              <span class="text-metal-500 block text-[11px]">Resistencia a Tracción:</span>
+              <strong class="text-metal-900 font-mono" id="spec-tensile">950 - 1100 MPa</strong>
             </div>
+          </div>
+          <div>
+            <span class="text-metal-500 block text-[11px] mb-0.5">Aplicaciones Habituales:</span>
+            <p class="text-metal-700 leading-relaxed text-xs sm:text-sm" id="spec-apps">
+              Ejes de transmisión pesada, piñones helicoidales, pernos de alta resistencia y vástagos hidráulicos para molinos y maquinaria pesada.
+            </p>
           </div>
         </div>
       </div>
@@ -1086,32 +1010,34 @@
     </div>
   </section>
 
-  <!-- ================= LAB 2: COMPARADOR INTERACTIVO ANTES / DESPUÉS ================= -->
+  <!-- ================= LAB 2: COMPARADOR INTERACTIVO ANTES / DESPUÉS (IMÁGENES REALES CLARAS) ================= -->
   <section id="comparador-lab" class="py-20 bg-metal-50 border-b border-metal-200">
     <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
       
       <div class="text-center max-w-3xl mx-auto mb-10 space-y-3">
-        <span class="spec-badge-light text-mazzei-800 border-mazzei-300 bg-white">CONCEPTO INTERACTIVO 02 · INGENIERÍA INVERSA</span>
+        <span class="spec-badge-light text-mazzei-800 border-mazzei-300 bg-white">INGENIERÍA INVERSA & RECONSTRUCCIÓN</span>
         <h2 class="text-3xl sm:text-4xl font-extrabold text-metal-900 tracking-tight">
-          Escáner Antes / Después: Reconstrucción de Piezas
+          Antes / Después: Pieza Desgastada vs Nueva de Precisión
         </h2>
         <p class="text-sm sm:text-base text-metal-600">
-          Arrastre el divisor central para contrastar un componente con desgaste crítico de planta frente al acabado final reconstruido con cotas nominales.
+          Arrastre la línea azul del centro para comparar un tren de engranajes corroído y fatigado frente al conjunto mecanizado a nuevo en acero de precisión.
         </p>
       </div>
 
       <div class="bg-white rounded-2xl border border-metal-200 shadow-floating-light p-5 sm:p-8">
-        <div class="comparison-container rounded-xl overflow-hidden h-72 sm:h-96 relative border border-metal-300" id="compare-box">
+        <div class="comparison-container rounded-xl overflow-hidden h-80 sm:h-[440px] relative border border-metal-300" id="compare-box">
           
-          <img src="img/servicio-reconstruccion.jpg" alt="Pieza Reconstruida por Mazzei" class="absolute inset-0 w-full h-full object-cover">
-          <div class="absolute bottom-4 right-4 bg-mazzei-900/90 text-white font-mono text-xs px-3 py-1.5 rounded-lg border border-mazzei-500 backdrop-blur-md">
-            DESPUÉS: Reconstruida Mazzei (Cotas Nominales)
+          <!-- DESPUÉS: Engranajes de acero mecanizados a precisión -->
+          <img src="img/despues-engranaje.jpg" alt="Engranajes de Acero Mecanizados a Precisión - Después" class="absolute inset-0 w-full h-full object-cover object-center">
+          <div class="absolute bottom-4 right-4 bg-mazzei-900/95 text-white font-mono text-xs px-3.5 py-2 rounded-lg border border-mazzei-400 backdrop-blur-md shadow-lg">
+            ✓ DESPUÉS: Mecanizado a Nuevo (±0.01 mm)
           </div>
 
+          <!-- ANTES: Engranajes oxidados, desgastados y corroídos -->
           <div class="comparison-before" id="compare-before">
-            <img id="compare-before-img" src="img/servicio-fabricacion-piezas.jpg" alt="Pieza Desgastada en Máquina" class="absolute inset-0 h-full object-cover filter contrast-125" style="width: 900px; max-width: none;">
-            <div class="absolute bottom-4 left-4 bg-metal-900/90 text-metal-200 font-mono text-xs px-3 py-1.5 rounded-lg border border-metal-700 backdrop-blur-md">
-              ANTES: Muestra Física / Desgaste
+            <img id="compare-before-img" src="img/antes-engranaje.jpg" alt="Engranaje Industrial Corroído y Desgastado - Antes" class="absolute inset-0 h-full object-cover object-center" style="width: 900px; max-width: none;">
+            <div class="absolute bottom-4 left-4 bg-metal-900/95 text-metal-100 font-mono text-xs px-3.5 py-2 rounded-lg border border-metal-600 backdrop-blur-md shadow-lg">
+              ⚠ ANTES: Desgaste y Corrosión Crítica
             </div>
           </div>
 
@@ -1123,7 +1049,7 @@
         </div>
 
         <p class="text-center text-xs text-metal-500 mt-3 font-mono">
-          ← Deslice horizontalmente para comparar el estado inicial vs reconstrucción →
+          ← Deslice horizontalmente para comparar el componente deteriorado vs pieza mecanizada →
         </p>
 
         <div class="mt-6 grid grid-cols-1 md:grid-cols-3 gap-4 pt-6 border-t border-metal-200 text-xs">
@@ -1140,7 +1066,7 @@
           <div class="p-4 rounded-xl bg-metal-50 border border-metal-200">
             <div class="text-metal-500 font-medium mb-1">Vida Útil Extendida</div>
             <div class="text-xl font-bold font-mono text-metal-900">+120% Durabilidad</div>
-            <p class="text-[11px] text-metal-600 mt-1">Aporte de soldadura especial, rectificado y temple superficial.</p>
+            <p class="text-[11px] text-metal-600 mt-1">Acero bonificado, tallado de precisión y tratamiento térmico.</p>
           </div>
         </div>
       </div>
@@ -1640,7 +1566,7 @@
           <h4 class="font-bold text-white mb-3 text-xs uppercase tracking-wider font-mono">Secciones Interactivas</h4>
           <ul class="space-y-2 text-xs">
             <li><a href="#fases-blueprint" class="hover:text-mazzei-300">Blueprint Dinámico (4 Fases)</a></li>
-            <li><a href="#metrologia-lab" class="hover:text-mazzei-300">Metrología Láser & Materiales</a></li>
+            <li><a href="#materiales" class="hover:text-mazzei-300">Aceros y Aleaciones</a></li>
             <li><a href="#comparador-lab" class="hover:text-mazzei-300">Escáner Antes / Después</a></li>
             <li><a href="#parada-lab" class="hover:text-mazzei-300">Simulador Parada 24/7</a></li>
           </ul>
@@ -1682,7 +1608,102 @@
 
   <!-- ================= UNIFIED JAVASCRIPT ENGINES ================= -->
   <script>
-    // 1. BIDIRECTIONAL 4-PHASE STICKY SCROLLYTELLING ENGINE
+    // 0. HERO BLUEPRINT ANIMATED NODES & LINES CANVAS
+    (function initHeroCanvas() {
+      const canvas = document.getElementById('hero-blueprint-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      let width, height, points = [];
+      let mouse = { x: -1000, y: -1000 };
+
+      function resize() {
+        width = canvas.width = canvas.parentElement.offsetWidth;
+        height = canvas.height = canvas.parentElement.offsetHeight;
+        const count = Math.min(48, Math.max(24, Math.floor((width * height) / 26000)));
+        points = Array.from({ length: count }, () => ({
+          x: Math.random() * width,
+          y: Math.random() * height,
+          vx: (Math.random() - 0.5) * 0.45,
+          vy: (Math.random() - 0.5) * 0.45,
+          r: Math.random() * 1.8 + 1.5,
+          isCrosshair: Math.random() > 0.72
+        }));
+      }
+
+      canvas.parentElement.addEventListener('mousemove', (e) => {
+        const rect = canvas.getBoundingClientRect();
+        mouse.x = e.clientX - rect.left;
+        mouse.y = e.clientY - rect.top;
+      });
+      canvas.parentElement.addEventListener('mouseleave', () => {
+        mouse.x = -1000; mouse.y = -1000;
+      });
+
+      function draw() {
+        ctx.clearRect(0, 0, width, height);
+
+        // Update & draw blueprint nodes + CAD links
+        for (let i = 0; i < points.length; i++) {
+          const p = points[i];
+          p.x += p.vx;
+          p.y += p.vy;
+          if (p.x < 0 || p.x > width) p.vx *= -1;
+          if (p.y < 0 || p.y > height) p.vy *= -1;
+
+          // Connect nearby blueprint nodes
+          for (let j = i + 1; j < points.length; j++) {
+            const p2 = points[j];
+            const dx = p.x - p2.x;
+            const dy = p.y - p2.y;
+            const dist = Math.hypot(dx, dy);
+            if (dist < 155) {
+              ctx.beginPath();
+              ctx.moveTo(p.x, p.y);
+              ctx.lineTo(p2.x, p2.y);
+              const alpha = (1 - dist / 155) * 0.22;
+              ctx.strokeStyle = `rgba(2, 112, 199, ${alpha.toFixed(3)})`;
+              ctx.lineWidth = 0.85;
+              ctx.stroke();
+            }
+          }
+
+          // Connect to cursor if close
+          const mdx = p.x - mouse.x;
+          const mdy = p.y - mouse.y;
+          const mdist = Math.hypot(mdx, mdy);
+          if (mdist < 180) {
+            ctx.beginPath();
+            ctx.moveTo(p.x, p.y);
+            ctx.lineTo(mouse.x, mouse.y);
+            ctx.strokeStyle = `rgba(7, 75, 133, ${((1 - mdist / 180) * 0.38).toFixed(3)})`;
+            ctx.lineWidth = 1;
+            ctx.stroke();
+          }
+
+          // Draw node point or CAD crosshair
+          if (p.isCrosshair) {
+            ctx.strokeStyle = 'rgba(7, 75, 133, 0.45)';
+            ctx.lineWidth = 1;
+            ctx.beginPath();
+            ctx.moveTo(p.x - 4, p.y); ctx.lineTo(p.x + 4, p.y);
+            ctx.moveTo(p.x, p.y - 4); ctx.lineTo(p.x, p.y + 4);
+            ctx.stroke();
+          } else {
+            ctx.beginPath();
+            ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+            ctx.fillStyle = 'rgba(2, 112, 199, 0.45)';
+            ctx.fill();
+          }
+        }
+        requestAnimationFrame(draw);
+      }
+
+      window.addEventListener('resize', resize);
+      resize();
+      draw();
+    })();
+
+    // 1. BIDIRECTIONAL 4-PHASE STICKY SCROLLYTELLING ENGINE (SLOWER, FULLSCREEN)
     const scrollyTrack = document.getElementById('fases-blueprint');
     const stageTitles = [
       'ESQUEMA VECTORIAL 01 · ESTACIÓN CAD & PALPADOR',
@@ -1714,7 +1735,6 @@
       const totalScrollable = scrollyTrack.offsetHeight - window.innerHeight;
       const scrolledInside = -rect.top;
       
-      // Normalized progress p from 0 to 1
       let p = totalScrollable > 0 ? scrolledInside / totalScrollable : 0;
       p = Math.max(0, Math.min(1, p));
 
@@ -1745,7 +1765,6 @@
       document.getElementById('svg-stage-title').innerText = stageTitles[activeIdx];
       document.getElementById('svg-stage-coords').innerText = stageCoords[activeIdx];
 
-      // Update phase pills
       for (let i = 0; i < 4; i++) {
         const pill = document.getElementById('pill-phase-' + i);
         if (!pill) continue;
@@ -1756,13 +1775,12 @@
         }
       }
 
-      // Compute continuous opacity and travel transform for each phase
+      // Slower transition plateaus & gentle smoothstep crossfade per phase
       for (let i = 0; i < 4; i++) {
         const center = (i * 0.25) + 0.125;
-        const dist = p - center; // negative before arriving, 0 at center, positive after passing
+        const dist = p - center;
         const absDist = Math.abs(dist);
         
-        // Keep phase 0 visible before entering, phase 3 visible after passing end
         let opacity = 0;
         let translateY = 0;
         let scale = 1;
@@ -1774,20 +1792,21 @@
           opacity = 1;
           translateY = 0;
         } else {
-          // Smooth plateau between -0.085 and +0.085 around phase center, fade over 0.085..0.155
-          if (absDist < 0.085) {
+          // Wider steady window (0.095) and gentle fade window (0.095 -> 0.165)
+          if (absDist < 0.095) {
             opacity = 1;
             translateY = 0;
             scale = 1;
           } else if (absDist < 0.165) {
-            const fade = 1 - ((absDist - 0.085) / 0.08);
-            opacity = Math.max(0, fade);
-            translateY = dist > 0 ? -(1 - fade) * 38 : (1 - fade) * 38;
-            scale = 0.96 + (fade * 0.04);
+            const raw = 1 - ((absDist - 0.095) / 0.07);
+            const smooth = raw * raw * (3 - 2 * raw); // cubic smoothstep
+            opacity = Math.max(0, smooth);
+            translateY = dist > 0 ? -(1 - smooth) * 32 : (1 - smooth) * 32;
+            scale = 0.965 + (smooth * 0.035);
           } else {
             opacity = 0;
-            translateY = dist > 0 ? -42 : 42;
-            scale = 0.95;
+            translateY = dist > 0 ? -36 : 36;
+            scale = 0.96;
           }
         }
 
@@ -1805,14 +1824,12 @@
         }
       }
 
-      // === PHASE-SPECIFIC INTERNAL MACHINE KINEMATICS ===
-
       // Phase 0: CMM Probe descending & CAD contour drawing
       const localP0 = Math.max(0, Math.min(1, p / 0.25));
       const svg1Contour = document.getElementById('svg1-contour');
       const svg1Probe = document.getElementById('svg1-probe');
       if (svg1Contour) {
-        svg1Contour.setAttribute('stroke-dashoffset', (1200 * (1 - Math.min(1, localP0 * 1.4))).toFixed(0));
+        svg1Contour.setAttribute('stroke-dashoffset', (1200 * (1 - Math.min(1, localP0 * 1.3))).toFixed(0));
       }
       if (svg1Probe) {
         const probeX = -80 + (localP0 * 160);
@@ -1831,7 +1848,7 @@
         chuckWheel.style.transform = `rotate(${rotAngle.toFixed(1)}deg)`;
       }
       if (latheCarriage) {
-        const carShift = 80 - (localP1 * 175); // moves left along the bar toward chuck
+        const carShift = 80 - (localP1 * 175);
         latheCarriage.setAttribute('transform', `translate(${carShift.toFixed(1)}, 0)`);
       }
       if (latheCut) {
@@ -1861,11 +1878,10 @@
         cutPath.setAttribute('stroke-dashoffset', (700 * (1 - localP2)).toFixed(0));
       }
 
-      // Phase 3: CMM Dial Indicator needle sweep & Quality Stamp
+      // Phase 3: CMM Dial Indicator needle sweep
       const localP3 = Math.max(0, Math.min(1, (p - 0.75) / 0.25));
       const needle = document.getElementById('svg4-needle');
       if (needle) {
-        // Needle oscillates smoothly and settles cleanly at 0 deg (top)
         const angle = Math.sin(localP3 * Math.PI * 3) * (1 - localP3) * 38;
         needle.style.transform = `rotate(${angle.toFixed(1)}deg)`;
       }
@@ -1894,30 +1910,7 @@
       });
     });
 
-    // 3. LAB 1: LASER HUD & MATERIAL SELECTOR
-    function triggerLaserCycle() {
-      const statusEl = document.getElementById('laser-status');
-      statusEl.innerHTML = '<span class="text-sky-600 font-bold">ESCANEANDO SUPERFICIE...</span>';
-      let step = 0;
-      const interval = setInterval(() => {
-        step++;
-        document.getElementById('hud-x').innerText = '+' + (145 + (Math.random() * 0.04 - 0.02)).toFixed(3);
-        document.getElementById('hud-z').innerText = (-320 - (Math.random() * 0.04 - 0.02)).toFixed(3);
-        document.getElementById('hud-diam').innerText = 'Ø ' + (85 + (Math.random() * 0.008 - 0.004)).toFixed(3);
-        if (step > 5) {
-          clearInterval(interval);
-          statusEl.innerHTML = '<span class="text-emerald-600 font-bold">✓ REPORTE CMM GENERADO (±0.006 mm)</span>';
-        }
-      }, 280);
-    }
-
-    function resetLaserCoords() {
-      document.getElementById('hud-x').innerText = '+145.000';
-      document.getElementById('hud-z').innerText = '-320.000';
-      document.getElementById('hud-diam').innerText = 'Ø 85.000';
-      document.getElementById('laser-status').innerText = 'ESTADO: SISTEMA EN CERO PIEZA (CALIBRADO)';
-    }
-
+    // 3. MATERIAL SELECTOR
     const materialsData = {
       aisi4140: {
         name: 'AISI / SAE 4140 Bonificado',
