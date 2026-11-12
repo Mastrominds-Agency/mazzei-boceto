@@ -1,46 +1,43 @@
-# Bocetos Interactivos · Industrias Mazzei
+# Boceto Unificado Inmersivo · Industrias Mazzei
 
-Carpeta de bocetos interactivos de alta fidelidad para el nuevo sitio web de **Industrias Mazzei** (fabricación metalmecánica, mecanizado CNC, tornería pesada y soldadura industrial con más de 40 años de trayectoria).
+Propuesta unificada e interactiva de alta fidelidad en **una sola página** para el nuevo sitio web de **Industrias Mazzei** (fabricación metalmecánica, mecanizado CNC, tornería pesada hasta 3 metros y soldadura calificada con más de 40 años de trayectoria).
 
 ## 🌐 Enlace Público en Vivo (Demo Online)
 
-Puedes acceder a la versión desplegada y probarla directamente en tu móvil o navegador de escritorio en:
+Accede a la versión unificada desplegada en GitHub Pages dentro de la organización **Mastrominds-Agency**:
 
 👉 **[https://mastrominds-agency.github.io/mazzei-boceto/](https://mastrominds-agency.github.io/mazzei-boceto/)**
 
 ---
 
-## 📁 Archivos para abrir en el navegador
+## 🧩 Todo Integrado en `index.html` (y `narrativa.html`)
 
-Puedes abrir cualquiera de estos archivos localmente haciendo doble clic sobre ellos en Chrome, Edge o Safari:
+Esta versión reúne la experiencia flagship completa y todos los conceptos visuales interactivos en un único recorrido fluido, manteniendo el **Theme Claro** (`#FFFFFF`, `#F8FAFC`), Azul Mazzei (`#074B85`, `#0270C7`) y grises de acero templado (**cero color naranja**):
 
-1. **`index.html` (o `narrativa.html`)** — **Propuesta Flagship Principal**:
-   - **Theme Claro Industrial:** Fondo blanco nítido (`#FFFFFF`, `#F8FAFC`), azul corporativo Mazzei (`#074B85`, `#0270C7`) y grises metálicos de acero (`#0F172A`, `#334155`, `#CBD5E1`). *Cero uso de colores naranjas ajenos a la marca*.
-   - **Activos 100% Reales:** Integración de las 20 fotografías reales del taller propio, maquinaria y clientes del sitio actual (`img/`).
-   - **Hero con Tilt 3D:** Tarjetas interactivas con perspectiva tridimensional y efecto de brillo (*cursor shine*) reactivo al movimiento del ratón.
-   - **Matriz de Servicios Técnicos:** 9 áreas operativas reales (Torno CNC, Soldadura Calificada TIG/MIG, Oxicorte y Plasma, Tornería Pesada hasta 3m, Fabricación según plano o muestra, Plegado CNC, Troquelado, Corte con Guillotina y Reconstrucción de Componentes).
-   - **Parque de Maquinaria:** Especificaciones de capacidades máximas (volteo de 800 mm, longitud entre puntos de 3000 mm, corte por plasma de alta definición).
-   - **Selector de Materiales:** Guía interactiva de aleaciones (AISI 4140 bonificado, AISI 1045, AISI 304/316 inoxidable y Bronce fosfórico SAE 660).
-   - **Protocolo de Paradas de Planta 24/7:** Stepper interactivo de 4 pasos para contingencias mecánicas de alta criticidad en molinos, silos y transporte.
-   - **Cotizador Rápido RFQ:** Generador de solicitud de presupuesto con selección de servicio, adjunto de planos y despacho automático a WhatsApp con datos técnicos pre-llenados.
-   - **Schema.org JSON-LD:** Marcado de datos estructurados para posicionamiento SEO local B2B y motores de IA (AEO/GEO).
+1. **Hero Flagship & Confianza Industrial:**
+   - Propuesta de valor técnica, tolerancias de `±0.01 mm`, volteo de 3 metros, respuesta `< 24h` y tarjeta 3D reactiva al cursor con fotografía real del taller (`img/taller-torno-maquinaria.jpg`) y franja de clientes atendidos.
+2. **📐 Blueprint Dinámico · Las 4 Fases del Trabajo (*Sticky Scrollytelling* Vectorial):**
+   - Pista interactiva con movimiento **bidireccional al hacer scroll (arriba y abajo)**, regla micrométrica lateral (nonio de `000.0 mm` a `400.0 mm`) y fondo de planos CAD que se trazan en vivo.
+   - **Sin imágenes raster — Gráficos vectoriales SVG dinámicos de maquinaria:**
+     - **01. Levantamiento Técnico & Metrología CAD:** Brazo CMM con palpador rubí y acotado diédrico automático.
+     - **02. Mecanizado CNC & Tornería Pesada:** Torno CNC con husillo de 4 garras giratorio, barra de acero, carro portaherramientas trasladándose en eje Z y chispas vectoriales con coordenadas `G01` en vivo.
+     - **03. Oxicorte, Plasma HD & Soldadura AWS:** Mesa pórtico CNC cortando brida dentada con arco eléctrico azul.
+     - **04. Control Metrológico CMM & Entrega 24/7:** Reloj comparador milesimal con barrido de aguja, curva gaussiana de tolerancias y sello `PASSED ±0.008 mm`.
+3. **🔬 Lab 1: Metrología Láser CNC & Selector Interactivo de Aceros:**
+   - Banco óptico interactivo con haz láser sobre foto real del torno CNC y selector de aleaciones (`AISI 4140`, `AISI 1045`, `AISI 304/316`, `Bronce SAE 660`) más matriz siderúrgica de 6 grados.
+4. **🔄 Lab 2: Escáner Comparador Antes / Después:**
+   - Cortina deslizante (*split slider*) interactiva para contrastar una pieza desgastada vs reconstruida por Mazzei (`-60% a -75%` ahorro, entrega en `48-72h`).
+5. **⚡ Lab 3: Simulador de Parada de Planta 24/7 & Protocolo:**
+   - Calculadora financiera de lucro cesante por hora según industria y botón de despacho urgente por WhatsApp pre-llenado, junto al protocolo de 4 pasos (`0h`, `2h`, `6h`, `12h`).
+6. **🏭 Capacidad Real, Comparativa, RFQ y FAQ:**
+   - Matriz de los **9 servicios técnicos** con fotos reales y efecto tilt 3D, galería de taller en acción, tabla comparativa frente a importaciones, cotizador técnico RFQ y Schema.org JSON-LD.
 
-2. **`conceptos-visuales.html`** — **Laboratorio de Conceptos Visuales & Motion**:
-   - **Pestaña 1 (🔬 Metrología Láser ±0.01 mm):** Simulación de banco de medición óptico CMM en torno CNC, con retícula animada, lectura digital de coordenadas en vivo (ejes X, Z y Ø) y selector de fichas técnicas de aleaciones mecánicas (dureza HRC, resistencia a tracción y norma ASTM).
-   - **Pestaña 2 (⚡ Simulador Parada 24/7):** Calculadora interactiva del costo financiero de una línea de producción detenida por hora según el sector (Central Azucarero, Silos, Plantas Cerámicas) vs el ahorro de la respuesta inmediata Mazzei. Botón directo de despacho de emergencia a WhatsApp.
-   - **Pestaña 3 (🔄 Escáner Antes / Después):** Comparador de cortina deslizante (*split slider*) interactivo entre una pieza industrial desgastada en planta vs la pieza recuperada por Mazzei con tolerancias nominales y endurecimiento superficial.
-
----
-
-## 🛠️ Tecnologías Empleadas en el Boceto
-
-- **HTML5 Semántico:** Diseñado con estándares accesibles y estructura preparada para componentes de **Astro**.
-- **Tailwind CSS (JIT vía CDN):** Paleta customizada con tokens corporativos `mazzei` y `metal`.
-- **Vanilla JavaScript:** Micro-interacciones de cero dependencias externas para garantizar 60 FPS en móviles y tiempos de carga instantáneos (&lt; 0.5s).
-- **Optimización de Imágenes:** Imágenes reales comprimidas y organizadas en `img/`.
+*(El archivo [`conceptos-visuales.html`](conceptos-visuales.html) también permanece disponible de forma independiente como archivo de referencia por pestañas).*
 
 ---
 
-## 🚀 Despliegue en GitHub Pages
+## 🚀 Despliegue y Repositorios
 
-Este boceto está sincronizado con el repositorio público [`Mastrominds-Agency/mazzei-boceto`](https://github.com/Mastrominds-Agency/mazzei-boceto) y publicado automáticamente en GitHub Pages.
+- **Sitio Público:** [https://mastrominds-agency.github.io/mazzei-boceto/](https://mastrominds-agency.github.io/mazzei-boceto/)
+- **Repositorio Público del Boceto:** [`Mastrominds-Agency/mazzei-boceto`](https://github.com/Mastrominds-Agency/mazzei-boceto)
+- **Repositorio Privado del Proyecto:** [`Mastrominds-Agency/industrias-mazzei-web`](https://github.com/Mastrominds-Agency/industrias-mazzei-web)
