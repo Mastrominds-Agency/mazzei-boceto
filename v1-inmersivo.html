@@ -1,0 +1,2651 @@
+<!DOCTYPE html>
+<html lang="es-VE" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Industrias Mazzei · V1 Experiencia Inmersiva | Torno Interactivo, Maquinaria en Vivo y 9 Servicios</title>
+  <meta name="description" content="Recorrido interactivo inmersivo por la planta de Industrias Mazzei: torno CNC que cobra vida al hacer scroll, maquinaria generada por código interactiva, 9 servicios metalmecánicos, comparador Antes/Después, cotizador RFQ y FAQs.">
+  <meta name="robots" content="index, follow">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace'],
+          },
+          colors: {
+            mazzei: {
+              50: '#F0F7FF',
+              100: '#E0EFFF',
+              200: '#BAE0FD',
+              300: '#7CC8FB',
+              400: '#36ABF7',
+              500: '#0C8EE9',
+              600: '#0270C7',
+              700: '#0359A1',
+              800: '#074B85',
+              900: '#0C3F6E',
+              950: '#082849'
+            },
+            metal: {
+              50: '#F8FAFC',
+              100: '#F1F5F9',
+              200: '#E2E8F0',
+              300: '#CBD5E1',
+              400: '#94A3B8',
+              500: '#64748B',
+              600: '#475569',
+              700: '#334155',
+              800: '#1E293B',
+              900: '#0F172A'
+            }
+          },
+          boxShadow: {
+            'glow-blue': '0 0 30px -4px rgba(2, 112, 199, 0.38)',
+            'floating-light': '0 22px 48px -14px rgba(15, 23, 42, 0.10), 0 0 1px 1px rgba(15, 23, 42, 0.05)',
+            'card-hover': '0 28px 55px -12px rgba(7, 75, 133, 0.16), 0 0 0 1px rgba(2, 112, 199, 0.32)',
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    :root {
+      --bg-ambient: radial-gradient(circle at 50% 0%, rgba(2, 112, 199, 0.08) 0%, rgba(255, 255, 255, 0) 65%),
+                    radial-gradient(circle at 88% 25%, rgba(14, 165, 233, 0.06) 0%, rgba(255, 255, 255, 0) 55%);
+    }
+
+    body {
+      background-color: #FFFFFF;
+      color: #334155;
+      background-image: var(--bg-ambient);
+      background-attachment: fixed;
+      overflow-x: clip;
+    }
+
+    /* Blueprint Technical Grids */
+    .blueprint-grid-light {
+      background-color: #FFFFFF;
+      background-image:
+        linear-gradient(to right, rgba(2, 112, 199, 0.085) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(2, 112, 199, 0.085) 1px, transparent 1px),
+        linear-gradient(to right, rgba(100, 116, 139, 0.05) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(100, 116, 139, 0.05) 1px, transparent 1px);
+      background-size: 120px 120px, 120px 120px, 24px 24px, 24px 24px;
+    }
+
+    .blueprint-grid-soft {
+      background-color: #F8FAFC;
+      background-image:
+        linear-gradient(to right, rgba(2, 112, 199, 0.075) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(2, 112, 199, 0.075) 1px, transparent 1px),
+        linear-gradient(to right, rgba(100, 116, 139, 0.045) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(100, 116, 139, 0.045) 1px, transparent 1px);
+      background-size: 120px 120px, 120px 120px, 24px 24px, 24px 24px;
+    }
+
+    .blueprint-grid-fine {
+      background-color: #FFFFFF;
+      background-image:
+        radial-gradient(circle at 50% 15%, rgba(2, 112, 199, 0.07) 0%, transparent 60%),
+        linear-gradient(to right, rgba(2, 112, 199, 0.10) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(2, 112, 199, 0.10) 1px, transparent 1px),
+        linear-gradient(to right, rgba(100, 116, 139, 0.055) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(100, 116, 139, 0.055) 1px, transparent 1px);
+      background-size: 100% 100%, 120px 120px, 120px 120px, 24px 24px, 24px 24px;
+    }
+
+    .glass-header-light {
+      background: rgba(255, 255, 255, 0.93);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border-bottom: 1px solid #E2E8F0;
+    }
+
+    .glass-card-light {
+      background: rgba(255, 255, 255, 0.94);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(203, 213, 225, 0.9);
+      transition: box-shadow 0.35s ease, border-color 0.35s ease;
+    }
+    .glass-card-light:hover {
+      border-color: rgba(2, 112, 199, 0.4);
+      box-shadow: 0 26px 50px -12px rgba(7, 75, 133, 0.14), 0 0 22px -4px rgba(2, 112, 199, 0.16);
+    }
+
+    /* Gentle Progressive Appearance for Hero Title ("efecto de aparición leve") */
+    @keyframes softTitleReveal {
+      0% {
+        opacity: 0;
+        transform: translateY(18px) scale(0.985);
+        filter: blur(6px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+        filter: blur(0);
+      }
+    }
+    .gentle-appear {
+      opacity: 0;
+      animation: softTitleReveal 1.15s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+    .ga-1 { animation-delay: 0.12s; }
+    .ga-2 { animation-delay: 0.32s; }
+    .ga-3 { animation-delay: 0.54s; }
+    .ga-4 { animation-delay: 0.76s; }
+    .ga-5 { animation-delay: 0.98s; }
+
+    /* Operational Status Ring */
+    @keyframes pulse-ring {
+      0% { transform: scale(0.95); opacity: 0.85; }
+      50% { transform: scale(1.65); opacity: 0; }
+      100% { transform: scale(0.95); opacity: 0.85; }
+    }
+    .pulse-ring-effect {
+      animation: pulse-ring 2.2s cubic-bezier(0.455, 0.03, 0.515, 0.955) infinite;
+    }
+
+    /* Spec Badges */
+    .spec-badge-light {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.68rem;
+      letter-spacing: 0.05em;
+      background: #F1F5F9;
+      border: 1px solid #CBD5E1;
+      padding: 0.2rem 0.55rem;
+      border-radius: 5px;
+      color: #334155;
+      font-weight: 600;
+    }
+
+    /* Movable / Draggable Elements Styling */
+    .draggable-element {
+      cursor: grab;
+      user-select: none;
+      touch-action: none;
+    }
+    .draggable-element:active {
+      cursor: grabbing;
+    }
+
+    /* 3D Perspective & Shine Cards for Services */
+    .perspective-canvas {
+      perspective: 1100px;
+    }
+    .tilt-card {
+      transform-style: preserve-3d;
+      will-change: transform;
+      transition: transform 0.18s ease-out, box-shadow 0.3s ease, border-color 0.3s ease;
+    }
+    .shine-card {
+      position: relative;
+      overflow: hidden;
+    }
+    .shine-card::before {
+      content: '';
+      position: absolute;
+      top: var(--cursor-y, -100%);
+      left: var(--cursor-x, -100%);
+      width: 280px;
+      height: 280px;
+      background: radial-gradient(circle, rgba(2, 112, 199, 0.11) 0%, transparent 70%);
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      z-index: 2;
+    }
+    .shine-card:hover::before {
+      opacity: 1;
+    }
+
+    .img-zoom-container {
+      overflow: hidden;
+      border-radius: 0.75rem;
+    }
+    .img-zoom-container img {
+      transition: transform 0.55s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .group:hover .img-zoom-container img {
+      transform: scale(1.07);
+    }
+
+    /* Before / After Comparison Slider */
+    .comparison-container {
+      position: relative;
+      overflow: hidden;
+      user-select: none;
+      touch-action: pan-y;
+    }
+    .comparison-before {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 50%;
+      height: 100%;
+      overflow: hidden;
+    }
+    .comparison-slider {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 50%;
+      width: 4px;
+      background: #0270C7;
+      cursor: ew-resize;
+      box-shadow: 0 0 14px rgba(2, 112, 199, 0.75);
+    }
+    .comparison-handle {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 42px;
+      height: 42px;
+      background: #FFFFFF;
+      border: 3px solid #074B85;
+      border-radius: 9999px;
+      box-shadow: 0 4px 16px rgba(15, 23, 42, 0.28);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Scroll reveal animations for lower sections */
+    .reveal-on-scroll {
+      opacity: 0;
+      transform: translateY(34px);
+      transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1), transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .reveal-on-scroll.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Spark & Laser animations */
+    @keyframes sparkFlicker {
+      0%, 100% { opacity: 0.3; transform: scale(0.85); }
+      50% { opacity: 1; transform: scale(1.18); }
+    }
+    .spark-live {
+      animation: sparkFlicker 0.35s ease-in-out infinite;
+    }
+
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-track { background: #F8FAFC; }
+    ::-webkit-scrollbar-thumb { background: #CBD5E1; border-radius: 4px; }
+    ::-webkit-scrollbar-thumb:hover { background: #0270C7; }
+  </style>
+</head>
+<body class="blueprint-grid-light antialiased selection:bg-mazzei-700 selection:text-white">
+
+  <!-- ================= TOP EMERGENCY STATUS BANNER ================= -->
+  <div class="border-b border-metal-200 bg-metal-900 text-white px-4 py-2 text-xs font-mono relative z-50">
+    <div class="max-w-7xl mx-auto flex flex-wrap justify-between items-center gap-2">
+      <div class="flex items-center gap-2.5">
+        <span class="relative flex h-2.5 w-2.5">
+          <span class="pulse-ring-effect absolute inline-flex h-full w-full rounded-full bg-emerald-400"></span>
+          <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500"></span>
+        </span>
+        <span class="text-white font-semibold">PLANTA EN OPERACIÓN CONTINUA</span>
+        <span class="text-metal-500 hidden sm:inline">|</span>
+        <span class="text-metal-300 hidden sm:inline">Tornos CNC, Tornería Pesada 3m y Guardia 24/7 para Paradas de Planta</span>
+      </div>
+      <div class="flex items-center gap-4 text-xs">
+        <a href="index.html" class="text-sky-300 hover:text-white underline font-semibold hidden md:inline">← Volver al Portal (V0 / V1)</a>
+        <a href="tel:+584140000000" class="text-mazzei-300 hover:text-white font-bold flex items-center gap-1.5 transition-colors">
+          <span>🚨 Guardia 24/7:</span>
+          <span>+58 (414) 000-0000</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= STICKY HEADER ================= -->
+  <header class="sticky top-0 z-50 glass-header-light transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-3">
+      <!-- Brand Logo -->
+      <a href="#" class="flex items-center gap-3 group min-w-0">
+        <img src="img/logo-footer.png" alt="Industrias Mazzei Logo" class="h-11 w-10 object-cover object-left transition-transform group-hover:scale-105" onerror="this.style.display='none'; document.getElementById('logoFallback').style.display='flex';">
+        <div id="logoFallback" class="hidden w-11 h-11 rounded-xl bg-gradient-to-br from-mazzei-800 to-mazzei-600 items-center justify-center text-white font-bold text-xl shadow-glow-blue">
+          M
+        </div>
+        <div class="flex flex-col">
+          <div class="flex items-center gap-2">
+            <span class="text-lg sm:text-xl font-extrabold tracking-tight text-metal-900 font-sans">
+              INDUSTRIAS <span class="text-mazzei-700">MAZZEI</span>
+            </span>
+            <span class="hidden sm:inline-block px-2 py-0.5 text-[10px] font-mono font-bold bg-mazzei-50 text-mazzei-800 border border-mazzei-200 rounded-full">V1 INMERSIVA</span>
+          </div>
+          <span class="hidden sm:block text-[10px] font-mono tracking-widest text-metal-500 uppercase font-semibold">Precisión Metalmecánica · Fund. 1984</span>
+        </div>
+      </a>
+
+      <!-- Navigation Links -->
+      <nav class="hidden lg:flex items-center gap-6 text-xs font-bold text-metal-700">
+        <a href="#recorrido-inmersivo" class="hover:text-mazzei-700 transition-colors flex items-center gap-1.5">
+          <span class="w-2 h-2 rounded-full bg-mazzei-600 animate-pulse"></span>
+          <span>Torno & Proceso (4 Pasos)</span>
+        </a>
+        <a href="#servicios" class="hover:text-mazzei-700 transition-colors">9 Servicios</a>
+        <a href="#antes-despues" class="hover:text-mazzei-700 transition-colors">Antes y Después</a>
+        <a href="#cotizador-rfq" class="hover:text-mazzei-700 transition-colors">Formulario RFQ</a>
+        <a href="#faqs" class="hover:text-mazzei-700 transition-colors">FAQs</a>
+      </nav>
+
+      <!-- CTA Buttons -->
+      <div class="flex items-center gap-2.5 shrink-0">
+        <button onclick="resetAllDraggablePositions()" id="resetDragBtn" class="hidden items-center gap-1.5 px-3 py-2 rounded-xl bg-metal-100 hover:bg-mazzei-50 text-metal-700 hover:text-mazzei-800 text-xs font-mono font-bold border border-metal-300 transition-all" title="Restaurar posición de elementos movidos">
+          <span>↺ Centrar Elementos</span>
+        </button>
+        <a href="#cotizador-rfq" class="inline-flex items-center gap-2 px-4 sm:px-5 py-2.5 rounded-xl bg-gradient-to-r from-mazzei-800 to-mazzei-600 text-white text-xs sm:text-sm font-bold shadow-glow-blue hover:from-mazzei-900 hover:to-mazzei-700 hover:scale-[1.02] transition-all">
+          <span>Solicitar Cotización</span>
+          <svg class="hidden sm:block w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.3" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+        </a>
+      </div>
+    </div>
+  </header>
+
+
+  <!-- ===================================================================================== -->
+  <!-- UNIFIED IMMERSIVE SCROLL THEATER:                                                     -->
+  <!--   0% - 11%: HERO PRINCIPAL (Título con aparición leve + Imagen de Torno + Torno Fondo)-->
+  <!--  11% - 26%: EL TORNO PASA AL FRENTE, EMPIEZA A GIRAR Y SE AGREGA LA PIEZA A MECANIZAR -->
+  <!--  26% - 44%: PASO 1 · El torno va a la izquierda, se achica y aparece Tarjeta Paso 1   -->
+  <!--  44% - 62%: PASO 2 · Sale el torno y entra Máquina 2 (Tornería Pesada 3m) + Tarjeta 2 -->
+  <!--  62% - 80%: PASO 3 · Sale Máquina 2 y entra Máquina 3 (Plasma CNC & AWS) + Tarjeta 3  -->
+  <!--  80% - 100%: PASO 4 · Sale Máquina 3 y entra Máquina 4 (Plegadora & CMM) + Tarjeta 4  -->
+  <!-- ===================================================================================== -->
+  <section id="recorrido-inmersivo" class="relative w-full select-none" style="height: 760vh;">
+
+    <!-- STICKY STAGE VIEWPORT -->
+    <div class="sticky top-20 h-[calc(100vh-5rem)] w-full overflow-hidden blueprint-grid-fine flex flex-col justify-between">
+
+      <!-- Dynamic CAD Blueprint Background Vector Layer (Cuadrícula + Líneas de Plano como en V0) -->
+      <svg id="blueprint-bg-svg" class="absolute inset-0 w-full h-full pointer-events-none opacity-55 z-0" viewBox="0 0 1440 800" preserveAspectRatio="xMidYMid slice">
+        <defs>
+          <pattern id="smallCadGrid" width="36" height="36" patternUnits="userSpaceOnUse">
+            <path d="M 36 0 L 0 0 0 36" fill="none" stroke="#CBD5E1" stroke-width="0.75"/>
+          </pattern>
+        </defs>
+        <rect width="100%" height="100%" fill="url(#smallCadGrid)" opacity="0.65"/>
+
+        <!-- Center Drafting Crosshairs & Polar Arcs -->
+        <line x1="0" y1="400" x2="1440" y2="400" stroke="#94A3B8" stroke-width="0.85" stroke-dasharray="12 6 2 6"/>
+        <line x1="720" y1="0" x2="720" y2="800" stroke="#94A3B8" stroke-width="0.85" stroke-dasharray="12 6 2 6"/>
+        <circle cx="720" cy="400" r="270" fill="none" stroke="#0270C7" stroke-width="1" stroke-dasharray="10 6" opacity="0.28"/>
+        <circle cx="720" cy="400" r="360" fill="none" stroke="#64748B" stroke-width="0.7" stroke-dasharray="4 8" opacity="0.32"/>
+
+        <!-- Corner Blueprint Frame & Labels -->
+        <g stroke="#074B85" stroke-width="1" opacity="0.24" fill="none">
+          <path d="M 80 110 L 420 110 L 460 150 L 1360 150"/>
+          <path d="M 80 690 L 580 690 L 620 650 L 1360 650"/>
+          <rect x="36" y="36" width="1368" height="728" stroke="#CBD5E1" stroke-width="1.2"/>
+        </g>
+        <text x="54" y="62" font-family="JetBrains Mono, monospace" font-size="11" fill="#64748B">PLANO MAESTRO: IM-2026-V1 // PROYECCIÓN DIÉDRICA ISO-E</text>
+        <text x="1160" y="62" font-family="JetBrains Mono, monospace" font-size="11" fill="#074B85" font-weight="bold">TOL. GEN: ±0.01 MM</text>
+      </svg>
+
+      <!-- Ambient Interactive Blueprint Particles Canvas -->
+      <canvas id="stage-particles-canvas" class="absolute inset-0 w-full h-full pointer-events-none opacity-75 z-0"></canvas>
+
+      <!-- ================= TOP FLOATING TIMELINE / STEP BAR ================= -->
+      <div class="relative z-40 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 pt-3">
+        <div class="bg-white/90 backdrop-blur-md border border-metal-200/90 rounded-2xl px-3.5 py-2 shadow-sm flex flex-wrap items-center justify-between gap-2">
+          <div class="flex items-center gap-2.5">
+            <span id="stage-phase-badge" class="px-2.5 py-1 rounded-lg bg-mazzei-800 text-white font-mono text-[11px] font-bold tracking-wider transition-colors">
+              PORTADA · HERO
+            </span>
+            <span id="stage-instruction-text" class="text-xs font-semibold text-metal-700 hidden md:inline">
+              Haga scroll hacia abajo para traer el torno al frente, acoplar la pieza y recorrer los 4 pasos (puede arrastrar las máquinas y tarjetas).
+            </span>
+          </div>
+
+          <!-- Quick Jump Step Pills -->
+          <div class="flex items-center gap-1 sm:gap-1.5 overflow-x-auto py-0.5">
+            <button onclick="jumpToScrollProgress(0.0)" id="nav-pill-hero" class="stage-nav-pill px-2.5 py-1 rounded-lg text-[11px] font-mono font-bold border transition-all bg-mazzei-800 text-white border-mazzei-800">
+              Hero
+            </button>
+            <button onclick="jumpToScrollProgress(0.18)" id="nav-pill-front" class="stage-nav-pill px-2.5 py-1 rounded-lg text-[11px] font-mono font-bold border transition-all bg-metal-50 text-metal-600 border-metal-200 hover:border-mazzei-400">
+              ⚙️ Torno al Frente
+            </button>
+            <button onclick="jumpToScrollProgress(0.35)" id="nav-pill-step1" class="stage-nav-pill px-2.5 py-1 rounded-lg text-[11px] font-mono font-bold border transition-all bg-metal-50 text-metal-600 border-metal-200 hover:border-mazzei-400">
+              Paso 01
+            </button>
+            <button onclick="jumpToScrollProgress(0.53)" id="nav-pill-step2" class="stage-nav-pill px-2.5 py-1 rounded-lg text-[11px] font-mono font-bold border transition-all bg-metal-50 text-metal-600 border-metal-200 hover:border-mazzei-400">
+              Paso 02
+            </button>
+            <button onclick="jumpToScrollProgress(0.71)" id="nav-pill-step3" class="stage-nav-pill px-2.5 py-1 rounded-lg text-[11px] font-mono font-bold border transition-all bg-metal-50 text-metal-600 border-metal-200 hover:border-mazzei-400">
+              Paso 03
+            </button>
+            <button onclick="jumpToScrollProgress(0.90)" id="nav-pill-step4" class="stage-nav-pill px-2.5 py-1 rounded-lg text-[11px] font-mono font-bold border transition-all bg-metal-50 text-metal-600 border-metal-200 hover:border-mazzei-400">
+              Paso 04
+            </button>
+          </div>
+        </div>
+
+        <!-- Thin Scroll Progress Bar -->
+        <div class="w-full h-1 bg-metal-200/70 rounded-full mt-1.5 overflow-hidden">
+          <div id="stage-progress-bar" class="h-full bg-gradient-to-r from-mazzei-800 via-mazzei-600 to-sky-400 transition-all duration-75" style="width: 2%;"></div>
+        </div>
+      </div>
+
+      <!-- ================= MAIN STAGE AREA (Relative Container for Hero, Machines & Step Cards) ================= -->
+      <div class="relative flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-center overflow-visible">
+
+        <!-- ======================================================================= -->
+        <!-- LAYER 1: HERO CONTENT (Left Title with Gentle Fade + Right Lathe Photo) -->
+        <!-- Splits & fades out smoothly as user scrolls down so Background Lathe    -->
+        <!-- comes to the front!                                                     -->
+        <!-- ======================================================================= -->
+        <div id="hero-foreground-layer" class="relative z-30 w-full grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center pointer-events-auto will-change-transform">
+
+          <!-- Left Column: Hero Title with Gentle Appearance Effect -->
+          <div id="hero-left-col" class="lg:col-span-7 space-y-5">
+            <div class="gentle-appear ga-1 inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-white/95 border border-mazzei-200 text-xs font-mono text-mazzei-900 shadow-sm">
+              <span class="w-2 h-2 rounded-full bg-mazzei-600 animate-ping"></span>
+              <span>PRECISIÓN METALMECÁNICA INDUSTRIAL</span>
+              <span class="text-mazzei-700 font-bold border-l border-metal-300 pl-2">+40 AÑOS</span>
+            </div>
+
+            <h1 class="gentle-appear ga-2 text-4xl sm:text-5xl lg:text-[3.55rem] font-extrabold tracking-tight text-metal-900 leading-[1.07]">
+              Ingeniería en Acero y <br class="hidden sm:block"/>
+              <span class="text-transparent bg-clip-text bg-gradient-to-r from-mazzei-800 via-mazzei-600 to-sky-500">
+                Mecanizado de Alta Precisión
+              </span>
+            </h1>
+
+            <p class="gentle-appear ga-3 text-base sm:text-lg text-metal-600 font-medium leading-relaxed max-w-xl">
+              Fabricación bajo plano o muestra física, tornería pesada hasta <strong class="text-metal-900">3 metros de volteo</strong> y tolerancias micrométricas de <strong class="text-mazzei-800">±0.01 mm</strong> para mantener su planta en marcha.
+            </p>
+
+            <!-- Key Metrics Pills -->
+            <div class="gentle-appear ga-4 flex flex-wrap items-center gap-3 pt-1 text-xs font-mono">
+              <div class="px-3 py-1.5 rounded-lg bg-white border border-metal-200 shadow-sm flex items-center gap-2 text-metal-800">
+                <span class="w-2 h-2 rounded-full bg-mazzei-600"></span>
+                <span>Tolerancia: <strong>±0.01 mm</strong></span>
+              </div>
+              <div class="px-3 py-1.5 rounded-lg bg-white border border-metal-200 shadow-sm flex items-center gap-2 text-metal-800">
+                <span class="w-2 h-2 rounded-full bg-mazzei-700"></span>
+                <span>Capacidad: <strong>3,000 mm</strong></span>
+              </div>
+              <div class="px-3 py-1.5 rounded-lg bg-emerald-50 border border-emerald-200 shadow-sm flex items-center gap-2 text-emerald-900">
+                <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                <span>Paradas 24/7: <strong>&lt; 24h</strong></span>
+              </div>
+            </div>
+
+            <!-- Hero CTAs -->
+            <div class="gentle-appear ga-5 flex flex-wrap items-center gap-3.5 pt-2">
+              <button onclick="jumpToScrollProgress(0.18)" class="px-6 py-3.5 rounded-xl bg-gradient-to-r from-mazzei-800 to-mazzei-600 text-white font-bold text-sm sm:text-base shadow-glow-blue hover:from-mazzei-900 hover:to-mazzei-700 hover:-translate-y-0.5 transition-all flex items-center gap-2.5">
+                <span>Activar Torno en Vivo (Scroll)</span>
+                <svg class="w-4 h-4 animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 14l-7 7m0 0l-7-7m7 7V3"/></svg>
+              </button>
+              <a href="#servicios" class="px-5 py-3.5 rounded-xl bg-white hover:bg-metal-50 border border-metal-300 hover:border-mazzei-600 text-metal-800 font-semibold text-sm sm:text-base transition-all shadow-sm">
+                Explorar 9 Servicios
+              </a>
+            </div>
+          </div>
+
+          <!-- Right Column: Real Lathe Image Card (Movable & Interactive) -->
+          <div id="hero-right-col" class="lg:col-span-5 gentle-appear ga-4">
+            <div data-draggable="true" class="draggable-element glass-card-light rounded-2xl p-4 sm:p-5 shadow-floating-light border-mazzei-200 relative group">
+              <!-- Drag handle bar -->
+              <div class="flex items-center justify-between border-b border-metal-200 pb-2.5 mb-3.5">
+                <div class="flex items-center gap-2">
+                  <span class="w-2.5 h-2.5 rounded-full bg-mazzei-700"></span>
+                  <span class="font-mono text-[11px] font-bold text-metal-800">PLANTA MAZZEI · TORNO EN OPERACIÓN</span>
+                </div>
+                <span class="text-[10px] font-mono text-mazzei-700 bg-mazzei-50 px-2 py-0.5 rounded border border-mazzei-200 flex items-center gap-1">
+                  <span>⠿ Movible</span>
+                </span>
+              </div>
+
+              <!-- Real Lathe Image from Workshop -->
+              <div class="relative rounded-xl overflow-hidden mb-3.5 border border-metal-200 shadow-inner">
+                <img src="img/taller-torno-maquinaria.jpg" alt="Torno Industrial en Planta Industrias Mazzei" class="w-full h-56 sm:h-64 object-cover object-center group-hover:scale-105 transition-transform duration-700">
+                <div class="absolute inset-0 bg-gradient-to-t from-metal-900/90 via-metal-900/30 to-transparent"></div>
+
+                <!-- Live Overlay Telemetry on the Real Lathe Photo -->
+                <div class="absolute top-3 left-3 bg-metal-900/85 backdrop-blur-md text-white px-2.5 py-1 rounded-md border border-white/15 font-mono text-[10px] flex items-center gap-1.5">
+                  <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+                  <span>HUSILLO PRINCIPAL · SAE 4140</span>
+                </div>
+
+                <div class="absolute bottom-3 inset-x-3 flex items-end justify-between text-white">
+                  <div>
+                    <div class="font-mono text-[10px] text-sky-300 font-bold uppercase">Mecanizado Pesado & CNC</div>
+                    <div class="text-sm font-bold">Torneado de Ejes y Rodillos Industriales</div>
+                  </div>
+                  <span class="px-2.5 py-1 rounded bg-mazzei-600/90 text-[10px] font-mono font-bold">↓ Scroll: Ver Esquema</span>
+                </div>
+              </div>
+
+              <div class="flex items-center justify-between text-xs font-mono text-metal-600">
+                <span>Ajuste: <strong class="text-metal-900">ISO H7 / p6</strong></span>
+                <span class="text-emerald-700 font-bold">✓ +500 Empresas Atendidas</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+
+        <!-- ======================================================================= -->
+        <!-- LAYER 2: CODE-GENERATED INTERACTIVE MACHINES STAGE                      -->
+        <!--   - Machine 1 (Torno CNC): Starts in background behind Hero, zooms to   -->
+        <!--     front center on scroll, starts spinning, piece slides in & gets     -->
+        <!--     machined, then shifts left for Paso 1!                              -->
+        <!--   - Machine 2 (Tornería Pesada 3m & Engranajes): Enters for Paso 2      -->
+        <!--   - Machine 3 (Mesa Plasma CNC HD & Soldadura AWS): Enters for Paso 3   -->
+        <!--   - Machine 4 (Prensa Plegadora & Metrología CMM): Enters for Paso 4    -->
+        <!-- ======================================================================= -->
+
+        <!-- **************** MACHINE 1: TORNO INDUSTRIAL CNC (Hero Bg → Front → Left Step 1) **************** -->
+        <div id="machine-1-wrapper" data-draggable="true" class="draggable-element absolute z-20 w-full max-w-[680px] will-change-transform" style="transform: translate3d(0px, 10px, 0) scale(0.72); opacity: 0.24;">
+          <div class="bg-white/95 backdrop-blur-md border-2 border-mazzei-300/90 rounded-3xl p-4 sm:p-5 shadow-floating-light relative overflow-hidden">
+
+            <!-- Top Interactive Machine Control Bar -->
+            <div class="flex flex-wrap items-center justify-between gap-2 pb-3 mb-3 border-b border-metal-200">
+              <div class="flex items-center gap-2">
+                <span id="lathe-status-dot" class="w-2.5 h-2.5 rounded-full bg-mazzei-600 animate-pulse"></span>
+                <span class="font-mono text-xs font-bold text-metal-900">MÁQUINA 01 · TORNO CNC DE PRECISIÓN</span>
+                <span class="hidden sm:inline-block text-[10px] font-mono bg-mazzei-50 text-mazzei-800 px-2 py-0.5 rounded border border-mazzei-200">⠿ Arrastrable</span>
+              </div>
+
+              <!-- Interactive Controls for the Lathe -->
+              <div class="flex items-center gap-2 text-[11px] font-mono" onmousedown="event.stopPropagation()" ontouchstart="event.stopPropagation()">
+                <label class="flex items-center gap-1.5 bg-metal-100 px-2.5 py-1 rounded-lg border border-metal-200 text-metal-800 cursor-pointer" title="Mueva el carro de corte manualmente">
+                  <span>Carro Z:</span>
+                  <input id="manual-carriage-slider" type="range" min="0" max="100" value="50" class="w-16 sm:w-20 accent-mazzei-700 cursor-pointer">
+                </label>
+                <button onclick="toggleLatheTurbo()" id="lathe-turbo-btn" class="px-2.5 py-1 rounded-lg bg-mazzei-800 hover:bg-mazzei-700 text-white font-bold transition-colors">
+                  ⚡ RPM: <span id="lathe-rpm-readout">1450</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- Live Sequence Banner inside the Lathe Viewport -->
+            <div class="flex items-center justify-between bg-metal-900 text-white px-3.5 py-2 rounded-xl mb-3 font-mono text-[11px]">
+              <div class="flex items-center gap-2">
+                <span class="text-sky-400 font-bold" id="lathe-action-label">MODO FONDO · HAGA SCROLL PARA ACTIVAR TORNO</span>
+              </div>
+              <div class="text-emerald-400 font-bold" id="lathe-coords-hud">X: +42.50  Z: -118.4</div>
+            </div>
+
+            <!-- Code-Generated Interactive SVG Industrial Lathe -->
+            <div class="relative bg-gradient-to-b from-metal-50 to-mazzei-50/40 rounded-2xl border border-metal-200 overflow-hidden">
+              <svg id="lathe-interactive-svg" viewBox="0 0 760 400" class="w-full h-auto block select-none">
+                <defs>
+                  <!-- Metallic Gradients -->
+                  <linearGradient id="steelBodyGrad" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stop-color="#F8FAFC"/>
+                    <stop offset="45%" stop-color="#E2E8F0"/>
+                    <stop offset="100%" stop-color="#CBD5E1"/>
+                  </linearGradient>
+                  <linearGradient id="chuckMetallic" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stop-color="#074B85"/>
+                    <stop offset="50%" stop-color="#0270C7"/>
+                    <stop offset="100%" stop-color="#0C3F6E"/>
+                  </linearGradient>
+                  <linearGradient id="rawPieceGrad" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stop-color="#94A3B8"/>
+                    <stop offset="35%" stop-color="#F1F5F9"/>
+                    <stop offset="70%" stop-color="#64748B"/>
+                    <stop offset="100%" stop-color="#334155"/>
+                  </linearGradient>
+                  <linearGradient id="machinedPieceGrad" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stop-color="#38BDF8"/>
+                    <stop offset="38%" stop-color="#FFFFFF"/>
+                    <stop offset="75%" stop-color="#0270C7"/>
+                    <stop offset="100%" stop-color="#074B85"/>
+                  </linearGradient>
+                  <pattern id="cadGridLathe" width="30" height="30" patternUnits="userSpaceOnUse">
+                    <path d="M 30 0 L 0 0 0 30" fill="none" stroke="#CBD5E1" stroke-width="0.6"/>
+                  </pattern>
+                </defs>
+
+                <!-- Technical Blueprint Grid Background -->
+                <rect width="760" height="400" fill="url(#cadGridLathe)" opacity="0.65"/>
+
+                <!-- Center Axis Line (Eje de Rotación Z) -->
+                <line x1="30" y1="195" x2="730" y2="195" stroke="#0270C7" stroke-width="1.2" stroke-dasharray="14 5 3 5" opacity="0.7"/>
+
+                <!-- Heavy Cast-Iron Lathe Bed (Bancada Prismática Templada) -->
+                <g id="lathe-bed">
+                  <rect x="40" y="290" width="680" height="46" rx="4" fill="url(#steelBodyGrad)" stroke="#074B85" stroke-width="2"/>
+                  <line x1="40" y1="302" x2="720" y2="302" stroke="#0270C7" stroke-width="2"/>
+                  <!-- Leadscrew (Husillo patrón roscado) -->
+                  <line x1="175" y1="316" x2="670" y2="316" stroke="#475569" stroke-width="4" stroke-dasharray="6 3"/>
+                  <!-- Base Pedestals -->
+                  <rect x="64" y="336" width="88" height="44" rx="3" fill="#0F172A" stroke="#074B85" stroke-width="1.5"/>
+                  <rect x="595" y="336" width="88" height="44" rx="3" fill="#0F172A" stroke="#074B85" stroke-width="1.5"/>
+                  <!-- Chip tray -->
+                  <path d="M 160 342 L 585 342 L 570 374 L 175 374 Z" fill="#E2E8F0" stroke="#64748B" stroke-width="1.2"/>
+                </g>
+
+                <!-- Left Headstock (Cabezal Fijo CNC) -->
+                <g id="lathe-headstock">
+                  <path d="M 45 95 L 175 95 L 175 290 L 45 290 Z" fill="url(#steelBodyGrad)" stroke="#074B85" stroke-width="2.2"/>
+                  <rect x="62" y="114" width="94" height="42" rx="4" fill="#082849" stroke="#0270C7" stroke-width="1.5"/>
+                  <text x="109" y="132" font-family="JetBrains Mono, monospace" font-size="10" fill="#38BDF8" text-anchor="middle" font-weight="bold">MAZZEI CNC</text>
+                  <text id="svg-headstock-rpm" x="109" y="147" font-family="JetBrains Mono, monospace" font-size="11" fill="#FFFFFF" text-anchor="middle" font-weight="bold">1450 RPM</text>
+                  <!-- Gear Speed Levers -->
+                  <circle cx="85" cy="185" r="10" fill="#FFFFFF" stroke="#074B85" stroke-width="2"/>
+                  <line x1="85" y1="185" x2="98" y2="175" stroke="#0270C7" stroke-width="2.5" stroke-linecap="round"/>
+                  <circle cx="130" cy="185" r="10" fill="#FFFFFF" stroke="#074B85" stroke-width="2"/>
+                  <line x1="130" y1="185" x2="142" y2="195" stroke="#0270C7" stroke-width="2.5" stroke-linecap="round"/>
+                  <!-- Cooling vents -->
+                  <line x1="65" y1="225" x2="152" y2="225" stroke="#64748B" stroke-width="2"/>
+                  <line x1="65" y1="238" x2="152" y2="238" stroke="#64748B" stroke-width="2"/>
+                  <line x1="65" y1="251" x2="152" y2="251" stroke="#64748B" stroke-width="2"/>
+                </g>
+
+                <!-- Spinning Spindle & 4-Jaw Chuck (Plato de 4 Garras Giratorio) -->
+                <g id="lathe-spindle-group">
+                  <!-- Spindle Neck -->
+                  <rect x="175" y="162" width="20" height="66" fill="#94A3B8" stroke="#074B85" stroke-width="2"/>
+                  <!-- Chuck Body -->
+                  <rect x="195" y="122" width="42" height="146" rx="4" fill="url(#chuckMetallic)" stroke="#082849" stroke-width="2"/>
+                  <!-- Animated Spinning Jaws (simulates 3D rotation along vertical axis) -->
+                  <g id="lathe-chuck-jaws">
+                    <rect id="chuck-jaw-top" x="212" y="128" width="28" height="28" rx="2" fill="#38BDF8" stroke="#082849" stroke-width="1.5"/>
+                    <rect id="chuck-jaw-mid" x="212" y="183" width="28" height="24" rx="2" fill="#E0EFFF" stroke="#082849" stroke-width="1.5"/>
+                    <rect id="chuck-jaw-bot" x="212" y="234" width="28" height="28" rx="2" fill="#0C8EE9" stroke="#082849" stroke-width="1.5"/>
+                  </g>
+                </g>
+
+                <!-- Front Axial View of the Spinning 4-Jaw Chuck (Top Right HUD Inset) -->
+                <g transform="translate(675, 76)">
+                  <circle r="44" fill="#FFFFFF" stroke="#074B85" stroke-width="1.8"/>
+                  <g id="lathe-axial-wheel">
+                    <circle r="35" fill="#E0EFFF" stroke="#074B85" stroke-width="2.5"/>
+                    <circle r="14" fill="#0270C7" stroke="#082849" stroke-width="1.5"/>
+                    <rect x="-5" y="-34" width="10" height="16" rx="1.5" fill="#074B85"/>
+                    <rect x="-5" y="18" width="10" height="16" rx="1.5" fill="#074B85"/>
+                    <rect x="-34" y="-5" width="16" height="10" rx="1.5" fill="#0270C7"/>
+                    <rect x="18" y="-5" width="16" height="10" rx="1.5" fill="#0270C7"/>
+                  </g>
+                  <text x="0" y="57" font-family="JetBrains Mono, monospace" font-size="8.5" fill="#074B85" text-anchor="middle" font-weight="bold">GIRO HUSILLO</text>
+                </g>
+
+                <!-- =============================================================== -->
+                <!-- WORKPIECE (PIEZA A MECANIZAR):                                  -->
+                <!-- Slides in from the right and gets clamped into the chuck,       -->
+                <!-- then as the tool moves left, its right portion narrows into a   -->
+                <!-- bright precision-machined stepped shaft!                        -->
+                <!-- =============================================================== -->
+                <g id="lathe-workpiece-group" transform="translate(160, 0)" opacity="0">
+                  <!-- Unmachined Raw Bar Stock (Acero SAE 4140 Bruto) -->
+                  <rect id="workpiece-raw-bar" x="237" y="164" width="320" height="62" rx="2" fill="url(#rawPieceGrad)" stroke="#1E293B" stroke-width="2"/>
+
+                  <!-- Rotary motion stripes on the spinning bar -->
+                  <g id="workpiece-spin-lines" stroke="#FFFFFF" stroke-width="1.5" stroke-dasharray="18 14" opacity="0.65">
+                    <line x1="242" y1="178" x2="550" y2="178"/>
+                    <line x1="242" y1="195" x2="550" y2="195"/>
+                    <line x1="242" y1="212" x2="550" y2="212"/>
+                  </g>
+
+                  <!-- Precision Machined Section (Reveals as tool carriage cuts from right to left!) -->
+                  <rect id="workpiece-machined-pass" x="390" y="173" width="167" height="44" fill="url(#machinedPieceGrad)" stroke="#0270C7" stroke-width="2"/>
+                  <!-- Mask/Step shoulder covering top & bottom where material was removed -->
+                  <rect id="workpiece-cut-top-mask" x="390" y="162" width="169" height="11" fill="#F4F8FD"/>
+                  <rect id="workpiece-cut-bot-mask" x="390" y="227" width="169" height="11" fill="#F4F8FD"/>
+
+                  <!-- Dimension Callout on the Machined Piece -->
+                  <g id="workpiece-dim-tag" opacity="0.95">
+                    <line x1="237" y1="150" x2="557" y2="150" stroke="#0270C7" stroke-width="1.2"/>
+                    <line x1="237" y1="144" x2="237" y2="160" stroke="#0270C7" stroke-width="1.2"/>
+                    <line x1="557" y1="144" x2="557" y2="160" stroke="#0270C7" stroke-width="1.2"/>
+                    <rect x="332" y="138" width="130" height="18" rx="3" fill="#FFFFFF" stroke="#0270C7" stroke-width="1"/>
+                    <text id="workpiece-dim-text" x="397" y="150" font-family="JetBrains Mono, monospace" font-size="9.5" fill="#074B85" text-anchor="middle" font-weight="bold">PIEZA SAE 4140 · Ø85h6</text>
+                  </g>
+                </g>
+
+                <!-- Right Tailstock (Contrapunto Hidráulico) -->
+                <g id="lathe-tailstock" transform="translate(40, 0)">
+                  <!-- Live Center Cone (Punto Giratorio) -->
+                  <polygon points="557,195 588,180 588,210" fill="#0270C7" stroke="#082849" stroke-width="1.8"/>
+                  <rect x="588" y="176" width="38" height="38" fill="#CBD5E1" stroke="#074B85" stroke-width="1.8"/>
+                  <path d="M 622 152 L 698 152 L 706 290 L 622 290 Z" fill="url(#steelBodyGrad)" stroke="#074B85" stroke-width="2"/>
+                  <!-- Handwheel -->
+                  <circle cx="712" cy="195" r="18" fill="none" stroke="#074B85" stroke-width="3"/>
+                  <line x1="698" y1="195" x2="712" y2="195" stroke="#074B85" stroke-width="3"/>
+                </g>
+
+                <!-- =============================================================== -->
+                <!-- CNC TOOL CARRIAGE & TURRET (Carro Portaherramientas + Chispas)  -->
+                <!-- Moves along Z-axis (x in SVG) and cuts the workpiece            -->
+                <!-- =============================================================== -->
+                <g id="lathe-carriage-group" transform="translate(0, 0)">
+                  <!-- Saddle on Bed -->
+                  <rect x="355" y="274" width="96" height="22" rx="3" fill="#074B85" stroke="#082849" stroke-width="1.8"/>
+                  <!-- Cross-slide -->
+                  <rect x="372" y="246" width="62" height="28" rx="3" fill="url(#steelBodyGrad)" stroke="#074B85" stroke-width="1.8"/>
+                  <!-- CNC Tool Turret Head -->
+                  <rect x="380" y="224" width="46" height="24" rx="3" fill="#0F172A" stroke="#0270C7" stroke-width="1.5"/>
+                  <!-- Carbide Insert Cutting Tip (Plaquita de Carburo) -->
+                  <polygon points="396,224 403,215 410,224" fill="#38BDF8" stroke="#082849" stroke-width="1.2"/>
+
+                  <!-- Dynamic Glowing Sparks & Metal Chips at Cutting Tip -->
+                  <g id="lathe-cutting-sparks" class="spark-live" opacity="0">
+                    <circle cx="403" cy="215" r="6" fill="#38BDF8" fill-opacity="0.9"/>
+                    <circle cx="403" cy="215" r="12" fill="#0270C7" fill-opacity="0.35"/>
+                    <path d="M 403 215 L 382 238 M 403 215 L 424 236 M 403 215 L 392 246 M 403 215 L 418 248" stroke="#38BDF8" stroke-width="2" stroke-linecap="round"/>
+                    <!-- Spiral Steel Chip (Viruta helicoidal) -->
+                    <path d="M 403 215 Q 416 225 410 236 T 422 250 T 432 264" fill="none" stroke="#0270C7" stroke-width="2"/>
+                  </g>
+                </g>
+
+                <!-- Blueprint Title Block Stamp -->
+                <g transform="translate(22, 20)">
+                  <rect width="265" height="46" rx="6" fill="#FFFFFF" fill-opacity="0.92" stroke="#074B85" stroke-width="1.4"/>
+                  <text x="12" y="19" font-family="JetBrains Mono, monospace" font-size="10" fill="#074B85" font-weight="bold">TORNO CNC · HUSILLO EN VIVO</text>
+                  <text id="svg-lathe-substatus" x="12" y="36" font-family="JetBrains Mono, monospace" font-size="9.5" fill="#0270C7">ESTADO: ESPERANDO PIEZA EN PLATOS</text>
+                </g>
+              </svg>
+            </div>
+
+          </div>
+        </div>
+
+
+        <!-- **************** MACHINE 2: TORNERÍA PESADA 3M & TALLADO DE ENGRANAJES (Paso 2) **************** -->
+        <div id="machine-2-wrapper" data-draggable="true" class="draggable-element absolute z-20 w-full max-w-[650px] pointer-events-none will-change-transform" style="transform: translate3d(-120%, 40px, 0) scale(0.82); opacity: 0;">
+          <div class="bg-white/95 backdrop-blur-md border-2 border-mazzei-300 rounded-3xl p-4 sm:p-5 shadow-floating-light">
+            <div class="flex flex-wrap items-center justify-between gap-2 pb-3 mb-3 border-b border-metal-200">
+              <div class="flex items-center gap-2">
+                <span class="w-2.5 h-2.5 rounded-full bg-mazzei-700 animate-pulse"></span>
+                <span class="font-mono text-xs font-bold text-metal-900">MÁQUINA 02 · TORNO PESADO 3M & FRESADO DE ENGRANAJES</span>
+              </div>
+              <div class="flex items-center gap-2 text-[11px] font-mono" onmousedown="event.stopPropagation()" ontouchstart="event.stopPropagation()">
+                <label class="flex items-center gap-1.5 bg-metal-100 px-2.5 py-1 rounded-lg border border-metal-200 text-metal-800 cursor-pointer">
+                  <span>Luneta:</span>
+                  <input id="m2-luneta-slider" type="range" min="0" max="100" value="45" class="w-16 accent-mazzei-700 cursor-pointer">
+                </label>
+                <span class="px-2 py-0.5 rounded bg-mazzei-50 text-mazzei-800 border border-mazzei-200">⠿ Movible</span>
+              </div>
+            </div>
+
+            <div class="bg-gradient-to-b from-metal-50 to-mazzei-50/40 rounded-2xl border border-metal-200 overflow-hidden">
+              <svg viewBox="0 0 760 390" class="w-full h-auto block">
+                <rect width="760" height="390" fill="url(#cadGridLathe)" opacity="0.6"/>
+                <!-- 3-Meter Scale Ruler Top -->
+                <g transform="translate(50, 26)">
+                  <line x1="0" y1="20" x2="660" y2="20" stroke="#074B85" stroke-width="2"/>
+                  <line x1="0" y1="10" x2="0" y2="30" stroke="#074B85" stroke-width="2"/>
+                  <line x1="220" y1="13" x2="220" y2="27" stroke="#0270C7" stroke-width="1.5"/>
+                  <line x1="440" y1="13" x2="440" y2="27" stroke="#0270C7" stroke-width="1.5"/>
+                  <line x1="660" y1="10" x2="660" y2="30" stroke="#074B85" stroke-width="2"/>
+                  <rect x="235" y="4" width="190" height="22" rx="4" fill="#074B85"/>
+                  <text x="330" y="19" font-family="JetBrains Mono, monospace" font-size="10.5" fill="#FFFFFF" text-anchor="middle" font-weight="bold">LONGITUD ÚTIL: 3,000 MM (3M)</text>
+                </g>
+
+                <!-- Heavy Bed -->
+                <rect x="35" y="295" width="690" height="50" rx="4" fill="url(#steelBodyGrad)" stroke="#074B85" stroke-width="2.2"/>
+                <line x1="35" y1="310" x2="725" y2="310" stroke="#0270C7" stroke-width="2.5"/>
+
+                <!-- Giant Headstock -->
+                <rect x="40" y="110" width="110" height="185" rx="4" fill="#082849" stroke="#074B85" stroke-width="2"/>
+                <text x="95" y="145" font-family="JetBrains Mono, monospace" font-size="10" fill="#38BDF8" text-anchor="middle" font-weight="bold">VOLTEO Ø1200</text>
+                <rect x="150" y="135" width="32" height="135" fill="url(#chuckMetallic)" stroke="#082849" stroke-width="2"/>
+
+                <!-- Giant 3-Meter Sugar-Mill Roller Shaft (Eje de Molino Pesado) -->
+                <rect x="182" y="176" width="465" height="52" fill="url(#rawPieceGrad)" stroke="#0F172A" stroke-width="2"/>
+                <rect x="260" y="166" width="290" height="72" rx="3" fill="url(#machinedPieceGrad)" stroke="#074B85" stroke-width="2"/>
+                <!-- Machined Grooves on Heavy Roller -->
+                <g stroke="#074B85" stroke-width="1.6" opacity="0.65">
+                  <line x1="290" y1="166" x2="290" y2="238"/>
+                  <line x1="320" y1="166" x2="320" y2="238"/>
+                  <line x1="350" y1="166" x2="350" y2="238"/>
+                  <line x1="380" y1="166" x2="380" y2="238"/>
+                  <line x1="410" y1="166" x2="410" y2="238"/>
+                  <line x1="440" y1="166" x2="440" y2="238"/>
+                  <line x1="470" y1="166" x2="470" y2="238"/>
+                  <line x1="500" y1="166" x2="500" y2="238"/>
+                  <line x1="530" y1="166" x2="530" y2="238"/>
+                </g>
+
+                <!-- Movable Steady Rest (Luneta Autocentrante de 3 Puntos) -->
+                <g id="m2-steady-rest" transform="translate(0, 0)">
+                  <path d="M 355 295 L 370 125 L 430 125 L 445 295 Z" fill="#E0EFFF" fill-opacity="0.78" stroke="#0270C7" stroke-width="2.2"/>
+                  <circle cx="400" cy="202" r="44" fill="none" stroke="#074B85" stroke-width="2.5" stroke-dasharray="8 4"/>
+                  <rect x="394" y="114" width="12" height="48" fill="#074B85"/>
+                  <text x="400" y="106" font-family="JetBrains Mono, monospace" font-size="9.5" fill="#074B85" text-anchor="middle" font-weight="bold">LUNETA HIDRÁULICA</text>
+                </g>
+
+                <!-- Rotating Spur Gear Cutter Simulation (Right Inset) -->
+                <g transform="translate(615, 118)">
+                  <circle r="48" fill="#FFFFFF" stroke="#074B85" stroke-width="1.8"/>
+                  <g id="m2-gear-wheel">
+                    <circle r="34" fill="#BAE0FD" stroke="#074B85" stroke-width="3" stroke-dasharray="9 5"/>
+                    <circle r="22" fill="#074B85"/>
+                    <circle r="9" fill="#FFFFFF"/>
+                  </g>
+                  <text x="0" y="62" font-family="JetBrains Mono, monospace" font-size="8.5" fill="#074B85" text-anchor="middle" font-weight="bold">ENGRANAJE MÓD. 12</text>
+                </g>
+
+                <!-- Heavy Tailstock -->
+                <polygon points="647,202 675,185 675,219" fill="#0270C7" stroke="#082849" stroke-width="2"/>
+                <rect x="675" y="150" width="48" height="145" fill="url(#steelBodyGrad)" stroke="#074B85" stroke-width="2"/>
+              </svg>
+            </div>
+          </div>
+        </div>
+
+
+        <!-- **************** MACHINE 3: MESA PANTOGRÁFICA PLASMA CNC & SOLDADURA AWS (Paso 3) **************** -->
+        <div id="machine-3-wrapper" data-draggable="true" class="draggable-element absolute z-20 w-full max-w-[650px] pointer-events-none will-change-transform" style="transform: translate3d(-120%, 40px, 0) scale(0.82); opacity: 0;">
+          <div class="bg-white/95 backdrop-blur-md border-2 border-sky-300 rounded-3xl p-4 sm:p-5 shadow-floating-light">
+            <div class="flex flex-wrap items-center justify-between gap-2 pb-3 mb-3 border-b border-metal-200">
+              <div class="flex items-center gap-2">
+                <span class="w-2.5 h-2.5 rounded-full bg-sky-500 animate-ping"></span>
+                <span class="font-mono text-xs font-bold text-metal-900">MÁQUINA 03 · PANTÓGRAFO PLASMA CNC & SOLDADURA AWS</span>
+              </div>
+              <div class="flex items-center gap-2 text-[11px] font-mono" onmousedown="event.stopPropagation()" ontouchstart="event.stopPropagation()">
+                <label class="flex items-center gap-1.5 bg-sky-50 px-2.5 py-1 rounded-lg border border-sky-200 text-sky-900 cursor-pointer">
+                  <span>Antorcha X:</span>
+                  <input id="m3-torch-slider" type="range" min="-110" max="110" value="0" class="w-16 accent-sky-600 cursor-pointer">
+                </label>
+                <span class="px-2 py-0.5 rounded bg-sky-50 text-sky-800 border border-sky-200">⠿ Movible</span>
+              </div>
+            </div>
+
+            <div class="bg-gradient-to-b from-metal-900 via-metal-800 to-metal-900 rounded-2xl border border-metal-700 overflow-hidden">
+              <svg viewBox="0 0 760 390" class="w-full h-auto block">
+                <!-- Slatted Plasma Cutting Bed -->
+                <rect x="45" y="55" width="670" height="285" rx="6" fill="#0F172A" stroke="#38BDF8" stroke-width="1.5"/>
+                <g stroke="#334155" stroke-width="2">
+                  <line x1="45" y1="95" x2="715" y2="95"/>
+                  <line x1="45" y1="135" x2="715" y2="135"/>
+                  <line x1="45" y1="175" x2="715" y2="175"/>
+                  <line x1="45" y1="215" x2="715" y2="215"/>
+                  <line x1="45" y1="255" x2="715" y2="255"/>
+                  <line x1="45" y1="295" x2="715" y2="295"/>
+                </g>
+
+                <!-- Heavy ASTM A36 Steel Plate (Plancha de 50mm) -->
+                <rect x="85" y="78" width="590" height="238" rx="4" fill="#1E293B" stroke="#64748B" stroke-width="2"/>
+                <text x="105" y="102" font-family="JetBrains Mono, monospace" font-size="10" fill="#94A3B8">PLANCHA ASTM A36 · ESPESOR 50 MM · ANIDADO CNC</text>
+
+                <!-- Nested Cut Parts -->
+                <rect x="115" y="122" width="115" height="75" rx="4" fill="#082849" stroke="#38BDF8" stroke-width="1.8"/>
+                <circle cx="172" cy="159" r="20" fill="#0F172A" stroke="#38BDF8" stroke-width="1.5"/>
+                <polygon points="115,215 230,215 172,295" fill="#082849" stroke="#38BDF8" stroke-width="1.8"/>
+
+                <!-- Center Heavy Industrial Flange Being Cut by Plasma -->
+                <g transform="translate(385, 198)">
+                  <circle r="84" fill="#0C3F6E" fill-opacity="0.55" stroke="#38BDF8" stroke-width="3" stroke-dasharray="14 5"/>
+                  <circle r="34" fill="#0F172A" stroke="#7CC8FB" stroke-width="2.2"/>
+                  <circle cx="0" cy="-58" r="9" fill="#0F172A" stroke="#38BDF8" stroke-width="1.8"/>
+                  <circle cx="58" cy="0" r="9" fill="#0F172A" stroke="#38BDF8" stroke-width="1.8"/>
+                  <circle cx="0" cy="58" r="9" fill="#0F172A" stroke="#38BDF8" stroke-width="1.8"/>
+                  <circle cx="-58" cy="0" r="9" fill="#0F172A" stroke="#38BDF8" stroke-width="1.8"/>
+                </g>
+
+                <!-- Right Side AWS TIG/MIG Weld Seam Preview -->
+                <g transform="translate(530, 125)">
+                  <rect width="120" height="165" rx="6" fill="#0F172A" stroke="#0270C7" stroke-width="1.5"/>
+                  <text x="60" y="24" font-family="JetBrains Mono, monospace" font-size="9.5" fill="#38BDF8" text-anchor="middle" font-weight="bold">CORDÓN AWS D1.1</text>
+                  <!-- Rippled weld bead -->
+                  <path d="M 35 45 Q 60 35 85 45 Q 60 58 35 58 Q 60 48 85 58 Q 60 71 35 71 Q 60 61 85 71 Q 60 84 35 84 Q 60 74 85 84 Q 60 97 35 97 Q 60 87 85 97 Q 60 110 35 110 Q 60 100 85 110" fill="none" stroke="#38BDF8" stroke-width="4" stroke-linecap="round"/>
+                  <text x="60" y="142" font-family="JetBrains Mono, monospace" font-size="9" fill="#E2E8F0" text-anchor="middle">TIG · MIG · SMAW</text>
+                </g>
+
+                <!-- Movable CNC Gantry Bridge & Glowing Plasma Torch -->
+                <g id="m3-gantry-group" transform="translate(0, 0)">
+                  <rect x="364" y="42" width="42" height="310" rx="4" fill="#E2E8F0" fill-opacity="0.18" stroke="#38BDF8" stroke-width="2"/>
+                  <!-- Torch Head -->
+                  <g id="m3-torch-head" transform="translate(0, 0)">
+                    <rect x="355" y="145" width="60" height="46" rx="6" fill="#0270C7" stroke="#FFFFFF" stroke-width="2"/>
+                    <text x="385" y="172" font-family="JetBrains Mono, monospace" font-size="10" fill="#FFFFFF" text-anchor="middle" font-weight="bold">200A HD</text>
+                    <!-- Plasma Arc Jet -->
+                    <circle cx="385" cy="202" r="22" fill="#38BDF8" fill-opacity="0.35" class="spark-live"/>
+                    <circle cx="385" cy="202" r="10" fill="#FFFFFF" class="spark-live"/>
+                    <path d="M 385 202 L 355 232 M 385 202 L 415 232 M 385 202 L 368 242 M 385 202 L 402 242" stroke="#7CC8FB" stroke-width="2.2" class="spark-live"/>
+                  </g>
+                </g>
+              </svg>
+            </div>
+          </div>
+        </div>
+
+
+        <!-- **************** MACHINE 4: PRENSA PLEGADORA HIDRÁULICA & METROLOGÍA CMM (Paso 4) **************** -->
+        <div id="machine-4-wrapper" data-draggable="true" class="draggable-element absolute z-20 w-full max-w-[650px] pointer-events-none will-change-transform" style="transform: translate3d(-120%, 40px, 0) scale(0.82); opacity: 0;">
+          <div class="bg-white/95 backdrop-blur-md border-2 border-emerald-300 rounded-3xl p-4 sm:p-5 shadow-floating-light">
+            <div class="flex flex-wrap items-center justify-between gap-2 pb-3 mb-3 border-b border-metal-200">
+              <div class="flex items-center gap-2">
+                <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-ping"></span>
+                <span class="font-mono text-xs font-bold text-metal-900">MÁQUINA 04 · PRENSA PLEGADORA & CONTROL CMM (±0.008 MM)</span>
+              </div>
+              <div class="flex items-center gap-2 text-[11px] font-mono" onmousedown="event.stopPropagation()" ontouchstart="event.stopPropagation()">
+                <label class="flex items-center gap-1.5 bg-emerald-50 px-2.5 py-1 rounded-lg border border-emerald-200 text-emerald-900 cursor-pointer">
+                  <span>Plegar:</span>
+                  <input id="m4-bend-slider" type="range" min="0" max="100" value="75" class="w-16 accent-emerald-600 cursor-pointer">
+                </label>
+                <span class="px-2 py-0.5 rounded bg-emerald-50 text-emerald-800 border border-emerald-200">⠿ Movible</span>
+              </div>
+            </div>
+
+            <div class="bg-gradient-to-b from-metal-50 to-emerald-50/30 rounded-2xl border border-metal-200 overflow-hidden">
+              <svg viewBox="0 0 760 390" class="w-full h-auto block">
+                <rect width="760" height="390" fill="url(#cadGridLathe)" opacity="0.6"/>
+
+                <!-- Left Station: Hydraulic Press Brake (Plegadora de Chapa) -->
+                <g transform="translate(30, 30)">
+                  <rect width="330" height="330" rx="10" fill="#FFFFFF" stroke="#074B85" stroke-width="1.8"/>
+                  <text x="165" y="28" font-family="JetBrains Mono, monospace" font-size="10.5" fill="#074B85" text-anchor="middle" font-weight="bold">PLEGADO CNC · PRENSA HIDRÁULICA</text>
+                  <!-- Lower V-Die (Matriz en V) -->
+                  <path d="M 65 235 L 135 235 L 165 280 L 195 235 L 265 235 L 265 305 L 65 305 Z" fill="#0F172A" stroke="#074B85" stroke-width="2"/>
+                  <!-- Steel Sheet Being Bent into V -->
+                  <path id="m4-steel-sheet" d="M 55 195 L 165 268 L 275 195" fill="none" stroke="#0270C7" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+                  <!-- Descending Hydraulic Punch (Punzado Superior) -->
+                  <g id="m4-punch-ram" transform="translate(0, 18)">
+                    <rect x="115" y="52" width="100" height="90" rx="4" fill="url(#chuckMetallic)" stroke="#082849" stroke-width="2"/>
+                    <polygon points="135,142 195,142 165,242" fill="#074B85" stroke="#082849" stroke-width="2"/>
+                    <text id="m4-angle-readout" x="165" y="102" font-family="JetBrains Mono, monospace" font-size="13" fill="#FFFFFF" text-anchor="middle" font-weight="bold">90.0°</text>
+                  </g>
+                </g>
+
+                <!-- Right Station: CMM Dial Indicator & Laser Tolerance Certification -->
+                <g transform="translate(390, 30)">
+                  <rect width="340" height="330" rx="10" fill="#FFFFFF" stroke="#10B981" stroke-width="2"/>
+                  <text x="170" y="28" font-family="JetBrains Mono, monospace" font-size="10.5" fill="#065F46" text-anchor="middle" font-weight="bold">METROLOGÍA FINAL · RELOJ MILESIMAL</text>
+
+                  <!-- Dial Gauge -->
+                  <g transform="translate(170, 145)">
+                    <circle r="76" fill="#F8FAFC" stroke="#074B85" stroke-width="4"/>
+                    <circle r="64" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.5" stroke-dasharray="4 6"/>
+                    <!-- Green Tolerance Zone Arc -->
+                    <path d="M -28 -58 A 64 64 0 0 1 28 -58" fill="none" stroke="#10B981" stroke-width="7" stroke-linecap="round"/>
+                    <text x="0" y="-36" font-family="JetBrains Mono, monospace" font-size="10" fill="#065F46" text-anchor="middle" font-weight="bold">0.00 mm</text>
+                    <!-- Needle -->
+                    <g id="m4-dial-needle">
+                      <line x1="0" y1="14" x2="4" y2="-54" stroke="#0270C7" stroke-width="3" stroke-linecap="round"/>
+                      <circle r="7" fill="#074B85"/>
+                    </g>
+                    <rect x="-48" y="22" width="96" height="24" rx="4" fill="#0F172A"/>
+                    <text x="0" y="38" font-family="JetBrains Mono, monospace" font-size="11" fill="#34D399" text-anchor="middle" font-weight="bold">+0.004 mm</text>
+                  </g>
+
+                  <!-- Certification Stamp -->
+                  <rect x="35" y="252" width="270" height="54" rx="8" fill="#ECFDF5" stroke="#10B981" stroke-width="2"/>
+                  <text x="170" y="274" font-family="JetBrains Mono, monospace" font-size="11.5" fill="#065F46" text-anchor="middle" font-weight="bold">✓ CALIDAD APROBADA ISO/DIN</text>
+                  <text x="170" y="294" font-family="JetBrains Mono, monospace" font-size="10" fill="#047857" text-anchor="middle">LISTO PARA DESPACHO A PLANTA 24/7</text>
+                </g>
+              </svg>
+            </div>
+          </div>
+        </div>
+
+
+        <!-- ======================================================================= -->
+        <!-- LAYER 3: RIGHT-HAND STEP EXPLANATION CARDS (Paso 1, Paso 2, Paso 3, Paso 4) -->
+        <!-- Each card appears on the right side when its corresponding machine is   -->
+        <!-- positioned on the left! Movable/draggable & interactive.                -->
+        <!-- ======================================================================= -->
+
+        <!-- PASO 01 CARD -->
+        <div id="step-card-1" data-draggable="true" class="draggable-element absolute right-0 lg:right-4 z-30 w-full max-w-[470px] pointer-events-none will-change-transform" style="transform: translate3d(120%, 0, 0); opacity: 0;">
+          <div class="glass-card-light rounded-3xl p-5 sm:p-6 shadow-floating-light border-2 border-mazzei-300">
+            <div class="flex items-center justify-between gap-2 pb-3 mb-3 border-b border-metal-200">
+              <span class="px-3 py-1 rounded-full bg-mazzei-800 text-white font-mono text-xs font-bold">PASO 01 DE 04 · MECANIZADO CNC</span>
+              <span class="text-[11px] font-mono text-mazzei-700 bg-mazzei-50 px-2.5 py-0.5 rounded border border-mazzei-200">⠿ Mover tarjeta</span>
+            </div>
+
+            <h2 class="text-xl sm:text-2xl font-extrabold text-metal-900 leading-tight mb-2.5">
+              Levantamiento bajo Muestra y Torneado CNC (±0.01 mm)
+            </h2>
+            <p class="text-xs sm:text-sm text-metal-600 leading-relaxed mb-4">
+              Recibimos su pieza desgastada o plano CAD, seleccionamos la aleación certificada (<strong class="text-metal-900">SAE 4140, Inox 304/316 o Bronce SAE 660</strong>) y la montamos en el torno CNC para mecanizar ejes, bujes, roscas especiales y acoples con repetibilidad micrométrica.
+            </p>
+
+            <!-- Real Workshop Image + Specs inside Step 1 Card -->
+            <div class="grid grid-cols-12 gap-3 items-center bg-metal-50 p-3 rounded-2xl border border-metal-200 mb-4">
+              <img src="img/servicio-torno-cnc.jpg" alt="Torno CNC Real Mazzei" class="col-span-5 h-24 w-full object-cover rounded-xl border border-metal-200">
+              <div class="col-span-7 space-y-1.5 text-xs font-mono">
+                <div class="text-mazzei-800 font-bold">✓ Tolerancia: ±0.01 mm</div>
+                <div class="text-metal-700">✓ Roscas API, Acme y Métricas</div>
+                <div class="text-metal-700">✓ Lotes seriados o pieza única</div>
+              </div>
+            </div>
+
+            <div class="flex items-center justify-between gap-2" onmousedown="event.stopPropagation()" ontouchstart="event.stopPropagation()">
+              <button onclick="openServiceModal('torno-cnc')" class="px-4 py-2 rounded-xl bg-mazzei-50 hover:bg-mazzei-100 text-mazzei-800 font-bold text-xs border border-mazzei-200 transition-colors">
+                Ver Ficha de Torno CNC →
+              </button>
+              <button onclick="jumpToScrollProgress(0.53)" class="px-4 py-2 rounded-xl bg-mazzei-800 hover:bg-mazzei-700 text-white font-bold text-xs transition-colors">
+                Siguiente: Paso 02 ↓
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- PASO 02 CARD -->
+        <div id="step-card-2" data-draggable="true" class="draggable-element absolute right-0 lg:right-4 z-30 w-full max-w-[470px] pointer-events-none will-change-transform" style="transform: translate3d(120%, 0, 0); opacity: 0;">
+          <div class="glass-card-light rounded-3xl p-5 sm:p-6 shadow-floating-light border-2 border-mazzei-300">
+            <div class="flex items-center justify-between gap-2 pb-3 mb-3 border-b border-metal-200">
+              <span class="px-3 py-1 rounded-full bg-mazzei-700 text-white font-mono text-xs font-bold">PASO 02 DE 04 · GRAN CAPACIDAD</span>
+              <span class="text-[11px] font-mono text-mazzei-700 bg-mazzei-50 px-2.5 py-0.5 rounded border border-mazzei-200">⠿ Mover tarjeta</span>
+            </div>
+
+            <h2 class="text-xl sm:text-2xl font-extrabold text-metal-900 leading-tight mb-2.5">
+              Tornería Pesada hasta 3 Metros y Reconstrucción
+            </h2>
+            <p class="text-xs sm:text-sm text-metal-600 leading-relaxed mb-4">
+              Para componentes sobredimensionados de centrales azucareros, plantas de alimentos, siderúrgicas y papeleras: torneamos <strong class="text-metal-900">rodillos de molienda, ejes cardánicos y tambores de hasta 3,000 mm</strong> entre puntos, además de tallado de engranajes y coronas.
+            </p>
+
+            <div class="grid grid-cols-12 gap-3 items-center bg-metal-50 p-3 rounded-2xl border border-metal-200 mb-4">
+              <img src="img/servicio-torneria-pesada.jpg" alt="Tornería Pesada 3 Metros Mazzei" class="col-span-5 h-24 w-full object-cover rounded-xl border border-metal-200">
+              <div class="col-span-7 space-y-1.5 text-xs font-mono">
+                <div class="text-mazzei-800 font-bold">✓ Hasta 3,000 mm de longitud</div>
+                <div class="text-metal-700">✓ Relleno y rectificado de muñones</div>
+                <div class="text-metal-700">✓ Balanceo y alineación concéntrica</div>
+              </div>
+            </div>
+
+            <div class="flex items-center justify-between gap-2" onmousedown="event.stopPropagation()" ontouchstart="event.stopPropagation()">
+              <button onclick="openServiceModal('torneria-pesada')" class="px-4 py-2 rounded-xl bg-mazzei-50 hover:bg-mazzei-100 text-mazzei-800 font-bold text-xs border border-mazzei-200 transition-colors">
+                Ver Ficha Tornería 3m →
+              </button>
+              <button onclick="jumpToScrollProgress(0.71)" class="px-4 py-2 rounded-xl bg-mazzei-800 hover:bg-mazzei-700 text-white font-bold text-xs transition-colors">
+                Siguiente: Paso 03 ↓
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- PASO 03 CARD -->
+        <div id="step-card-3" data-draggable="true" class="draggable-element absolute right-0 lg:right-4 z-30 w-full max-w-[470px] pointer-events-none will-change-transform" style="transform: translate3d(120%, 0, 0); opacity: 0;">
+          <div class="glass-card-light rounded-3xl p-5 sm:p-6 shadow-floating-light border-2 border-sky-300">
+            <div class="flex items-center justify-between gap-2 pb-3 mb-3 border-b border-metal-200">
+              <span class="px-3 py-1 rounded-full bg-sky-700 text-white font-mono text-xs font-bold">PASO 03 DE 04 · CORTE & SOLDADURA</span>
+              <span class="text-[11px] font-mono text-sky-800 bg-sky-50 px-2.5 py-0.5 rounded border border-sky-200">⠿ Mover tarjeta</span>
+            </div>
+
+            <h2 class="text-xl sm:text-2xl font-extrabold text-metal-900 leading-tight mb-2.5">
+              Oxicorte, Plasma CNC (100 mm) y Soldadura AWS
+            </h2>
+            <p class="text-xs sm:text-sm text-metal-600 leading-relaxed mb-4">
+              Cortamos planchas de gran espesor en mesa pantográfica CNC para bridas, cartelas y bases estructurales. Integramos <strong class="text-metal-900">soldadura calificada Stick, TIG y MIG</strong> para recipientes a presión, acero inoxidable sanitario y estructuras sometidas a fatiga.
+            </p>
+
+            <div class="grid grid-cols-12 gap-3 items-center bg-metal-50 p-3 rounded-2xl border border-metal-200 mb-4">
+              <img src="img/servicio-oxicorte-plasma.jpg" alt="Oxicorte y Plasma CNC Mazzei" class="col-span-5 h-24 w-full object-cover rounded-xl border border-metal-200">
+              <div class="col-span-7 space-y-1.5 text-xs font-mono">
+                <div class="text-sky-800 font-bold">✓ Planchas hasta 100 mm</div>
+                <div class="text-metal-700">✓ Soldadura TIG / MIG / SMAW</div>
+                <div class="text-metal-700">✓ Normativa estructural AWS D1.1</div>
+              </div>
+            </div>
+
+            <div class="flex items-center justify-between gap-2" onmousedown="event.stopPropagation()" ontouchstart="event.stopPropagation()">
+              <button onclick="openServiceModal('oxicorte-plasma')" class="px-4 py-2 rounded-xl bg-sky-50 hover:bg-sky-100 text-sky-900 font-bold text-xs border border-sky-200 transition-colors">
+                Ver Ficha Plasma & AWS →
+              </button>
+              <button onclick="jumpToScrollProgress(0.90)" class="px-4 py-2 rounded-xl bg-mazzei-800 hover:bg-mazzei-700 text-white font-bold text-xs transition-colors">
+                Siguiente: Paso 04 ↓
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- PASO 04 CARD -->
+        <div id="step-card-4" data-draggable="true" class="draggable-element absolute right-0 lg:right-4 z-30 w-full max-w-[470px] pointer-events-none will-change-transform" style="transform: translate3d(120%, 0, 0); opacity: 0;">
+          <div class="glass-card-light rounded-3xl p-5 sm:p-6 shadow-floating-light border-2 border-emerald-300">
+            <div class="flex items-center justify-between gap-2 pb-3 mb-3 border-b border-metal-200">
+              <span class="px-3 py-1 rounded-full bg-emerald-700 text-white font-mono text-xs font-bold">PASO 04 DE 04 · CERTIFICACIÓN & ENTREGA</span>
+              <span class="text-[11px] font-mono text-emerald-800 bg-emerald-50 px-2.5 py-0.5 rounded border border-emerald-200">⠿ Mover tarjeta</span>
+            </div>
+
+            <h2 class="text-xl sm:text-2xl font-extrabold text-metal-900 leading-tight mb-2.5">
+              Plegado, Control Metrológico y Despacho 24/7
+            </h2>
+            <p class="text-xs sm:text-sm text-metal-600 leading-relaxed mb-4">
+              Completamos el conformado en prensa plegadora hidráulica, guillotina y troquelado. Cada componente pasa por <strong class="text-metal-900">verificación dimensional con micrómetros y relojes comparadores</strong> antes de salir directo a su línea de producción con acople 100% garantizado.
+            </p>
+
+            <div class="grid grid-cols-12 gap-3 items-center bg-metal-50 p-3 rounded-2xl border border-metal-200 mb-4">
+              <img src="img/taller-operacion-2.jpg" alt="Control Dimensional y Despacho Mazzei" class="col-span-5 h-24 w-full object-cover rounded-xl border border-metal-200">
+              <div class="col-span-7 space-y-1.5 text-xs font-mono">
+                <div class="text-emerald-700 font-bold">✓ 100% Acople Garantizado</div>
+                <div class="text-metal-700">✓ Despacho urgente en 24-48h</div>
+                <div class="text-metal-700">✓ Soporte a paradas de planta</div>
+              </div>
+            </div>
+
+            <div class="flex items-center justify-between gap-2" onmousedown="event.stopPropagation()" ontouchstart="event.stopPropagation()">
+              <a href="#servicios" class="px-4 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs shadow-sm transition-colors">
+                Ver los 9 Servicios ↓
+              </a>
+              <a href="#cotizador-rfq" class="px-4 py-2 rounded-xl bg-mazzei-800 hover:bg-mazzei-700 text-white font-bold text-xs transition-colors">
+                Cotizar Pieza Ahora →
+              </a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- ================= BOTTOM INTERACTIVE STATUS HUD ================= -->
+      <div class="relative z-40 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 pb-3">
+        <div class="bg-metal-900/95 backdrop-blur-md text-white rounded-2xl px-4 py-2.5 flex flex-wrap items-center justify-between gap-3 text-xs font-mono border border-metal-700 shadow-lg">
+          <div class="flex items-center gap-3">
+            <span class="px-2 py-0.5 rounded bg-sky-500/20 text-sky-300 border border-sky-400/30 font-bold" id="bottom-hud-step">FASE: PORTADA</span>
+            <span class="text-metal-300" id="bottom-hud-detail">Baje con la rueda del ratón para ver el torno acercarse y mecanizar la pieza en vivo.</span>
+          </div>
+          <div class="flex items-center gap-4">
+            <span class="hidden sm:inline text-metal-400">💡 Tip: Puede arrastrar cualquier máquina o tarjeta con el cursor</span>
+            <span class="text-sky-300 font-bold" id="bottom-hud-pct">0%</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ================= CLIENT LOGOS TRUST BAR ================= -->
+  <section class="border-y border-metal-200 blueprint-grid-soft py-8 relative z-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+        <div class="text-center md:text-left">
+          <span class="text-[11px] font-mono font-bold uppercase tracking-wider text-mazzei-700 block">Respaldo Industrial Comprobado</span>
+          <h3 class="text-sm sm:text-base font-bold text-metal-900">Empresas de Manufactura, Alimentos y Agroindustria Atendidas</h3>
+        </div>
+        <div class="flex items-center justify-center flex-wrap gap-8 sm:gap-12">
+          <img src="img/cliente-1.png" alt="Cliente Industrial 1" class="h-8 sm:h-9 w-auto grayscale hover:grayscale-0 transition-all opacity-80 hover:opacity-100">
+          <img src="img/cliente-2.png" alt="Cliente Industrial 2" class="h-8 sm:h-9 w-auto grayscale hover:grayscale-0 transition-all opacity-80 hover:opacity-100">
+          <img src="img/cliente-3.png" alt="Cliente Industrial 3" class="h-8 sm:h-9 w-auto grayscale hover:grayscale-0 transition-all opacity-80 hover:opacity-100">
+          <img src="img/cliente-4.png" alt="Cliente Industrial 4" class="h-8 sm:h-9 w-auto grayscale hover:grayscale-0 transition-all opacity-80 hover:opacity-100">
+          <img src="img/cliente-5.png" alt="Cliente Industrial 5" class="h-8 sm:h-9 w-auto grayscale hover:grayscale-0 transition-all opacity-80 hover:opacity-100">
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ===================================================================================== -->
+  <!-- 9 ANIMATED SERVICE CARDS WITH REAL PHOTOS & LINKS TO EACH SERVICE PAGE                -->
+  <!-- ===================================================================================== -->
+  <section id="servicios" class="py-20 blueprint-grid-light relative z-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+      <div class="flex flex-col lg:flex-row lg:items-end justify-between mb-12 gap-6">
+        <div class="space-y-3 max-w-2xl">
+          <span class="spec-badge-light text-mazzei-800 border-mazzei-300 bg-mazzei-50">CATÁLOGO DE CAPACIDADES EN PLANTA</span>
+          <h2 class="text-3xl sm:text-4xl font-extrabold text-metal-900 tracking-tight">
+            Nuestros 9 Servicios Metalmecánicos Especializados
+          </h2>
+          <p class="text-metal-600 text-sm sm:text-base">
+            Tarjetas interactivas con fotografías reales de nuestro taller. Filtre por especialidad o haga clic en el enlace de cada tarjeta para abrir la página técnica del servicio.
+          </p>
+        </div>
+
+        <!-- Category Filter Buttons -->
+        <div class="flex flex-wrap gap-2">
+          <button onclick="filterServices('all')" data-filter="all" class="srv-filter-btn px-3.5 py-2 rounded-xl text-xs font-mono font-bold bg-mazzei-800 text-white border border-mazzei-800 transition-all">
+            Todos (9)
+          </button>
+          <button onclick="filterServices('mecanizado')" data-filter="mecanizado" class="srv-filter-btn px-3.5 py-2 rounded-xl text-xs font-mono font-bold bg-metal-50 text-metal-700 border border-metal-200 hover:border-mazzei-400 transition-all">
+            Mecanizado & CNC (4)
+          </button>
+          <button onclick="filterServices('corte')" data-filter="corte" class="srv-filter-btn px-3.5 py-2 rounded-xl text-xs font-mono font-bold bg-metal-50 text-metal-700 border border-metal-200 hover:border-mazzei-400 transition-all">
+            Corte & Conformado (3)
+          </button>
+          <button onclick="filterServices('soldadura')" data-filter="soldadura" class="srv-filter-btn px-3.5 py-2 rounded-xl text-xs font-mono font-bold bg-metal-50 text-metal-700 border border-metal-200 hover:border-mazzei-400 transition-all">
+            Soldadura & Overhaul (2)
+          </button>
+        </div>
+      </div>
+
+      <!-- 9 Service Cards Grid -->
+      <div id="services-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 perspective-canvas">
+
+        <!-- 1. Mecanizado en Torno CNC -->
+        <article data-category="mecanizado" class="service-card reveal-on-scroll glass-card-light shine-card tilt-card rounded-2xl p-6 flex flex-col justify-between group">
+          <div>
+            <div class="img-zoom-container mb-5 relative border border-metal-200 h-48">
+              <img src="img/servicio-torno-cnc.jpg" alt="Mecanizado en Torno CNC Industrias Mazzei" class="w-full h-full object-cover object-center">
+              <div class="absolute inset-0 bg-gradient-to-t from-metal-900/75 via-transparent to-transparent opacity-80"></div>
+              <span class="absolute top-3 left-3 spec-badge-light bg-white/95 text-mazzei-800 border-mazzei-300">01 · CNC</span>
+              <span class="absolute bottom-3 left-3 font-mono text-[11px] text-white font-bold">Tolerancia: ±0.01 mm</span>
+            </div>
+            <h3 class="text-xl font-extrabold text-metal-900 mb-2 group-hover:text-mazzei-700 transition-colors">
+              Mecanizado en Torno CNC
+            </h3>
+            <p class="text-metal-600 text-sm leading-relaxed mb-5">
+              Torneado de control numérico computarizado para ejes escalonados, bujes, roscas especiales y lotes seriados con repetibilidad exacta.
+            </p>
+          </div>
+          <div class="border-t border-metal-200/80 pt-4 flex items-center justify-between gap-2">
+            <a href="#servicio/mecanizado-torno-cnc" onclick="event.preventDefault(); openServiceModal('torno-cnc')" class="inline-flex items-center gap-1.5 text-xs font-mono font-bold text-mazzei-700 hover:text-mazzei-900 bg-mazzei-50 hover:bg-mazzei-100 px-3 py-2 rounded-lg border border-mazzei-200 transition-all">
+              <span>Ver página del servicio</span>
+              <span>↗</span>
+            </a>
+            <a href="#cotizador-rfq" onclick="preselectService('Mecanizado en Torno CNC')" class="text-xs font-mono font-bold text-metal-600 hover:text-mazzei-700">
+              Cotizar →
+            </a>
+          </div>
+        </article>
+
+        <!-- 2. Soldadura Stick, TIG y MIG -->
+        <article data-category="soldadura" class="service-card reveal-on-scroll glass-card-light shine-card tilt-card rounded-2xl p-6 flex flex-col justify-between group">
+          <div>
+            <div class="img-zoom-container mb-5 relative border border-metal-200 h-48">
+              <img src="img/servicio-soldadura.jpg" alt="Soldadura Stick, TIG y MIG Mazzei" class="w-full h-full object-cover object-center">
+              <div class="absolute inset-0 bg-gradient-to-t from-metal-900/75 via-transparent to-transparent opacity-80"></div>
+              <span class="absolute top-3 left-3 spec-badge-light bg-white/95 text-sky-800 border-sky-300">02 · SOLDADURA AWS</span>
+              <span class="absolute bottom-3 left-3 font-mono text-[11px] text-white font-bold">GTAW · GMAW · SMAW</span>
+            </div>
+            <h3 class="text-xl font-extrabold text-metal-900 mb-2 group-hover:text-mazzei-700 transition-colors">
+              Soldadura Stick, TIG y MIG
+            </h3>
+            <p class="text-metal-600 text-sm leading-relaxed mb-5">
+              Procedimientos calificados en acero al carbono, inoxidable sanitario 304/316, aluminio y aleaciones especiales para estructuras críticas.
+            </p>
+          </div>
+          <div class="border-t border-metal-200/80 pt-4 flex items-center justify-between gap-2">
+            <a href="#servicio/soldadura-industrial" onclick="event.preventDefault(); openServiceModal('soldadura')" class="inline-flex items-center gap-1.5 text-xs font-mono font-bold text-mazzei-700 hover:text-mazzei-900 bg-mazzei-50 hover:bg-mazzei-100 px-3 py-2 rounded-lg border border-mazzei-200 transition-all">
+              <span>Ver página del servicio</span>
+              <span>↗</span>
+            </a>
+            <a href="#cotizador-rfq" onclick="preselectService('Soldadura TIG/MIG/Stick')" class="text-xs font-mono font-bold text-metal-600 hover:text-mazzei-700">
+              Cotizar →
+            </a>
+          </div>
+        </article>
+
+        <!-- 3. Oxicorte y Plasma CNC -->
+        <article data-category="corte" class="service-card reveal-on-scroll glass-card-light shine-card tilt-card rounded-2xl p-6 flex flex-col justify-between group">
+          <div>
+            <div class="img-zoom-container mb-5 relative border border-metal-200 h-48">
+              <img src="img/servicio-oxicorte-plasma.jpg" alt="Oxicorte y Plasma CNC Mazzei" class="w-full h-full object-cover object-center">
+              <div class="absolute inset-0 bg-gradient-to-t from-metal-900/75 via-transparent to-transparent opacity-80"></div>
+              <span class="absolute top-3 left-3 spec-badge-light bg-white/95 text-mazzei-800 border-mazzei-300">03 · PANTÓGRAFO CNC</span>
+              <span class="absolute bottom-3 left-3 font-mono text-[11px] text-white font-bold">Espesor hasta 100 mm</span>
+            </div>
+            <h3 class="text-xl font-extrabold text-metal-900 mb-2 group-hover:text-mazzei-700 transition-colors">
+              Oxicorte y Plasma CNC
+            </h3>
+            <p class="text-metal-600 text-sm leading-relaxed mb-5">
+              Corte térmico computarizado de planchas de acero estructural ASTM A36 y antidesgaste para bridas, discos, cartelas y bases de máquina.
+            </p>
+          </div>
+          <div class="border-t border-metal-200/80 pt-4 flex items-center justify-between gap-2">
+            <a href="#servicio/oxicorte-plasma-cnc" onclick="event.preventDefault(); openServiceModal('oxicorte-plasma')" class="inline-flex items-center gap-1.5 text-xs font-mono font-bold text-mazzei-700 hover:text-mazzei-900 bg-mazzei-50 hover:bg-mazzei-100 px-3 py-2 rounded-lg border border-mazzei-200 transition-all">
+              <span>Ver página del servicio</span>
+              <span>↗</span>
+            </a>
+            <a href="#cotizador-rfq" onclick="preselectService('Oxicorte y Plasma CNC')" class="text-xs font-mono font-bold text-metal-600 hover:text-mazzei-700">
+              Cotizar →
+            </a>
+          </div>
+        </article>
+
+        <!-- 4. Tornería Pesada Convencional -->
+        <article data-category="mecanizado" class="service-card reveal-on-scroll glass-card-light shine-card tilt-card rounded-2xl p-6 flex flex-col justify-between group">
+          <div>
+            <div class="img-zoom-container mb-5 relative border border-metal-200 h-48">
+              <img src="img/servicio-torneria-pesada.jpg" alt="Tornería Pesada Convencional Mazzei" class="w-full h-full object-cover object-center">
+              <div class="absolute inset-0 bg-gradient-to-t from-metal-900/75 via-transparent to-transparent opacity-80"></div>
+              <span class="absolute top-3 left-3 spec-badge-light bg-white/95 text-mazzei-800 border-mazzei-300">04 · GRAN VOLTEO</span>
+              <span class="absolute bottom-3 left-3 font-mono text-[11px] text-white font-bold">Hasta 3,000 mm entre puntos</span>
+            </div>
+            <h3 class="text-xl font-extrabold text-metal-900 mb-2 group-hover:text-mazzei-700 transition-colors">
+              Tornería Pesada Convencional
+            </h3>
+            <p class="text-metal-600 text-sm leading-relaxed mb-5">
+              Maquinado de piezas sobredimensionadas de gran tonelaje: mazas de molienda, rodillos industriales, tambores y ejes largos de transmisión.
+            </p>
+          </div>
+          <div class="border-t border-metal-200/80 pt-4 flex items-center justify-between gap-2">
+            <a href="#servicio/torneria-pesada" onclick="event.preventDefault(); openServiceModal('torneria-pesada')" class="inline-flex items-center gap-1.5 text-xs font-mono font-bold text-mazzei-700 hover:text-mazzei-900 bg-mazzei-50 hover:bg-mazzei-100 px-3 py-2 rounded-lg border border-mazzei-200 transition-all">
+              <span>Ver página del servicio</span>
+              <span>↗</span>
+            </a>
+            <a href="#cotizador-rfq" onclick="preselectService('Tornería Pesada hasta 3m')" class="text-xs font-mono font-bold text-metal-600 hover:text-mazzei-700">
+              Cotizar →
+            </a>
+          </div>
+        </article>
+
+        <!-- 5. Fabricación Bajo Plano / Muestra -->
+        <article data-category="mecanizado" class="service-card reveal-on-scroll glass-card-light shine-card tilt-card rounded-2xl p-6 flex flex-col justify-between group border-mazzei-300 bg-mazzei-50/25">
+          <div>
+            <div class="img-zoom-container mb-5 relative border border-mazzei-300 h-48">
+              <img src="img/servicio-fabricacion-piezas.jpg" alt="Fabricación Bajo Plano o Muestra Mazzei" class="w-full h-full object-cover object-center">
+              <div class="absolute inset-0 bg-gradient-to-t from-metal-900/75 via-transparent to-transparent opacity-80"></div>
+              <span class="absolute top-3 left-3 spec-badge-light bg-mazzei-700 text-white border-mazzei-700">05 · INGENIERÍA INVERSA</span>
+              <span class="absolute bottom-3 left-3 font-mono text-[11px] text-sky-300 font-bold">STEP · DWG · Muestra Rota</span>
+            </div>
+            <h3 class="text-xl font-extrabold text-metal-900 mb-2 group-hover:text-mazzei-700 transition-colors">
+              Fabricación Bajo Plano / Muestra
+            </h3>
+            <p class="text-metal-600 text-sm leading-relaxed mb-5">
+              Reconstruimos la geometría exacta a partir de un repuesto fracturado o plano técnico, mejorando el acero y el tratamiento térmico original.
+            </p>
+          </div>
+          <div class="border-t border-mazzei-200 pt-4 flex items-center justify-between gap-2">
+            <a href="#servicio/fabricacion-bajo-plano" onclick="event.preventDefault(); openServiceModal('fabricacion-piezas')" class="inline-flex items-center gap-1.5 text-xs font-mono font-bold text-white bg-mazzei-800 hover:bg-mazzei-700 px-3 py-2 rounded-lg transition-all">
+              <span>Ver página del servicio</span>
+              <span>↗</span>
+            </a>
+            <a href="#cotizador-rfq" onclick="preselectService('Fabricación según Muestra/Plano')" class="text-xs font-mono font-bold text-mazzei-800 hover:underline">
+              Cotizar →
+            </a>
+          </div>
+        </article>
+
+        <!-- 6. Plegado de Lámina y Chapa -->
+        <article data-category="corte" class="service-card reveal-on-scroll glass-card-light shine-card tilt-card rounded-2xl p-6 flex flex-col justify-between group">
+          <div>
+            <div class="img-zoom-container mb-5 relative border border-metal-200 h-48">
+              <img src="img/servicio-plegado-lamina.jpg" alt="Plegado de Lámina y Chapa Mazzei" class="w-full h-full object-cover object-center">
+              <div class="absolute inset-0 bg-gradient-to-t from-metal-900/75 via-transparent to-transparent opacity-80"></div>
+              <span class="absolute top-3 left-3 spec-badge-light bg-white/95 text-metal-800 border-metal-300">06 · CONFORMADO</span>
+              <span class="absolute bottom-3 left-3 font-mono text-[11px] text-white font-bold">Prensa Hidráulica CNC</span>
+            </div>
+            <h3 class="text-xl font-extrabold text-metal-900 mb-2 group-hover:text-mazzei-700 transition-colors">
+              Plegado de Lámina y Chapa
+            </h3>
+            <p class="text-metal-600 text-sm leading-relaxed mb-5">
+              Doblado de precisión para canales estructurales U/C, tolvas de descarga, bandejas portacables, guardas de seguridad y gabinetes.
+            </p>
+          </div>
+          <div class="border-t border-metal-200/80 pt-4 flex items-center justify-between gap-2">
+            <a href="#servicio/plegado-lamina" onclick="event.preventDefault(); openServiceModal('plegado-lamina')" class="inline-flex items-center gap-1.5 text-xs font-mono font-bold text-mazzei-700 hover:text-mazzei-900 bg-mazzei-50 hover:bg-mazzei-100 px-3 py-2 rounded-lg border border-mazzei-200 transition-all">
+              <span>Ver página del servicio</span>
+              <span>↗</span>
+            </a>
+            <a href="#cotizador-rfq" onclick="preselectService('Plegado de Lámina / Guillotina')" class="text-xs font-mono font-bold text-metal-600 hover:text-mazzei-700">
+              Cotizar →
+            </a>
+          </div>
+        </article>
+
+        <!-- 7. Troquelado y Estampado -->
+        <article data-category="mecanizado" class="service-card reveal-on-scroll glass-card-light shine-card tilt-card rounded-2xl p-6 flex flex-col justify-between group">
+          <div>
+            <div class="img-zoom-container mb-5 relative border border-metal-200 h-48">
+              <img src="img/servicio-troquelado.jpg" alt="Troquelado y Estampado Industrial Mazzei" class="w-full h-full object-cover object-center">
+              <div class="absolute inset-0 bg-gradient-to-t from-metal-900/75 via-transparent to-transparent opacity-80"></div>
+              <span class="absolute top-3 left-3 spec-badge-light bg-white/95 text-metal-800 border-metal-300">07 · ALTA SERIE</span>
+              <span class="absolute bottom-3 left-3 font-mono text-[11px] text-white font-bold">Matrices y Punzonado</span>
+            </div>
+            <h3 class="text-xl font-extrabold text-metal-900 mb-2 group-hover:text-mazzei-700 transition-colors">
+              Troquelado y Estampado
+            </h3>
+            <p class="text-metal-600 text-sm leading-relaxed mb-5">
+              Fabricación de matrices y estampado seriado de arandelas especiales, eslabones de cadena, grapas industriales y piezas repetitivas.
+            </p>
+          </div>
+          <div class="border-t border-metal-200/80 pt-4 flex items-center justify-between gap-2">
+            <a href="#servicio/troquelado-estampado" onclick="event.preventDefault(); openServiceModal('troquelado')" class="inline-flex items-center gap-1.5 text-xs font-mono font-bold text-mazzei-700 hover:text-mazzei-900 bg-mazzei-50 hover:bg-mazzei-100 px-3 py-2 rounded-lg border border-mazzei-200 transition-all">
+              <span>Ver página del servicio</span>
+              <span>↗</span>
+            </a>
+            <a href="#cotizador-rfq" onclick="preselectService('Troquelado y Estampado')" class="text-xs font-mono font-bold text-metal-600 hover:text-mazzei-700">
+              Cotizar →
+            </a>
+          </div>
+        </article>
+
+        <!-- 8. Corte con Guillotina Industrial -->
+        <article data-category="corte" class="service-card reveal-on-scroll glass-card-light shine-card tilt-card rounded-2xl p-6 flex flex-col justify-between group">
+          <div>
+            <div class="img-zoom-container mb-5 relative border border-metal-200 h-48">
+              <img src="img/servicio-corte-guillotina.jpg" alt="Corte con Guillotina Industrial Mazzei" class="w-full h-full object-cover object-center">
+              <div class="absolute inset-0 bg-gradient-to-t from-metal-900/75 via-transparent to-transparent opacity-80"></div>
+              <span class="absolute top-3 left-3 spec-badge-light bg-white/95 text-metal-800 border-metal-300">08 · CIZALLADO 90°</span>
+              <span class="absolute bottom-3 left-3 font-mono text-[11px] text-white font-bold">Corte Limpio hasta 3m</span>
+            </div>
+            <h3 class="text-xl font-extrabold text-metal-900 mb-2 group-hover:text-mazzei-700 transition-colors">
+              Corte con Guillotina Industrial
+            </h3>
+            <p class="text-metal-600 text-sm leading-relaxed mb-5">
+              Cizallado recto en frío de láminas de hierro negro, galvanizado e inoxidable para platinas, flejes y formatos listos para soldar o plegar.
+            </p>
+          </div>
+          <div class="border-t border-metal-200/80 pt-4 flex items-center justify-between gap-2">
+            <a href="#servicio/corte-guillotina" onclick="event.preventDefault(); openServiceModal('corte-guillotina')" class="inline-flex items-center gap-1.5 text-xs font-mono font-bold text-mazzei-700 hover:text-mazzei-900 bg-mazzei-50 hover:bg-mazzei-100 px-3 py-2 rounded-lg border border-mazzei-200 transition-all">
+              <span>Ver página del servicio</span>
+              <span>↗</span>
+            </a>
+            <a href="#cotizador-rfq" onclick="preselectService('Plegado de Lámina / Guillotina')" class="text-xs font-mono font-bold text-metal-600 hover:text-mazzei-700">
+              Cotizar →
+            </a>
+          </div>
+        </article>
+
+        <!-- 9. Reconstrucción de Equipos -->
+        <article data-category="soldadura" class="service-card reveal-on-scroll glass-card-light shine-card tilt-card rounded-2xl p-6 flex flex-col justify-between group border-sky-300">
+          <div>
+            <div class="img-zoom-container mb-5 relative border border-sky-300 h-48">
+              <img src="img/servicio-reconstruccion.jpg" alt="Reconstrucción de Equipos Industriales Mazzei" class="w-full h-full object-cover object-center">
+              <div class="absolute inset-0 bg-gradient-to-t from-metal-900/75 via-transparent to-transparent opacity-80"></div>
+              <span class="absolute top-3 left-3 spec-badge-light bg-white/95 text-sky-800 border-sky-300">09 · OVERHAUL</span>
+              <span class="absolute bottom-3 left-3 font-mono text-[11px] text-white font-bold">Recuperación Integral</span>
+            </div>
+            <h3 class="text-xl font-extrabold text-metal-900 mb-2 group-hover:text-mazzei-700 transition-colors">
+              Reconstrucción de Equipos
+            </h3>
+            <p class="text-metal-600 text-sm leading-relaxed mb-5">
+              Overhaul de reductores, bombas, alojamientos de rodamientos y muñones desgastados mediante aporte de soldadura, encamisado y rectificado.
+            </p>
+          </div>
+          <div class="border-t border-metal-200/80 pt-4 flex items-center justify-between gap-2">
+            <a href="#servicio/reconstruccion-equipos" onclick="event.preventDefault(); openServiceModal('reconstruccion')" class="inline-flex items-center gap-1.5 text-xs font-mono font-bold text-mazzei-700 hover:text-mazzei-900 bg-mazzei-50 hover:bg-mazzei-100 px-3 py-2 rounded-lg border border-mazzei-200 transition-all">
+              <span>Ver página del servicio</span>
+              <span>↗</span>
+            </a>
+            <a href="#cotizador-rfq" onclick="preselectService('Reconstrucción de Equipo')" class="text-xs font-mono font-bold text-metal-600 hover:text-mazzei-700">
+              Cotizar →
+            </a>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ===================================================================================== -->
+  <!-- ANTES Y DESPUÉS (INTERACTIVE SPLIT SLIDER + PRESETS)                                  -->
+  <!-- ===================================================================================== -->
+  <section id="antes-despues" class="py-20 blueprint-grid-soft border-y border-metal-200 relative z-20">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+
+      <div class="text-center max-w-3xl mx-auto mb-10 space-y-3">
+        <span class="spec-badge-light text-mazzei-800 border-mazzei-300 bg-white">CASO REAL · INGENIERÍA INVERSA & TALLADO</span>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-metal-900 tracking-tight">
+          Antes y Después: De Componente Fatigado a Pieza Nueva de Precisión
+        </h2>
+        <p class="text-sm sm:text-base text-metal-600">
+          Deslice el comparador interactivo o use los botones rápidos para inspeccionar el estado del tren de engranajes recibido en planta frente al conjunto mecanizado a nuevo.
+        </p>
+      </div>
+
+      <div class="bg-white rounded-3xl border border-metal-200 shadow-floating-light p-5 sm:p-8">
+
+        <!-- Quick Comparison Preset Controls -->
+        <div class="flex flex-wrap items-center justify-between gap-3 mb-4">
+          <div class="text-xs font-mono font-bold text-metal-700 flex items-center gap-2">
+            <span class="w-2 h-2 rounded-full bg-mazzei-600"></span>
+            <span>INSPECCIÓN VISUAL INTERACTIVA</span>
+          </div>
+          <div class="flex items-center gap-2 text-xs font-mono">
+            <button onclick="setComparisonSplit(88)" class="px-3 py-1.5 rounded-lg bg-metal-100 hover:bg-metal-200 text-metal-800 font-semibold transition-colors">
+              Ver Antes (Deterioro)
+            </button>
+            <button onclick="setComparisonSplit(50)" class="px-3 py-1.5 rounded-lg bg-mazzei-50 hover:bg-mazzei-100 text-mazzei-800 border border-mazzei-200 font-bold transition-colors">
+              50% / 50%
+            </button>
+            <button onclick="setComparisonSplit(12)" class="px-3 py-1.5 rounded-lg bg-mazzei-800 hover:bg-mazzei-700 text-white font-bold transition-colors">
+              Ver Después (Nuevo CNC)
+            </button>
+          </div>
+        </div>
+
+        <!-- Split Image Slider Container -->
+        <div class="comparison-container rounded-2xl overflow-hidden h-80 sm:h-[440px] relative border border-metal-300" id="compare-box">
+          <!-- DESPUÉS -->
+          <img src="img/despues-engranaje.jpg" alt="Engranajes Mecanizados a Precisión - Después" class="absolute inset-0 w-full h-full object-cover object-center">
+          <div class="absolute bottom-4 right-4 bg-mazzei-900/95 text-white font-mono text-xs px-3.5 py-2 rounded-xl border border-mazzei-400 backdrop-blur-md shadow-lg">
+            ✓ DESPUÉS: Mecanizado y Rectificado (±0.01 mm)
+          </div>
+
+          <!-- ANTES -->
+          <div class="comparison-before" id="compare-before">
+            <img id="compare-before-img" src="img/antes-engranaje.jpg" alt="Engranaje Industrial Corroído - Antes" class="absolute inset-0 h-full object-cover object-center" style="width: 900px; max-width: none;">
+            <div class="absolute bottom-4 left-4 bg-metal-900/95 text-metal-100 font-mono text-xs px-3.5 py-2 rounded-xl border border-metal-600 backdrop-blur-md shadow-lg">
+              ⚠ ANTES: Desgaste Severo de Flancos y Corrosión
+            </div>
+          </div>
+
+          <!-- Draggable Divider -->
+          <div class="comparison-slider" id="compare-slider">
+            <div class="comparison-handle">
+              <svg class="w-5 h-5 text-mazzei-800" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M8 9l4-4 4 4m0 6l-4 4-4-4 transform rotate-90"></path></svg>
+            </div>
+          </div>
+        </div>
+
+        <!-- Impact Metrics -->
+        <div class="mt-6 grid grid-cols-1 md:grid-cols-3 gap-4 pt-6 border-t border-metal-200 text-xs">
+          <div class="p-4 rounded-2xl bg-metal-50 border border-metal-200">
+            <div class="text-metal-500 font-mono uppercase mb-1">Ahorro Directo</div>
+            <div class="text-2xl font-extrabold font-mono text-emerald-600">-60% a -75%</div>
+            <p class="text-xs text-metal-600 mt-1">Frente al costo de importación de repuesto OEM nuevo.</p>
+          </div>
+          <div class="p-4 rounded-2xl bg-metal-50 border border-metal-200">
+            <div class="text-metal-500 font-mono uppercase mb-1">Tiempo de Respuesta</div>
+            <div class="text-2xl font-extrabold font-mono text-mazzei-800">48h a 72 Horas</div>
+            <p class="text-xs text-metal-600 mt-1">Evita semanas de lucro cesante por trámites y fletes internacionales.</p>
+          </div>
+          <div class="p-4 rounded-2xl bg-metal-50 border border-metal-200">
+            <div class="text-metal-500 font-mono uppercase mb-1">Resistencia Mecánica</div>
+            <div class="text-2xl font-extrabold font-mono text-metal-900">+120% Vida Útil</div>
+            <p class="text-xs text-metal-600 mt-1">Fabricado en acero bonificado SAE 4140 con dureza controlada.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ===================================================================================== -->
+  <!-- FORMULARIO TÉCNICO DE COTIZACIÓN (RFQ INTERACTIVO)                                    -->
+  <!-- ===================================================================================== -->
+  <section id="cotizador-rfq" class="py-20 blueprint-grid-light relative z-20">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="bg-gradient-to-br from-white via-mazzei-50/35 to-white rounded-3xl p-6 sm:p-10 border-2 border-mazzei-200 shadow-floating-light">
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-start">
+
+          <!-- Left Info & Interactive Alloy Picker -->
+          <div class="lg:col-span-5 space-y-5">
+            <span class="spec-badge-light text-mazzei-800 border-mazzei-300 bg-white">SOLICITUD DE COTIZACIÓN (RFQ)</span>
+            <h2 class="text-3xl sm:text-4xl font-extrabold text-metal-900 leading-tight">
+              Envíe su Requerimiento o Muestra a Planta
+            </h2>
+            <p class="text-metal-600 text-sm leading-relaxed">
+              Nuestro equipo de ingenieros y maestros torneros evalúa su solicitud de inmediato. Puede seleccionar la aleación sugerida abajo para agregarla automáticamente a su ficha:
+            </p>
+
+            <!-- Interactive Alloy Selector Pills -->
+            <div class="bg-white p-4 rounded-2xl border border-metal-200 space-y-2.5">
+              <div class="text-xs font-mono font-bold text-metal-800">🔬 Seleccionar Material Rápido (Opcional):</div>
+              <div class="flex flex-wrap gap-1.5">
+                <button type="button" onclick="selectAlloy('Acero SAE 4140 Bonificado')" class="alloy-pill px-2.5 py-1.5 rounded-lg text-xs font-mono bg-metal-50 hover:bg-mazzei-50 text-metal-700 hover:text-mazzei-800 border border-metal-200 hover:border-mazzei-300 transition-all">
+                  SAE 4140
+                </button>
+                <button type="button" onclick="selectAlloy('Acero SAE 1045')" class="alloy-pill px-2.5 py-1.5 rounded-lg text-xs font-mono bg-metal-50 hover:bg-mazzei-50 text-metal-700 hover:text-mazzei-800 border border-metal-200 hover:border-mazzei-300 transition-all">
+                  SAE 1045
+                </button>
+                <button type="button" onclick="selectAlloy('Inoxidable AISI 304 / 316L')" class="alloy-pill px-2.5 py-1.5 rounded-lg text-xs font-mono bg-metal-50 hover:bg-mazzei-50 text-metal-700 hover:text-mazzei-800 border border-metal-200 hover:border-mazzei-300 transition-all">
+                  Inox 304/316
+                </button>
+                <button type="button" onclick="selectAlloy('Bronce Fosforoso SAE 660')" class="alloy-pill px-2.5 py-1.5 rounded-lg text-xs font-mono bg-metal-50 hover:bg-mazzei-50 text-metal-700 hover:text-mazzei-800 border border-metal-200 hover:border-mazzei-300 transition-all">
+                  Bronce SAE 660
+                </button>
+                <button type="button" onclick="selectAlloy('Plancha Estructural ASTM A36')" class="alloy-pill px-2.5 py-1.5 rounded-lg text-xs font-mono bg-metal-50 hover:bg-mazzei-50 text-metal-700 hover:text-mazzei-800 border border-metal-200 hover:border-mazzei-300 transition-all">
+                  ASTM A36
+                </button>
+              </div>
+            </div>
+
+            <div class="space-y-2.5 text-xs text-metal-700 font-mono bg-metal-50 p-4 rounded-2xl border border-metal-200">
+              <div class="flex items-center gap-2"><span class="text-mazzei-700 font-bold">✓</span> <span>Recibimos planos CAD (.STEP, .DWG, .DXF, .PDF)</span></div>
+              <div class="flex items-center gap-2"><span class="text-mazzei-700 font-bold">✓</span> <span>Levantamiento en planta sobre muestra física rota</span></div>
+              <div class="flex items-center gap-2"><span class="text-mazzei-700 font-bold">✓</span> <span>Facturación fiscal empresarial (RIF) y envíos nacionales</span></div>
+            </div>
+          </div>
+
+          <!-- Right Form -->
+          <div class="lg:col-span-7 bg-white rounded-2xl p-6 sm:p-8 border border-metal-200 shadow-sm">
+            <form id="rfqForm" class="space-y-4" onsubmit="event.preventDefault(); submitRFQ();">
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label class="block text-xs font-mono font-bold text-metal-700 mb-1">Empresa y Persona de Contacto *</label>
+                  <input type="text" id="rfqCompany" required placeholder="Ej. Alimentos Polar / Ing. Carlos Ruiz" class="w-full bg-metal-50 border border-metal-300 rounded-xl px-3.5 py-2.5 text-sm text-metal-900 focus:bg-white focus:outline-none focus:border-mazzei-700">
+                </div>
+                <div>
+                  <label class="block text-xs font-mono font-bold text-metal-700 mb-1">Teléfono / WhatsApp Directo *</label>
+                  <input type="tel" id="rfqPhone" required placeholder="+58 414 000 0000" class="w-full bg-metal-50 border border-metal-300 rounded-xl px-3.5 py-2.5 text-sm text-metal-900 focus:bg-white focus:outline-none focus:border-mazzei-700">
+                </div>
+              </div>
+
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label class="block text-xs font-mono font-bold text-metal-700 mb-1">Servicio Requerido *</label>
+                  <select id="rfqService" class="w-full bg-metal-50 border border-metal-300 rounded-xl px-3.5 py-2.5 text-sm text-metal-900 focus:bg-white focus:outline-none focus:border-mazzei-700">
+                    <option value="Mecanizado en Torno CNC">Mecanizado en Torno CNC</option>
+                    <option value="Fabricación según Muestra/Plano">Fabricación Bajo Plano / Muestra</option>
+                    <option value="Tornería Pesada hasta 3m">Tornería Pesada hasta 3 Metros</option>
+                    <option value="Soldadura TIG/MIG/Stick">Soldadura Stick, TIG y MIG</option>
+                    <option value="Oxicorte y Plasma CNC">Oxicorte y Plasma CNC</option>
+                    <option value="Plegado de Lámina / Guillotina">Plegado de Lámina / Guillotina</option>
+                    <option value="Troquelado y Estampado">Troquelado y Estampado</option>
+                    <option value="Reconstrucción de Equipo">Reconstrucción de Equipos</option>
+                  </select>
+                </div>
+                <div>
+                  <label class="block text-xs font-mono font-bold text-metal-700 mb-1">Volumen / Cantidad *</label>
+                  <select id="rfqBatch" class="w-full bg-metal-50 border border-metal-300 rounded-xl px-3.5 py-2.5 text-sm text-metal-900 focus:bg-white focus:outline-none focus:border-mazzei-700">
+                    <option value="Pieza Única / Repuesto Crítico">Pieza Única / Repuesto Crítico</option>
+                    <option value="Serie Corta (2 a 20 unidades)">Serie Corta (2 a 20 unidades)</option>
+                    <option value="Producción en Serie (+50 unidades)">Producción en Serie (+50 unidades)</option>
+                    <option value="Overhaul de Equipo Completo">Overhaul de Equipo Completo</option>
+                  </select>
+                </div>
+              </div>
+
+              <div>
+                <label class="block text-xs font-mono font-bold text-metal-700 mb-1">Especificaciones Técnicas (Dimensiones, Material, Tolerancias) *</label>
+                <textarea id="rfqDetails" rows="3" required placeholder="Describa la pieza, diámetro aproximado, longitud, material requerido y si dispone de plano o muestra física..." class="w-full bg-metal-50 border border-metal-300 rounded-xl px-3.5 py-2.5 text-sm text-metal-900 focus:bg-white focus:outline-none focus:border-mazzei-700"></textarea>
+              </div>
+
+              <div class="flex items-center gap-3 bg-mazzei-50/70 p-3.5 rounded-xl border border-mazzei-200">
+                <input type="checkbox" id="rfqEmergency" class="w-4 h-4 accent-mazzei-800 rounded cursor-pointer">
+                <label for="rfqEmergency" class="text-xs text-metal-800 font-semibold cursor-pointer">
+                  🚨 <strong class="text-mazzei-900">PARADA DE LÍNEA URGENTE (24/7):</strong> Priorizar cotización e ingreso inmediato a torno.
+                </label>
+              </div>
+
+              <button type="submit" class="w-full py-4 px-6 rounded-xl bg-gradient-to-r from-mazzei-800 to-mazzei-600 hover:from-mazzei-900 hover:to-mazzei-700 text-white font-bold text-sm sm:text-base shadow-glow-blue transition-all flex items-center justify-center gap-2">
+                <span>Generar Solicitud Técnica y Enviar por WhatsApp</span>
+                <span>→</span>
+              </button>
+            </form>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ===================================================================================== -->
+  <!-- FAQs (PREGUNTAS FRECUENTES TÉCNICAS INTERACTIVAS)                                     -->
+  <!-- ===================================================================================== -->
+  <section id="faqs" class="py-20 blueprint-grid-soft border-t border-metal-200 relative z-20">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+
+      <div class="text-center mb-12 space-y-3">
+        <span class="spec-badge-light text-mazzei-800 border-mazzei-300 bg-white">RESPUESTAS DE INGENIERÍA</span>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-metal-900 tracking-tight">
+          Preguntas Frecuentes (FAQs)
+        </h2>
+        <p class="text-metal-600 text-sm sm:text-base">
+          Resolvemos las dudas técnicas más habituales de gerentes de mantenimiento, jefes de planta y compradores industriales.
+        </p>
+      </div>
+
+      <div class="space-y-3.5">
+        <!-- FAQ 1 -->
+        <details class="group bg-white rounded-2xl p-5 sm:p-6 border border-metal-200 open:border-mazzei-500 shadow-sm transition-all" open>
+          <summary class="flex justify-between items-center font-bold text-metal-900 cursor-pointer list-none text-sm sm:text-base">
+            <span>01. ¿Cómo fabrican una pieza si está fracturada y no tenemos los planos originales?</span>
+            <span class="w-7 h-7 rounded-full bg-mazzei-50 text-mazzei-800 flex items-center justify-center font-mono text-xs group-open:rotate-180 transition-transform">▼</span>
+          </summary>
+          <p class="text-metal-600 text-xs sm:text-sm mt-3.5 leading-relaxed border-t border-metal-100 pt-3.5">
+            Aplicamos <strong>ingeniería inversa completa en planta</strong>: nuestros especialistas reconstruyen la geometría midiendo las zonas de acople intactas con micrómetros y relojes comparadores, calculan el módulo y paso de engranajes o roscas, identifican el grado de acero o bronce requerido y elaboran el plano CAD con tolerancias de ajuste antes de pasar al mecanizado CNC.
+          </p>
+        </details>
+
+        <!-- FAQ 2 -->
+        <details class="group bg-white rounded-2xl p-5 sm:p-6 border border-metal-200 open:border-mazzei-500 shadow-sm transition-all">
+          <summary class="flex justify-between items-center font-bold text-metal-900 cursor-pointer list-none text-sm sm:text-base">
+            <span>02. ¿Cuál es la capacidad máxima de longitud y volteo en tornería pesada?</span>
+            <span class="w-7 h-7 rounded-full bg-mazzei-50 text-mazzei-800 flex items-center justify-center font-mono text-xs group-open:rotate-180 transition-transform">▼</span>
+          </summary>
+          <p class="text-metal-600 text-xs sm:text-sm mt-3.5 leading-relaxed border-t border-metal-100 pt-3.5">
+            Contamos con tornos paralelos pesados con capacidad de hasta <strong>3,000 mm (3 metros) entre puntos</strong> y gran volteo, diseñados para mecanizar y rectificar ejes largos de transmisión, rodillos de molienda, tambores industriales y camisas de gran diámetro.
+          </p>
+        </details>
+
+        <!-- FAQ 3 -->
+        <details class="group bg-white rounded-2xl p-5 sm:p-6 border border-metal-200 open:border-mazzei-500 shadow-sm transition-all">
+          <summary class="flex justify-between items-center font-bold text-metal-900 cursor-pointer list-none text-sm sm:text-base">
+            <span>03. ¿Cómo funciona la atención para paradas de planta de emergencia 24/7?</span>
+            <span class="w-7 h-7 rounded-full bg-mazzei-50 text-mazzei-800 flex items-center justify-center font-mono text-xs group-open:rotate-180 transition-transform">▼</span>
+          </summary>
+          <p class="text-metal-600 text-xs sm:text-sm mt-3.5 leading-relaxed border-t border-metal-100 pt-3.5">
+            Cuando una línea de producción se detiene por falla mecánica de un repuesto crítico, activamos nuestro <strong>protocolo de guardia continua</strong>: recibimos la muestra física de inmediato, habilitamos turno continuo de mecanizado/soldadura y entregamos la pieza certificada en plazos de <strong>24 a 48 horas</strong> según la complejidad.
+          </p>
+        </details>
+
+        <!-- FAQ 4 -->
+        <details class="group bg-white rounded-2xl p-5 sm:p-6 border border-metal-200 open:border-mazzei-500 shadow-sm transition-all">
+          <summary class="flex justify-between items-center font-bold text-metal-900 cursor-pointer list-none text-sm sm:text-base">
+            <span>04. ¿Trabajan con acero inoxidable grado alimenticio y bronce fosforoso?</span>
+            <span class="w-7 h-7 rounded-full bg-mazzei-50 text-mazzei-800 flex items-center justify-center font-mono text-xs group-open:rotate-180 transition-transform">▼</span>
+          </summary>
+          <p class="text-metal-600 text-xs sm:text-sm mt-3.5 leading-relaxed border-t border-metal-100 pt-3.5">
+            Sí. Mecanizamos y soldamos regularmente <strong>acero inoxidable AISI 304 y 316L</strong> con acabado sanitario para la industria de alimentos, bebidas y farmacéutica, así como aceros bonificados (SAE 4140, 1045), aceros de herramientas, bronce SAE 660, aluminio y polímeros de ingeniería (Nylon, Teflón, UHMW).
+          </p>
+        </details>
+
+        <!-- FAQ 5 -->
+        <details class="group bg-white rounded-2xl p-5 sm:p-6 border border-metal-200 open:border-mazzei-500 shadow-sm transition-all">
+          <summary class="flex justify-between items-center font-bold text-metal-900 cursor-pointer list-none text-sm sm:text-base">
+            <span>05. ¿Qué espesores pueden cortar en Oxicorte, Plasma CNC y Guillotina?</span>
+            <span class="w-7 h-7 rounded-full bg-mazzei-50 text-mazzei-800 flex items-center justify-center font-mono text-xs group-open:rotate-180 transition-transform">▼</span>
+          </summary>
+          <p class="text-metal-600 text-xs sm:text-sm mt-3.5 leading-relaxed border-t border-metal-100 pt-3.5">
+            En nuestra mesa pantográfica CNC de <strong>Oxicorte y Plasma</strong> procesamos planchas de acero de hasta <strong>100 mm de espesor</strong> para bridas, anillos y bases pesadas. Para corte en frío con <strong>Guillotina y Plegadora Hidráulica</strong> trabajamos longitudes de hasta 3 metros con bordes limpios a 90°.
+          </p>
+        </details>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="border-t border-metal-200 bg-metal-900 text-metal-400 py-12 text-sm relative z-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-10">
+        <div class="space-y-4">
+          <img src="img/logo-footer.png" alt="Industrias Mazzei Logo" class="h-10 w-auto object-contain brightness-200" onerror="this.style.display='none';">
+          <p class="text-xs text-metal-400 leading-relaxed">
+            Más de 40 años respaldando la industria nacional con mecanizado CNC, tornería pesada hasta 3 metros, corte plasma y soldadura calificada.
+          </p>
+        </div>
+        <div>
+          <h4 class="font-bold text-white mb-3 text-xs uppercase tracking-wider font-mono">Navegación V1</h4>
+          <ul class="space-y-2 text-xs">
+            <li><a href="#recorrido-inmersivo" class="hover:text-sky-300">Torno Interactivo & 4 Pasos</a></li>
+            <li><a href="#servicios" class="hover:text-sky-300">9 Servicios Especializados</a></li>
+            <li><a href="#antes-despues" class="hover:text-sky-300">Comparador Antes y Después</a></li>
+            <li><a href="#cotizador-rfq" class="hover:text-sky-300">Formulario de Cotización RFQ</a></li>
+            <li><a href="#faqs" class="hover:text-sky-300">Preguntas Frecuentes (FAQs)</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="font-bold text-white mb-3 text-xs uppercase tracking-wider font-mono">Servicios Destacados</h4>
+          <ul class="space-y-2 text-xs">
+            <li><a href="#servicios" onclick="openServiceModal('torno-cnc')" class="hover:text-sky-300">Mecanizado en Torno CNC</a></li>
+            <li><a href="#servicios" onclick="openServiceModal('torneria-pesada')" class="hover:text-sky-300">Tornería Pesada 3 Metros</a></li>
+            <li><a href="#servicios" onclick="openServiceModal('oxicorte-plasma')" class="hover:text-sky-300">Oxicorte y Plasma CNC</a></li>
+            <li><a href="#servicios" onclick="openServiceModal('fabricacion-piezas')" class="hover:text-sky-300">Fabricación Bajo Plano/Muestra</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="font-bold text-white mb-3 text-xs uppercase tracking-wider font-mono">Portal de Bocetos</h4>
+          <div class="space-y-2 text-xs">
+            <p class="text-emerald-400 font-mono font-bold">🚨 Guardia Planta 24/7 Activa</p>
+            <a href="index.html" class="inline-block mt-2 px-4 py-2 rounded-lg bg-metal-800 border border-metal-700 text-sky-300 hover:bg-mazzei-700 hover:text-white transition-all font-semibold">
+              ← Ver Comparador V0 vs V1
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="border-t border-metal-800 pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-metal-500">
+        <div>© 2026 Industrias Mazzei. Todos los derechos reservados.</div>
+        <div class="font-mono text-[11px] text-sky-400">⚡ Versión V1 · Torno Inmersivo & Maquinaria Interactiva</div>
+      </div>
+    </div>
+  </footer>
+
+
+  <!-- ===================================================================================== -->
+  <!-- DEDICATED SERVICE PAGE PREVIEW MODAL (Opens when clicking any service card link!)     -->
+  <!-- ===================================================================================== -->
+  <div id="service-page-modal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-metal-900/75 backdrop-blur-sm">
+    <div class="bg-white rounded-3xl max-w-3xl w-full border border-metal-200 shadow-2xl overflow-hidden animate-[softTitleReveal_0.3s_ease-out_forwards]">
+      <div class="bg-metal-900 text-white px-6 py-4 flex items-center justify-between">
+        <div class="flex items-center gap-2.5 font-mono text-xs">
+          <span class="w-2.5 h-2.5 rounded-full bg-emerald-400"></span>
+          <span id="modal-service-url" class="text-sky-300">industriasmazzei.com/servicios/mecanizado-torno-cnc/</span>
+        </div>
+        <button onclick="closeServiceModal()" class="w-8 h-8 rounded-lg bg-metal-800 hover:bg-metal-700 text-white flex items-center justify-center font-bold">✕</button>
+      </div>
+      <div class="p-6 sm:p-8 space-y-5 max-h-[82vh] overflow-y-auto">
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-6 items-center">
+          <div class="md:col-span-5">
+            <img id="modal-service-img" src="img/servicio-torno-cnc.jpg" alt="Servicio Industrias Mazzei" class="w-full h-52 object-cover rounded-2xl border border-metal-200 shadow-sm">
+          </div>
+          <div class="md:col-span-7 space-y-3">
+            <span id="modal-service-badge" class="spec-badge-light text-mazzei-800 border-mazzei-300 bg-mazzei-50">FICHA TÉCNICA DE SERVICIO</span>
+            <h3 id="modal-service-title" class="text-2xl sm:text-3xl font-extrabold text-metal-900">Mecanizado en Torno CNC</h3>
+            <p id="modal-service-desc" class="text-sm text-metal-600 leading-relaxed"></p>
+          </div>
+        </div>
+        <div id="modal-service-specs" class="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-2"></div>
+        <div class="border-t border-metal-200 pt-5 flex flex-wrap items-center justify-between gap-3">
+          <span class="text-xs font-mono text-metal-500">Vista previa de la página individual del servicio (arquitectura SEO por URL)</span>
+          <div class="flex items-center gap-3">
+            <button onclick="closeServiceModal()" class="px-4 py-2.5 rounded-xl bg-metal-100 hover:bg-metal-200 text-metal-700 text-xs font-bold">Cerrar</button>
+            <button id="modal-service-cta" class="px-5 py-2.5 rounded-xl bg-gradient-to-r from-mazzei-800 to-mazzei-600 text-white text-xs font-bold shadow-glow-blue">
+              Solicitar Cotización de este Servicio →
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ===================================================================================== -->
+  <!-- JAVASCRIPT ENGINE:                                                                    -->
+  <!--   1. Scroll Choreography (Hero → Lathe to Front + Spin + Add Workpiece → Left + Step1 -->
+  <!--      → Exit + Machine 2 Step 2 → Exit + Machine 3 Step 3 → Exit + Machine 4 Step 4)   -->
+  <!--   2. Continuous Spindle Rotation + Interactive Machine Controls                       -->
+  <!--   3. Universal Drag & Drop for Movable Machines & Cards                               -->
+  <!--   4. Service Page Modal, Filter, Before/After Slider & RFQ WhatsApp Builder           -->
+  <!-- ===================================================================================== -->
+  <script>
+    // ============================================================================
+    // 1. AMBIENT BLUEPRINT PARTICLES IN STAGE
+    // ============================================================================
+    (function initStageParticles() {
+      const canvas = document.getElementById('stage-particles-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      let w, h, nodes = [];
+
+      function resize() {
+        w = canvas.width = canvas.parentElement.offsetWidth;
+        h = canvas.height = canvas.parentElement.offsetHeight;
+        const count = Math.min(36, Math.max(18, Math.floor((w * h) / 34000)));
+        nodes = Array.from({ length: count }, () => ({
+          x: Math.random() * w,
+          y: Math.random() * h,
+          vx: (Math.random() - 0.5) * 0.4,
+          vy: (Math.random() - 0.5) * 0.4,
+          r: Math.random() * 1.6 + 1.2
+        }));
+      }
+
+      function tick() {
+        ctx.clearRect(0, 0, w, h);
+        for (let i = 0; i < nodes.length; i++) {
+          const a = nodes[i];
+          a.x += a.vx; a.y += a.vy;
+          if (a.x < 0 || a.x > w) a.vx *= -1;
+          if (a.y < 0 || a.y > h) a.vy *= -1;
+
+          for (let j = i + 1; j < nodes.length; j++) {
+            const b = nodes[j];
+            const dist = Math.hypot(a.x - b.x, a.y - b.y);
+            if (dist < 145) {
+              ctx.beginPath();
+              ctx.moveTo(a.x, a.y);
+              ctx.lineTo(b.x, b.y);
+              ctx.strokeStyle = `rgba(2, 112, 199, ${((1 - dist / 145) * 0.16).toFixed(3)})`;
+              ctx.lineWidth = 0.8;
+              ctx.stroke();
+            }
+          }
+          ctx.beginPath();
+          ctx.arc(a.x, a.y, a.r, 0, Math.PI * 2);
+          ctx.fillStyle = 'rgba(7, 75, 133, 0.35)';
+          ctx.fill();
+        }
+        requestAnimationFrame(tick);
+      }
+
+      window.addEventListener('resize', resize);
+      resize();
+      tick();
+    })();
+
+
+    // ============================================================================
+    // 2. UNIVERSAL DRAGGABLE / MOVABLE ELEMENTS SYSTEM
+    // ============================================================================
+    const dragOffsets = new Map();
+    const resetDragBtn = document.getElementById('resetDragBtn');
+
+    document.querySelectorAll('[data-draggable="true"]').forEach((el) => {
+      dragOffsets.set(el, { x: 0, y: 0 });
+      let isDown = false;
+      let startX = 0, startY = 0;
+      let origX = 0, origY = 0;
+
+      function onStart(clientX, clientY, target) {
+        if (target.closest('button, a, input, select, textarea, label')) return;
+        isDown = true;
+        const curr = dragOffsets.get(el) || { x: 0, y: 0 };
+        startX = clientX;
+        startY = clientY;
+        origX = curr.x;
+        origY = curr.y;
+        el.style.zIndex = '45';
+      }
+
+      function onMove(clientX, clientY) {
+        if (!isDown) return;
+        const dx = clientX - startX;
+        const dy = clientY - startY;
+        dragOffsets.set(el, { x: origX + dx, y: origY + dy });
+        if (resetDragBtn) {
+          resetDragBtn.classList.remove('hidden');
+          resetDragBtn.classList.add('inline-flex');
+        }
+        if (el.id === 'hero-right-col' || el.parentElement.id === 'hero-right-col') {
+          el.style.transform = `translate3d(${origX + dx}px, ${origY + dy}px, 0)`;
+        } else {
+          updateImmersiveStage();
+        }
+      }
+
+      function onEnd() {
+        if (!isDown) return;
+        isDown = false;
+        el.style.zIndex = '';
+      }
+
+      el.addEventListener('mousedown', (e) => onStart(e.clientX, e.clientY, e.target));
+      window.addEventListener('mousemove', (e) => onMove(e.clientX, e.clientY));
+      window.addEventListener('mouseup', onEnd);
+
+      el.addEventListener('touchstart', (e) => {
+        if (e.touches.length === 1) onStart(e.touches[0].clientX, e.touches[0].clientY, e.target);
+      }, { passive: true });
+      window.addEventListener('touchmove', (e) => {
+        if (isDown && e.touches.length === 1) onMove(e.touches[0].clientX, e.touches[0].clientY);
+      }, { passive: true });
+      window.addEventListener('touchend', onEnd);
+    });
+
+    function resetAllDraggablePositions() {
+      dragOffsets.forEach((val, el) => {
+        dragOffsets.set(el, { x: 0, y: 0 });
+        if (el.parentElement && el.parentElement.id === 'hero-right-col') {
+          el.style.transform = '';
+        }
+      });
+      if (resetDragBtn) {
+        resetDragBtn.classList.add('hidden');
+        resetDragBtn.classList.remove('inline-flex');
+      }
+      updateImmersiveStage();
+    }
+
+
+    // ============================================================================
+    // 3. CONTINUOUS HIGH-SPEED SPINDLE ANIMATION + INTERACTIVE MACHINE SLIDERS
+    // ============================================================================
+    let latheSpinAngle = 0;
+    let latheSpinSpeed = 0.6; // Base speed in Hero, accelerates when lathe comes to front!
+    let latheTurboActive = false;
+    let userManualCarriage = null;
+
+    function toggleLatheTurbo() {
+      latheTurboActive = !latheTurboActive;
+      const rpmReadout = document.getElementById('lathe-rpm-readout');
+      const headRpm = document.getElementById('svg-headstock-rpm');
+      const rpmVal = latheTurboActive ? '2400' : '1450';
+      if (rpmReadout) rpmReadout.textContent = rpmVal;
+      if (headRpm) headRpm.textContent = rpmVal + ' RPM';
+    }
+
+    const carriageSlider = document.getElementById('manual-carriage-slider');
+    if (carriageSlider) {
+      carriageSlider.addEventListener('input', (e) => {
+        userManualCarriage = parseFloat(e.target.value) / 100;
+        applyLatheMachiningProgress(userManualCarriage);
+      });
+    }
+
+    const m2Slider = document.getElementById('m2-luneta-slider');
+    if (m2Slider) {
+      m2Slider.addEventListener('input', (e) => {
+        const val = (parseFloat(e.target.value) - 50) * 1.9;
+        const luneta = document.getElementById('m2-steady-rest');
+        if (luneta) luneta.setAttribute('transform', `translate(${val.toFixed(1)}, 0)`);
+      });
+    }
+
+    const m3Slider = document.getElementById('m3-torch-slider');
+    if (m3Slider) {
+      m3Slider.addEventListener('input', (e) => {
+        const val = parseFloat(e.target.value);
+        const gantry = document.getElementById('m3-gantry-group');
+        if (gantry) gantry.setAttribute('transform', `translate(${val.toFixed(1)}, 0)`);
+      });
+    }
+
+    const m4Slider = document.getElementById('m4-bend-slider');
+    if (m4Slider) {
+      m4Slider.addEventListener('input', (e) => {
+        const t = parseFloat(e.target.value) / 100;
+        const punch = document.getElementById('m4-punch-ram');
+        const sheet = document.getElementById('m4-steel-sheet');
+        const angleTxt = document.getElementById('m4-angle-readout');
+        if (punch) punch.setAttribute('transform', `translate(0, ${(t * 24).toFixed(1)})`);
+        if (sheet) {
+          const midY = 225 + t * 52;
+          const edgeY = 225 - t * 38;
+          sheet.setAttribute('d', `M 55 ${edgeY.toFixed(1)} L 165 ${midY.toFixed(1)} L 275 ${edgeY.toFixed(1)}`);
+        }
+        if (angleTxt) {
+          const deg = 180 - (t * 90);
+          angleTxt.textContent = deg.toFixed(1) + '°';
+        }
+      });
+    }
+
+    function applyLatheMachiningProgress(cutRatio) {
+      // cutRatio: 0 (tool on right end x=557) -> 1 (tool moved left to x=310, machining the bar)
+      const c = Math.max(0, Math.min(1, cutRatio));
+      const carriageOffset = 150 - (c * 225); // Moves from +150 to -75
+      const carriageEl = document.getElementById('lathe-carriage-group');
+      if (carriageEl) carriageEl.setAttribute('transform', `translate(${carriageOffset.toFixed(1)}, 0)`);
+
+      const cutX = 403 + carriageOffset;
+      const cutWidth = Math.max(0, 557 - cutX);
+      const machPass = document.getElementById('workpiece-machined-pass');
+      const topMask = document.getElementById('workpiece-cut-top-mask');
+      const botMask = document.getElementById('workpiece-cut-bot-mask');
+      if (machPass) {
+        machPass.setAttribute('x', cutX.toFixed(1));
+        machPass.setAttribute('width', cutWidth.toFixed(1));
+      }
+      if (topMask) {
+        topMask.setAttribute('x', cutX.toFixed(1));
+        topMask.setAttribute('width', (cutWidth + 2).toFixed(1));
+      }
+      if (botMask) {
+        botMask.setAttribute('x', cutX.toFixed(1));
+        botMask.setAttribute('width', (cutWidth + 2).toFixed(1));
+      }
+
+      const coordsHud = document.getElementById('lathe-coords-hud');
+      if (coordsHud) {
+        const zMm = (-20 - c * 240).toFixed(1);
+        coordsHud.textContent = `X: +42.50  Z: ${zMm} mm`;
+      }
+    }
+
+    function animateMachinesLoop() {
+      const mult = latheTurboActive ? 1.85 : 1.0;
+      latheSpinAngle = (latheSpinAngle + latheSpinSpeed * mult) % 360;
+
+      // 1. Axial wheel rotation
+      const axialWheel = document.getElementById('lathe-axial-wheel');
+      if (axialWheel) {
+        axialWheel.setAttribute('transform', `rotate(${(latheSpinAngle * 4).toFixed(1)})`);
+      }
+
+      // 2. 4-Jaw Chuck vertical oscillation (creates realistic 3D spinning cylinder illusion)
+      const rad = (latheSpinAngle * Math.PI) / 45;
+      const jawTop = document.getElementById('chuck-jaw-top');
+      const jawMid = document.getElementById('chuck-jaw-mid');
+      const jawBot = document.getElementById('chuck-jaw-bot');
+      if (jawTop && jawMid && jawBot) {
+        const y1 = 195 + Math.sin(rad) * 56 - 13;
+        const y2 = 195 + Math.sin(rad + 2.09) * 56 - 13;
+        const y3 = 195 + Math.sin(rad + 4.18) * 56 - 13;
+        jawTop.setAttribute('y', y1.toFixed(1));
+        jawMid.setAttribute('y', y2.toFixed(1));
+        jawBot.setAttribute('y', y3.toFixed(1));
+      }
+
+      // 3. Spin lines on the steel bar
+      const spinLines = document.getElementById('workpiece-spin-lines');
+      if (spinLines) {
+        spinLines.setAttribute('stroke-dashoffset', ((latheSpinAngle * 1.8) % 32).toFixed(1));
+      }
+
+      // 4. Machine 2 gear rotation
+      const m2Gear = document.getElementById('m2-gear-wheel');
+      if (m2Gear) {
+        m2Gear.setAttribute('transform', `rotate(${(latheSpinAngle * 1.5).toFixed(1)})`);
+      }
+
+      // 5. Machine 4 dial indicator subtle micro-vibration
+      const m4Needle = document.getElementById('m4-dial-needle');
+      if (m4Needle) {
+        const microAngle = Math.sin(latheSpinAngle * 0.12) * 3.5;
+        m4Needle.setAttribute('transform', `rotate(${microAngle.toFixed(2)})`);
+      }
+
+      requestAnimationFrame(animateMachinesLoop);
+    }
+    requestAnimationFrame(animateMachinesLoop);
+
+
+    // ============================================================================
+    // 4. MASTER IMMERSIVE SCROLL CHOREOGRAPHY ENGINE
+    // ============================================================================
+    const journeySection = document.getElementById('recorrido-inmersivo');
+    const heroLayer = document.getElementById('hero-foreground-layer');
+    const heroLeft = document.getElementById('hero-left-col');
+    const heroRight = document.getElementById('hero-right-col');
+
+    const m1Wrap = document.getElementById('machine-1-wrapper');
+    const m2Wrap = document.getElementById('machine-2-wrapper');
+    const m3Wrap = document.getElementById('machine-3-wrapper');
+    const m4Wrap = document.getElementById('machine-4-wrapper');
+
+    const card1 = document.getElementById('step-card-1');
+    const card2 = document.getElementById('step-card-2');
+    const card3 = document.getElementById('step-card-3');
+    const card4 = document.getElementById('step-card-4');
+
+    function clamp01(v) { return Math.max(0, Math.min(1, v)); }
+    function smoothstep(a, b, x) {
+      const t = clamp01((x - a) / (b - a));
+      return t * t * (3 - 2 * t);
+    }
+    function lerp(a, b, t) { return a + (b - a) * t; }
+
+    function jumpToScrollProgress(targetP) {
+      if (!journeySection) return;
+      const maxScroll = journeySection.offsetHeight - window.innerHeight;
+      const top = journeySection.offsetTop + maxScroll * targetP;
+      window.scrollTo({ top, behavior: 'smooth' });
+    }
+
+    function setElementTransformWithDrag(el, baseXPercent, baseYPx, scale, opacity, pointerOn) {
+      if (!el) return;
+      const drag = dragOffsets.get(el) || { x: 0, y: 0 };
+      el.style.transform = `translate3d(calc(${baseXPercent.toFixed(2)}% + ${drag.x.toFixed(0)}px), ${(baseYPx + drag.y).toFixed(1)}px, 0) scale(${scale.toFixed(3)})`;
+      el.style.opacity = opacity.toFixed(3);
+      el.style.pointerEvents = pointerOn ? 'auto' : 'none';
+    }
+
+    function updateImmersiveStage() {
+      if (!journeySection) return;
+      const rect = journeySection.getBoundingClientRect();
+      const totalScroll = journeySection.offsetHeight - window.innerHeight;
+      const p = totalScroll > 0 ? clamp01(-rect.top / totalScroll) : 0;
+      const isDesktop = window.innerWidth >= 1024;
+
+      // Update Progress Bar & Percentage
+      const pct = Math.round(p * 100);
+      const progBar = document.getElementById('stage-progress-bar');
+      const bottomPct = document.getElementById('bottom-hud-pct');
+      if (progBar) progBar.style.width = Math.max(2, pct) + '%';
+      if (bottomPct) bottomPct.textContent = pct + '%';
+
+      // -------------------------------------------------------------------------
+      // STAGE 0 -> 1: HERO FADES OUT (p: 0.00 -> 0.11)
+      // -------------------------------------------------------------------------
+      const heroExit = smoothstep(0.01, 0.11, p);
+      if (heroLayer && heroLeft && heroRight) {
+        const heroOpacity = 1 - heroExit;
+        heroLayer.style.opacity = heroOpacity.toFixed(3);
+        heroLayer.style.pointerEvents = heroOpacity > 0.25 ? 'auto' : 'none';
+        heroLeft.style.transform = `translate3d(${(-heroExit * 90).toFixed(1)}px, ${(-heroExit * 25).toFixed(1)}px, 0)`;
+        heroRight.style.transform = `translate3d(${(heroExit * 90).toFixed(1)}px, ${(-heroExit * 25).toFixed(1)}px, 0)`;
+      }
+
+      // -------------------------------------------------------------------------
+      // MACHINE 1 (TORNO CNC):
+      // - p 0.00 -> 0.11: Zooms from background (scale 0.72, opacity 0.24) to
+      //                   FRONT CENTER (scale 1.04, opacity 1.0)!
+      // - p 0.10 -> 0.23: Spins at high RPM, workpiece slides into chuck, tailstock
+      //                   clamps, and CNC carriage machines the piece!
+      // - p 0.24 -> 0.31: Moves to the LEFT side & shrinks slightly (scale 0.85),
+      //                   while PASO 01 Card appears on the right!
+      // - p 0.42 -> 0.49: Exits off-screen to the left so Machine 2 can enter!
+      // -------------------------------------------------------------------------
+      const m1ToFront = smoothstep(0.01, 0.11, p);
+      const m1ToLeft  = smoothstep(0.24, 0.31, p);
+      const m1Exit    = smoothstep(0.42, 0.49, p);
+
+      let m1X = 0;
+      let m1Y = lerp(12, 0, m1ToFront);
+      let m1Scale = lerp(0.72, 1.04, m1ToFront);
+      let m1Opacity = lerp(0.24, 1.0, m1ToFront);
+
+      if (m1ToLeft > 0) {
+        m1X = lerp(0, isDesktop ? -34 : 0, m1ToLeft);
+        m1Y = lerp(0, isDesktop ? 0 : -115, m1ToLeft);
+        m1Scale = lerp(1.04, isDesktop ? 0.84 : 0.76, m1ToLeft);
+      }
+      if (m1Exit > 0) {
+        m1X = lerp(isDesktop ? -34 : 0, -135, m1Exit);
+        m1Opacity = 1 - m1Exit;
+      }
+      setElementTransformWithDrag(m1Wrap, m1X, m1Y, m1Scale, m1Opacity, p >= 0.08 && p < 0.46);
+
+      // Workpiece insertion & machining inside Machine 1
+      const pieceEnter = smoothstep(0.09, 0.16, p);
+      const pieceCut   = smoothstep(0.15, 0.25, p);
+      const wpGroup = document.getElementById('lathe-workpiece-group');
+      const tailstock = document.getElementById('lathe-tailstock');
+      const sparks = document.getElementById('lathe-cutting-sparks');
+      const actionLabel = document.getElementById('lathe-action-label');
+      const subStatus = document.getElementById('svg-lathe-substatus');
+
+      if (wpGroup) {
+        const slideX = lerp(165, 0, pieceEnter);
+        wpGroup.setAttribute('transform', `translate(${slideX.toFixed(1)}, 0)`);
+        wpGroup.setAttribute('opacity', pieceEnter.toFixed(2));
+      }
+      if (tailstock) {
+        const tsX = lerp(42, 0, pieceEnter);
+        tailstock.setAttribute('transform', `translate(${tsX.toFixed(1)}, 0)`);
+      }
+
+      // Spindle acceleration when Lathe comes to front
+      latheSpinSpeed = p < 0.06 ? 0.55 : lerp(0.8, 3.6, smoothstep(0.06, 0.16, p));
+
+      // Tool cutting pass (unless overridden by manual slider)
+      if (userManualCarriage === null) {
+        applyLatheMachiningProgress(pieceCut);
+        if (carriageSlider) carriageSlider.value = Math.round(pieceCut * 100);
+      }
+
+      if (sparks) {
+        const sparkOn = (p >= 0.14 && p <= 0.44) ? 1 : 0;
+        sparks.setAttribute('opacity', sparkOn.toString());
+      }
+
+      if (actionLabel && subStatus) {
+        if (p < 0.08) {
+          actionLabel.textContent = 'TORNO EN FONDO · HAGA SCROLL PARA TRAERLO AL FRENTE';
+          subStatus.textContent = 'ESTADO: EN ESPERA DE CICLO';
+        } else if (p < 0.16) {
+          actionLabel.textContent = 'ACOPLANDO PIEZA SAE 4140 AL HUSILLO EN GIRO (1,450 RPM)';
+          subStatus.textContent = 'ESTADO: SUJECIÓN EN PLATO DE 4 GARRAS';
+        } else {
+          actionLabel.textContent = 'MECANIZADO CNC EN CURSO · CILINDRADO DE PRECISIÓN (±0.01 MM)';
+          subStatus.textContent = 'ESTADO: ARRANQUE DE VIRUTA ACTIVO';
+        }
+      }
+
+      // PASO 01 CARD (Right side during p: 0.25 -> 0.45)
+      const c1Enter = smoothstep(0.25, 0.32, p);
+      const c1Exit  = smoothstep(0.42, 0.48, p);
+      const c1Opacity = c1Enter * (1 - c1Exit);
+      const c1X = lerp(110, 0, c1Enter) + (c1Exit * 110);
+      setElementTransformWithDrag(card1, c1X, isDesktop ? 0 : 135, 1, c1Opacity, c1Opacity > 0.5);
+
+      // -------------------------------------------------------------------------
+      // PASO 02: MACHINE 2 (Tornería Pesada 3m) + CARD 2 (p: 0.45 -> 0.65)
+      // -------------------------------------------------------------------------
+      const m2Enter = smoothstep(0.45, 0.52, p);
+      const m2Exit  = smoothstep(0.62, 0.68, p);
+      const m2Opacity = m2Enter * (1 - m2Exit);
+      const m2X = lerp(-125, isDesktop ? -34 : 0, m2Enter) - (m2Exit * 110);
+      setElementTransformWithDrag(m2Wrap, m2X, isDesktop ? 0 : -115, isDesktop ? 0.85 : 0.76, m2Opacity, m2Opacity > 0.5);
+
+      const c2X = lerp(110, 0, m2Enter) + (m2Exit * 110);
+      setElementTransformWithDrag(card2, c2X, isDesktop ? 0 : 135, 1, m2Opacity, m2Opacity > 0.5);
+
+      // -------------------------------------------------------------------------
+      // PASO 03: MACHINE 3 (Oxicorte & Plasma CNC + AWS) + CARD 3 (p: 0.65 -> 0.83)
+      // -------------------------------------------------------------------------
+      const m3Enter = smoothstep(0.65, 0.72, p);
+      const m3Exit  = smoothstep(0.81, 0.87, p);
+      const m3Opacity = m3Enter * (1 - m3Exit);
+      const m3X = lerp(-125, isDesktop ? -34 : 0, m3Enter) - (m3Exit * 110);
+      setElementTransformWithDrag(m3Wrap, m3X, isDesktop ? 0 : -115, isDesktop ? 0.85 : 0.76, m3Opacity, m3Opacity > 0.5);
+
+      const c3X = lerp(110, 0, m3Enter) + (m3Exit * 110);
+      setElementTransformWithDrag(card3, c3X, isDesktop ? 0 : 135, 1, m3Opacity, m3Opacity > 0.5);
+
+      // Automatic Plasma Gantry circular sweep during Step 3 if user hasn't dragged slider
+      if (p >= 0.65 && p <= 0.87) {
+        const localP = (p - 0.65) / 0.20;
+        const sweepX = Math.sin(localP * Math.PI * 2) * 72;
+        const sweepY = Math.cos(localP * Math.PI * 2) * 58;
+        const gantry = document.getElementById('m3-gantry-group');
+        const torch = document.getElementById('m3-torch-head');
+        if (gantry) gantry.setAttribute('transform', `translate(${sweepX.toFixed(1)}, 0)`);
+        if (torch) torch.setAttribute('transform', `translate(0, ${sweepY.toFixed(1)})`);
+      }
+
+      // -------------------------------------------------------------------------
+      // PASO 04: MACHINE 4 (Prensa Plegadora & CMM) + CARD 4 (p: 0.83 -> 1.00)
+      // -------------------------------------------------------------------------
+      const m4Enter = smoothstep(0.83, 0.90, p);
+      const m4Opacity = m4Enter;
+      const m4X = lerp(-125, isDesktop ? -34 : 0, m4Enter);
+      setElementTransformWithDrag(m4Wrap, m4X, isDesktop ? 0 : -115, isDesktop ? 0.85 : 0.76, m4Opacity, m4Opacity > 0.5);
+
+      const c4X = lerp(110, 0, m4Enter);
+      setElementTransformWithDrag(card4, c4X, isDesktop ? 0 : 135, 1, m4Opacity, m4Opacity > 0.5);
+
+      // -------------------------------------------------------------------------
+      // UPDATE TOP & BOTTOM HUD PILLS
+      // -------------------------------------------------------------------------
+      const badge = document.getElementById('stage-phase-badge');
+      const bStep = document.getElementById('bottom-hud-step');
+      const bDetail = document.getElementById('bottom-hud-detail');
+
+      let activePillId = 'nav-pill-hero';
+      if (p < 0.09) {
+        activePillId = 'nav-pill-hero';
+        if (badge) badge.textContent = 'PORTADA · HERO';
+        if (bStep) bStep.textContent = 'PORTADA PRINCIPAL';
+        if (bDetail) bDetail.textContent = 'Haga scroll hacia abajo: el torno del fondo pasará al frente y empezará a mecanizar.';
+      } else if (p < 0.26) {
+        activePillId = 'nav-pill-front';
+        if (badge) badge.textContent = 'TORNO AL FRENTE · MECANIZANDO PIEZA';
+        if (bStep) bStep.textContent = 'TORNO CNC EN PRIMER PLANO';
+        if (bDetail) bDetail.textContent = 'El torno gira a 1,450 RPM, acopla la barra SAE 4140 y mecaniza el eje. Siga bajando para ver el Paso 01.';
+      } else if (p < 0.46) {
+        activePillId = 'nav-pill-step1';
+        if (badge) badge.textContent = 'PASO 01 · TORNO CNC & MUESTRA';
+        if (bStep) bStep.textContent = 'PASO 01 / 04 · TORNEADO CNC';
+        if (bDetail) bDetail.textContent = 'Torno a la izquierda + Tarjeta del Paso 01 a la derecha. Puede arrastrar la máquina o mover el carro Z.';
+      } else if (p < 0.65) {
+        activePillId = 'nav-pill-step2';
+        if (badge) badge.textContent = 'PASO 02 · TORNERÍA PESADA 3M';
+        if (bStep) bStep.textContent = 'PASO 02 / 04 · TORNERÍA PESADA 3M';
+        if (bDetail) bDetail.textContent = 'Sale el torno CNC e ingresa el Torno Pesado de 3 Metros y Talladora de Engranajes.';
+      } else if (p < 0.84) {
+        activePillId = 'nav-pill-step3';
+        if (badge) badge.textContent = 'PASO 03 · PLASMA CNC & SOLDADURA AWS';
+        if (bStep) bStep.textContent = 'PASO 03 / 04 · OXICORTE, PLASMA & AWS';
+        if (bDetail) bDetail.textContent = 'Mesa Pantográfica CNC cortando brida de 50mm + Soldadura homologada TIG/MIG.';
+      } else {
+        activePillId = 'nav-pill-step4';
+        if (badge) badge.textContent = 'PASO 04 · PLEGADO & METROLOGÍA CMM';
+        if (bStep) bStep.textContent = 'PASO 04 / 04 · CERTIFICACIÓN & DESPACHO';
+        if (bDetail) bDetail.textContent = 'Plegado hidráulico y control dimensional milesimal (±0.008 mm) previo al despacho 24/7.';
+      }
+
+      document.querySelectorAll('.stage-nav-pill').forEach((btn) => {
+        if (btn.id === activePillId) {
+          btn.className = 'stage-nav-pill px-2.5 py-1 rounded-lg text-[11px] font-mono font-bold border transition-all bg-mazzei-800 text-white border-mazzei-800';
+        } else {
+          btn.className = 'stage-nav-pill px-2.5 py-1 rounded-lg text-[11px] font-mono font-bold border transition-all bg-metal-50 text-metal-600 border-metal-200 hover:border-mazzei-400';
+        }
+      });
+    }
+
+    window.addEventListener('scroll', updateImmersiveStage, { passive: true });
+    window.addEventListener('resize', updateImmersiveStage);
+    updateImmersiveStage();
+
+
+    // ============================================================================
+    // 5. SERVICES FILTER, 3D TILT & DEDICATED SERVICE PAGE MODAL
+    // ============================================================================
+    function filterServices(category) {
+      document.querySelectorAll('.srv-filter-btn').forEach((btn) => {
+        const active = btn.getAttribute('data-filter') === category;
+        btn.className = active
+          ? 'srv-filter-btn px-3.5 py-2 rounded-xl text-xs font-mono font-bold bg-mazzei-800 text-white border border-mazzei-800 transition-all'
+          : 'srv-filter-btn px-3.5 py-2 rounded-xl text-xs font-mono font-bold bg-metal-50 text-metal-700 border border-metal-200 hover:border-mazzei-400 transition-all';
+      });
+
+      document.querySelectorAll('.service-card').forEach((card) => {
+        const cat = card.getAttribute('data-category');
+        if (category === 'all' || cat === category) {
+          card.style.display = 'flex';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+
+    // 3D Tilt & Cursor Shine on Service Cards
+    document.querySelectorAll('.tilt-card').forEach((card) => {
+      card.addEventListener('mousemove', (e) => {
+        const r = card.getBoundingClientRect();
+        const x = e.clientX - r.left;
+        const y = e.clientY - r.top;
+        card.style.setProperty('--cursor-x', `${x}px`);
+        card.style.setProperty('--cursor-y', `${y}px`);
+        const rotX = ((y - r.height / 2) / (r.height / 2)) * -4.5;
+        const rotY = ((x - r.width / 2) / (r.width / 2)) * 4.5;
+        card.style.transform = `perspective(1000px) rotateX(${rotX.toFixed(2)}deg) rotateY(${rotY.toFixed(2)}deg) translateY(-4px)`;
+      });
+      card.addEventListener('mouseleave', () => {
+        card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0)';
+      });
+    });
+
+    // Scroll reveal for service cards
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+        }
+      });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.reveal-on-scroll').forEach((el) => revealObserver.observe(el));
+
+    // Service Pages Data Dictionary
+    const SERVICE_PAGES = {
+      'torno-cnc': {
+        url: 'industriasmazzei.com/servicios/mecanizado-torno-cnc/',
+        badge: 'SERVICIO 01 · CONTROL NUMÉRICO COMPUTARIZADO',
+        title: 'Mecanizado en Torno CNC',
+        img: 'img/servicio-torno-cnc.jpg',
+        rfqValue: 'Mecanizado en Torno CNC',
+        desc: 'Ejecutamos torneado CNC de alta precisión para componentes cilíndricos complejos, ejes escalonados, roscas especiales (API, Acme, trapeciales), bujes y acoples con repetibilidad micrométrica tanto en piezas únicas como en series.',
+        specs: [
+          { label: 'Tolerancia Dimensional', val: '±0.01 mm (ISO H7/h6)' },
+          { label: 'Materiales Procesados', val: 'SAE 4140, 1045, Inox 304/316, Bronce' },
+          { label: 'Modalidad', val: 'Pieza crítica o lote seriado' }
+        ]
+      },
+      'soldadura': {
+        url: 'industriasmazzei.com/servicios/soldadura-industrial-tig-mig/',
+        badge: 'SERVICIO 02 · PROCEDIMIENTOS HOMOLOGADOS AWS',
+        title: 'Soldadura Stick, TIG y MIG',
+        img: 'img/servicio-soldadura.jpg',
+        rfqValue: 'Soldadura TIG/MIG/Stick',
+        desc: 'Soldadura industrial calificada (SMAW, GTAW/TIG, GMAW/MIG) para unión y recuperación de componentes en acero al carbono, acero inoxidable sanitario 304/316, aluminio y fundiciones.',
+        specs: [
+          { label: 'Procesos', val: 'TIG (GTAW) · MIG (GMAW) · Stick' },
+          { label: 'Normativa', val: 'Estándar Estructural AWS D1.1' },
+          { label: 'Aplicaciones', val: 'Tolvas, tanques, chasis y relleno de ejes' }
+        ]
+      },
+      'oxicorte-plasma': {
+        url: 'industriasmazzei.com/servicios/oxicorte-y-plasma-cnc/',
+        badge: 'SERVICIO 03 · MESA PANTOGRÁFICA COMPUTARIZADA',
+        title: 'Oxicorte y Plasma CNC',
+        img: 'img/servicio-oxicorte-plasma.jpg',
+        rfqValue: 'Oxicorte y Plasma CNC',
+        desc: 'Corte térmico automatizado mediante pantógrafo CNC para planchas de acero estructural y antidesgaste. Ideal para bridas, discos, coronas base, cartelas y placas de anclaje.',
+        specs: [
+          { label: 'Espesor Máximo', val: 'Hasta 100 mm en Oxicorte / Plasma HD' },
+          { label: 'Optimización', val: 'Anidado CAD/CAM (Nesting)' },
+          { label: 'Formatos admitidos', val: '.DXF, .DWG, .STEP o plantilla física' }
+        ]
+      },
+      'torneria-pesada': {
+        url: 'industriasmazzei.com/servicios/torneria-pesada-3-metros/',
+        badge: 'SERVICIO 04 · GRAN VOLTEO Y LONGITUD',
+        title: 'Tornería Pesada Convencional (Hasta 3m)',
+        img: 'img/servicio-torneria-pesada.jpg',
+        rfqValue: 'Tornería Pesada hasta 3m',
+        desc: 'Especialistas en mecanizado pesado de piezas de hasta 3,000 mm de longitud entre puntos: rodillos de molienda para centrales azucareros, tambores, ejes cardánicos y bocinas de gran diámetro.',
+        specs: [
+          { label: 'Capacidad entre Puntos', val: 'Hasta 3,000 mm (3 Metros)' },
+          { label: 'Soporte Pesado', val: 'Lunetas fijas y móviles de gran diámetro' },
+          { label: 'Sectores', val: 'Agroindustria, Siderúrgica, Papelera' }
+        ]
+      },
+      'fabricacion-piezas': {
+        url: 'industriasmazzei.com/servicios/fabricacion-bajo-plano-muestra/',
+        badge: 'SERVICIO 05 · INGENIERÍA INVERSA EN PLANTA',
+        title: 'Fabricación Bajo Plano o Muestra Física',
+        img: 'img/servicio-fabricacion-piezas.jpg',
+        rfqValue: 'Fabricación según Muestra/Plano',
+        desc: '¿El repuesto original está descontinuado o su importación tarda meses? Recibimos la pieza rota, realizamos levantamiento metrológico CAD, seleccionamos el acero adecuado y la fabricamos con garantía de acople.',
+        specs: [
+          { label: 'Ingeniería Inversa', val: 'Medición 3D de pieza desgastada' },
+          { label: 'Ahorro Estimado', val: '60% a 75% vs repuesto importado' },
+          { label: 'Entrega Urgente', val: '24h a 72h en paradas de planta' }
+        ]
+      },
+      'plegado-lamina': {
+        url: 'industriasmazzei.com/servicios/plegado-de-lamina-industrial/',
+        badge: 'SERVICIO 06 · PRENSA PLEGADORA HIDRÁULICA',
+        title: 'Plegado de Lámina y Chapa',
+        img: 'img/servicio-plegado-lamina.jpg',
+        rfqValue: 'Plegado de Lámina / Guillotina',
+        desc: 'Conformado en frío de chapas de acero al carbono e inoxidable para fabricar perfiles especiales U/C/Z, canales, tolvas industriales, bandejas y cubiertas protectoras.',
+        specs: [
+          { label: 'Longitud de Plegado', val: 'Hasta 3,000 mm' },
+          { label: 'Precisión Angular', val: 'Matrices en V intercambiables' },
+          { label: 'Materiales', val: 'Hierro negro, galvanizado e Inox' }
+        ]
+      },
+      'troquelado': {
+        url: 'industriasmazzei.com/servicios/troquelado-y-estampado/',
+        badge: 'SERVICIO 07 · MATRICERÍA Y PRODUCCIÓN EN SERIE',
+        title: 'Troquelado y Estampado Industrial',
+        img: 'img/servicio-troquelado.jpg',
+        rfqValue: 'Troquelado y Estampado',
+        desc: 'Diseño de troqueles y producción continua de piezas estampadas, arandelas especiales, discos, grapas de sujeción y componentes metálicos repetitivos para líneas de ensamble.',
+        specs: [
+          { label: 'Capacidad', val: 'Alta cadencia para lotes seriados' },
+          { label: 'Matricería Propia', val: 'Fabricación y mantenimiento de troqueles' },
+          { label: 'Calidad', val: 'Uniformidad en cada golpe' }
+        ]
+      },
+      'corte-guillotina': {
+        url: 'industriasmazzei.com/servicios/corte-con-guillotina/',
+        badge: 'SERVICIO 08 · CIZALLADO EN FRÍO A 90°',
+        title: 'Corte con Guillotina Industrial',
+        img: 'img/servicio-corte-guillotina.jpg',
+        rfqValue: 'Plegado de Lámina / Guillotina',
+        desc: 'Cortes rectos limpios y libres de deformación térmica para láminas y chapas metálicas de hasta 3 metros de longitud, listos para procesos de plegado o soldadura.',
+        specs: [
+          { label: 'Longitud de Corte', val: 'Hasta 3,000 mm de ancho' },
+          { label: 'Acabado de Borde', val: 'Corte en frío sin escoria' },
+          { label: 'Rapidez', val: 'Despacho en el mismo día' }
+        ]
+      },
+      'reconstruccion': {
+        url: 'industriasmazzei.com/servicios/reconstruccion-de-equipos/',
+        badge: 'SERVICIO 09 · OVERHAUL Y RECUPERACIÓN MECÁNICA',
+        title: 'Reconstrucción de Equipos Industriales',
+        img: 'img/servicio-reconstruccion.jpg',
+        rfqValue: 'Reconstrucción de Equipo',
+        desc: 'Devolvemos las tolerancias de fábrica a equipos rotativos, cajas reductoras, alojamientos de rodamientos y ejes fatigados mediante soldadura de aporte, encamisado y rectificado final.',
+        specs: [
+          { label: 'Alcance', val: 'Relleno, encamisado, rectificado y ajuste' },
+          { label: 'Garantía', val: 'Verificación con reloj comparador' },
+          { label: 'Atención', val: 'Prioridad 24/7 para equipos críticos' }
+        ]
+      }
+    };
+
+    function openServiceModal(key) {
+      const data = SERVICE_PAGES[key];
+      if (!data) return;
+      document.getElementById('modal-service-url').textContent = data.url;
+      document.getElementById('modal-service-badge').textContent = data.badge;
+      document.getElementById('modal-service-title').textContent = data.title;
+      document.getElementById('modal-service-img').src = data.img;
+      document.getElementById('modal-service-desc').textContent = data.desc;
+
+      const specsBox = document.getElementById('modal-service-specs');
+      specsBox.innerHTML = data.specs.map((s) => `
+        <div class="p-3.5 rounded-2xl bg-metal-50 border border-metal-200">
+          <div class="text-[10px] font-mono text-metal-500 uppercase">${s.label}</div>
+          <div class="text-xs sm:text-sm font-bold text-metal-900 mt-1">${s.val}</div>
+        </div>
+      `).join('');
+
+      const ctaBtn = document.getElementById('modal-service-cta');
+      ctaBtn.onclick = () => {
+        closeServiceModal();
+        preselectService(data.rfqValue);
+        document.getElementById('cotizador-rfq').scrollIntoView({ behavior: 'smooth' });
+      };
+
+      const modal = document.getElementById('service-page-modal');
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+    }
+
+    function closeServiceModal() {
+      const modal = document.getElementById('service-page-modal');
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+    }
+
+
+    // ============================================================================
+    // 6. BEFORE / AFTER INTERACTIVE SLIDER
+    // ============================================================================
+    const compareBox = document.getElementById('compare-box');
+    const compareBefore = document.getElementById('compare-before');
+    const compareSlider = document.getElementById('compare-slider');
+    const compareBeforeImg = document.getElementById('compare-before-img');
+
+    function syncCompareWidth() {
+      if (compareBox && compareBeforeImg) {
+        compareBeforeImg.style.width = compareBox.offsetWidth + 'px';
+      }
+    }
+    window.addEventListener('resize', syncCompareWidth);
+    syncCompareWidth();
+
+    function setComparisonSplit(pct) {
+      const clamped = Math.max(4, Math.min(96, pct));
+      if (compareBefore) compareBefore.style.width = clamped + '%';
+      if (compareSlider) compareSlider.style.left = clamped + '%';
+    }
+
+    if (compareBox) {
+      let draggingCompare = false;
+      function moveCompare(clientX) {
+        const r = compareBox.getBoundingClientRect();
+        const pct = ((clientX - r.left) / r.width) * 100;
+        setComparisonSplit(pct);
+      }
+      compareBox.addEventListener('mousedown', (e) => { draggingCompare = true; moveCompare(e.clientX); });
+      window.addEventListener('mousemove', (e) => { if (draggingCompare) moveCompare(e.clientX); });
+      window.addEventListener('mouseup', () => { draggingCompare = false; });
+
+      compareBox.addEventListener('touchstart', (e) => {
+        draggingCompare = true;
+        if (e.touches[0]) moveCompare(e.touches[0].clientX);
+      }, { passive: true });
+      window.addEventListener('touchmove', (e) => {
+        if (draggingCompare && e.touches[0]) moveCompare(e.touches[0].clientX);
+      }, { passive: true });
+      window.addEventListener('touchend', () => { draggingCompare = false; });
+    }
+
+
+    // ============================================================================
+    // 7. RFQ FORM HELPERS & WHATSAPP GENERATOR
+    // ============================================================================
+    function preselectService(srvName) {
+      const sel = document.getElementById('rfqService');
+      if (sel) sel.value = srvName;
+    }
+
+    function selectAlloy(alloyName) {
+      const txt = document.getElementById('rfqDetails');
+      if (!txt) return;
+      const prefix = `[Material sugerido: ${alloyName}] `;
+      if (!txt.value.includes(alloyName)) {
+        txt.value = prefix + txt.value;
+      }
+      txt.focus();
+    }
+
+    function submitRFQ() {
+      const company = document.getElementById('rfqCompany').value.trim();
+      const phone = document.getElementById('rfqPhone').value.trim();
+      const service = document.getElementById('rfqService').value;
+      const batch = document.getElementById('rfqBatch').value;
+      const details = document.getElementById('rfqDetails').value.trim();
+      const emergency = document.getElementById('rfqEmergency').checked;
+
+      const header = emergency
+        ? '🚨 *SOLICITUD URGENTE · PARADA DE PLANTA 24/7* 🚨'
+        : '📐 *SOLICITUD DE COTIZACIÓN TÉCNICA (RFQ) · INDUSTRIAS MAZZEI*';
+
+      const msg = [
+        header,
+        `• *Empresa / Contacto:* ${company}`,
+        `• *Teléfono:* ${phone}`,
+        `• *Servicio:* ${service}`,
+        `• *Tipo de Pedido:* ${batch}`,
+        `• *Especificaciones:* ${details}`
+      ].join('\n');
+
+      const waUrl = `https://wa.me/584140000000?text=${encodeURIComponent(msg)}`;
+      window.open(waUrl, '_blank', 'noopener');
+    }
+  </script>
+</body>
+</html>
